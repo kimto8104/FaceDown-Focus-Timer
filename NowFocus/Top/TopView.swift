@@ -8,20 +8,36 @@
 import SwiftUI
 
 struct TopView: View {
-    var body: some View {
-      NavigationStack {
-        List {
-          Text("Hello World")
-          Text("Hello World")
-          Text("Hello World")
+  // 時間
+  @State var time = [
+    10, 20, 30, 40
+  ]
+  
+  var body: some View {
+    NavigationStack {
+      // time の配列の要素自身をidとして使うときに\.selfというように記載する
+      List(time, id: \.self) { time in
+        NavigationLink(time.description) {
+          TimerPage(time: time)
         }
-        .navigationTitle("時間選択")
       }
+      .navigationTitle("時間選択")
     }
+  }
 }
 
+private extension TopView {
+  func timerView() -> some View {
+    Text("test")
+  }
+}
+
+struct TimeItem: Identifiable {
+  var id: ObjectIdentifier
+  var name: String
+}
 struct TopView_Previews: PreviewProvider {
-    static var previews: some View {
-        TopView()
-    }
+  static var previews: some View {
+    TopView()
+  }
 }
