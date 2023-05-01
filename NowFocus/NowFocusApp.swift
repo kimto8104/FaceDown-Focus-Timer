@@ -9,11 +9,9 @@ import SwiftUI
 
 @main
 struct NowFocusApp: App {
-  @StateObject var pomodoroModel: PomodoroModel = .init()
     var body: some Scene {
         WindowGroup {
           MainContentView()
-            .environmentObject(pomodoroModel)
         }
     }
 }
