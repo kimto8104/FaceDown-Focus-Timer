@@ -19,17 +19,21 @@ struct TimerPage: View {
   }
   
   var body: some View {
-    VStack {
+    ZStack {
+      Circle()
+        .stroke(Color.blue, lineWidth: 4)
+        .frame(width: 200, height: 200)
       Text(viewModel.remainingTime.asTimeString)
         .font(.largeTitle)
+        .foregroundColor(.blue)
         .onReceive(viewModel.$remainingTime) { time in
           if time == 0 {
-            self.alertIsPresented = true
           }
         }
         .onAppear(perform: viewModel.start)
         .onDisappear(perform: viewModel.stop)
     }
+    
     .alert(isPresented: $alertIsPresented) {
       Alert(
         title: Text("タイマーを終了しますか？"),
@@ -50,6 +54,7 @@ struct TimerPage: View {
       })
     )
   }
+  
 }
 
 struct TimerPage_Previews: PreviewProvider {

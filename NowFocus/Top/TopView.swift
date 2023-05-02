@@ -10,7 +10,7 @@ import SwiftUI
 struct TopView: View {
   // 時間
   @State var time = [
-    5, 20, 30, 40
+    1, 20, 30, 40
   ]
   var body: some View {
     NavigationStack {
