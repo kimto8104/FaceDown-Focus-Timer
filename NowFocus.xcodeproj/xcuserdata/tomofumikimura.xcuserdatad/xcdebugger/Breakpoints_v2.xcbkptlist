@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "262EC25B-3E2D-4422-8DC1-F242C6A0F7D8"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BD950321-D9B4-47C0-91F3-0E06AA0249C3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NowFocus/TimerPage/TimerPage.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "BD950321-D9B4-47C0-91F3-0E06AA0249C3 - b4309cf203cde3f1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.onDisappear(perform: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; some&gt;&gt;.0)&gt; in NowFocus.TimerPage.body.getter : some"
+                  moduleName = "NowFocus"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tomofumikimura/Documents/%E5%80%8B%E4%BA%BA%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9/NowFocus/NowFocus/TimerPage/TimerPage.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "200">
+               </Location>
+               <Location
+                  uuid = "BD950321-D9B4-47C0-91F3-0E06AA0249C3 - b4309cf203cde352"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.onDisappear(perform: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; some&gt;&gt;.0)&gt; in NowFocus.TimerPage.body.getter : some"
+                  moduleName = "NowFocus"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tomofumikimura/Documents/%E5%80%8B%E4%BA%BA%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9/NowFocus/NowFocus/TimerPage/TimerPage.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "200">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "96E752D7-62B2-43CB-840A-0F4F9CCF0B68"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NowFocus/TimerPage/TimerPage.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "startInspect()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F2BD788F-4659-4483-B444-34986349A4B5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NowFocus/TimerPage/TimerPage.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "F2BD788F-4659-4483-B444-34986349A4B5 - f4ec87081132f86"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 () -&gt; SwiftUI.Button&lt;SwiftUI.Text&gt; in NowFocus.TimerPage.body.getter : some"
+                  moduleName = "NowFocus"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tomofumikimura/Documents/%E5%80%8B%E4%BA%BA%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9/NowFocus/NowFocus/TimerPage/TimerPage.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "260">
+               </Location>
+               <Location
+                  uuid = "F2BD788F-4659-4483-B444-34986349A4B5 - 78240ecec77592d4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #4 () -&gt; SwiftUI.Button&lt;SwiftUI.Text&gt; in NowFocus.TimerPage.body.getter : some"
+                  moduleName = "NowFocus"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tomofumikimura/Documents/%E5%80%8B%E4%BA%BA%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9/NowFocus/NowFocus/TimerPage/TimerPage.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  uuid = "F2BD788F-4659-4483-B444-34986349A4B5 - 78240ecec775929a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #4 () -&gt; SwiftUI.Button&lt;SwiftUI.Text&gt; in NowFocus.TimerPage.body.getter : some"
+                  moduleName = "NowFocus"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tomofumikimura/Documents/%E5%80%8B%E4%BA%BA%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9/NowFocus/NowFocus/TimerPage/TimerPage.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "200">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1FE02A3B-6CA5-4E18-AA4D-DC44B8ED97F4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NowFocus/TimerPage/TimerPage.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4F80D3A3-22F3-41D1-A9E1-7F4A1FED9179"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NowFocus/TimerPage/TimerPage.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "4F80D3A3-22F3-41D1-A9E1-7F4A1FED9179 - 2277a8b7cd47afd2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NowFocus.TimerPage.body.getter : some"
+                  moduleName = "NowFocus"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tomofumikimura/Documents/%E5%80%8B%E4%BA%BA%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9/NowFocus/NowFocus/TimerPage/TimerPage.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "1012">
+               </Location>
+               <Location
+                  uuid = "4F80D3A3-22F3-41D1-A9E1-7F4A1FED9179 - 14a26ac4ca68a75d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Bool) -&gt; () in NowFocus.TimerPage.body.getter : some"
+                  moduleName = "NowFocus"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tomofumikimura/Documents/%E5%80%8B%E4%BA%BA%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9/NowFocus/NowFocus/TimerPage/TimerPage.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "208">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
