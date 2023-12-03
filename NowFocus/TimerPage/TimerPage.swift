@@ -22,59 +22,12 @@ struct TimerPage: View {
   
   var body: some View {
     ZStack {
-      // Timer の丸
-      Circle()
-        .stroke(Color.blue, lineWidth: 4)
-        .frame(width: 200, height: 200)
-      // 残り時間
-      Text(viewModel.remainingTime.asTimeString)
-        .font(.largeTitle)
-        .foregroundColor(.blue)
-        .onReceive(viewModel.$remainingTime) { time in
-          if time == 0 {
-            // time が0ならタイマーを止める
-            viewModel.stop()
-          }
-        }
-        .onAppear {
-          // 端末の向きがFaceUpではない場合Timerスタートする
-          if model.isFaceUp == false {
-            viewModel.start()
-          }
-        }
-        .onDisappear(perform: viewModel.stop)
-    }
-    // isFaceUpの値を監視、falseならタイマースタート
-    .onReceive(model.$isFaceUp, perform: { isFaceUp in
-      let _ = print("isFaceUp? \(isFaceUp)")
-      if model.isFaceUp == false {
-        viewModel.start()
+      VStack {
+        Text(model.isFaceUp ? "画面が上向きになっています" : "画面が下向きです")
+        Spacer()
       }
-    })
-    
-    .onAppear {
-      // 画面の向きの見地を開始
-      model.startInspect()
-    }
-    
-    
-    .alert("デバイスの画面を下に向けてください", isPresented: $model.isFaceUp, actions: {
-      Button("OK") {
-        if model.isFaceUp == false {
-          viewModel.start()
-        }
-      }
-    })
-    
-    .alert(isPresented: $alertIsPresented) {
-      Alert(
-        title: Text("タイマーを終了しますか？"),
-        primaryButton: .cancel(Text("戻る")),
-        secondaryButton: .default(Text("OK"), action: {
-          viewModel.stop()
-          presentationMode.wrappedValue.dismiss()
-        })
-      )
+      // サークルView
+      timerCircle()
     }
     .navigationBarBackButtonHidden(true)
     .navigationBarItems(
@@ -88,28 +41,46 @@ struct TimerPage: View {
   } // body ここまで
 }
 
+// MARK: Content View
+extension TimerPage {
+  
+  func timerCircle() -> some View {
+    // Timer の丸
+    Circle()
+      .stroke(Color.blue, lineWidth: 4)
+      .frame(width: 200, height: 200)
+  }
+}
+
 // MARK: - View Model
 class TimerPageVM: ObservableObject {
   // 上向か下向きかの判定関連
   @Published fileprivate var isFaceUp: Bool = true
   fileprivate var orientationObserver: NSObjectProtocol? = nil
   let notification = UIDevice.orientationDidChangeNotification
+  private var motionManager = MotionManager()
+  init() {
+    setupMotionManager()
+  }
   
+  private func setupMotionManager() {
+    motionManager.$isFaceUp.assign(to: &$isFaceUp)
+  }
   // デバイスの向きの検知を開始
-  func startInspect() {
-    // 検知開始
-    UIDevice.current.beginGeneratingDeviceOrientationNotifications()
-    orientationObserver = NotificationCenter.default.addObserver(forName: notification, object: nil, queue: .main, using: { [weak self] _ in
-      switch UIDevice.current.orientation {
-      case .faceUp:
-        self?.isFaceUp = true
+//  func startInspect() {
+//    // 検知開始
+//    UIDevice.current.beginGeneratingDeviceOrientationNotifications()
+//    orientationObserver = NotificationCenter.default.addObserver(forName: notification, object: nil, queue: .main, using: { [weak self] _ in
+//      switch UIDevice.current.orientation {
+//      case .faceUp:
+//        self?.isFaceUp = true
 //      case .faceDown:
 //        self?.isFaceUp = false
-      default:
-        print("other orientation")
-      }
-    })
-  }
+//      default:
+//        print("other orientation")
+//      }
+//    })
+//  }
 }
 
 struct TimerPage_Previews: PreviewProvider {
