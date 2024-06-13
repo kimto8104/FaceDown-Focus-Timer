@@ -1,5 +1,5 @@
 //
-//  TopView.swift
+//  TimeSelectionView.swift
 //  NowFocus
 //
 //  Created by Tomofumi Kimura on 2023/02/12.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TopView: View {
+struct TimeSelectionView: View {
   // 時間
   @State var time = [
     1, 20, 30, 40
@@ -26,7 +26,7 @@ struct TopView: View {
   }
 }
 
-private extension TopView {
+private extension TimeSelectionView {
   func timerView() -> some View {
     Text("test")
   }
@@ -36,8 +36,8 @@ struct TimeItem: Identifiable {
   var id: ObjectIdentifier
   var name: String
 }
-struct TopView_Previews: PreviewProvider {
+struct TimeSelectionView_Previews: PreviewProvider {
   static var previews: some View {
-    TopView()
+    TimeSelectionView()
   }
 }
