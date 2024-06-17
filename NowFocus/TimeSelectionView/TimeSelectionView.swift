@@ -36,6 +36,7 @@ struct TimeItem: Identifiable {
   var id: ObjectIdentifier
   var name: String
 }
+
 struct TimeSelectionView_Previews: PreviewProvider {
   static var previews: some View {
     TimeSelectionView()

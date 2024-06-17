@@ -12,15 +12,9 @@ struct MainContentView: View {
     // Tab
     TabView {
       // TopView
-      TopView()
+      TimeSelectionView()
         .tabItem {
           Label("Top", systemImage: "list.dash")
-        }
-      
-      // History
-      History()
-        .tabItem {
-          Label("History", systemImage: "list.dash")
         }
     }
   }

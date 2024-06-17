@@ -11,20 +11,26 @@ import CoreMotion
 
 // MARK: - View
 struct TimerPage: View {
-  @StateObject private var viewModel: TimerViewModel
+  @StateObject private var motionManager = MotionManager()
   @Environment(\.presentationMode) var presentationMode
   @State private var alertIsPresented = false
  
   @ObservedObject private(set) var model = TimerPageVM()
   init(time: Int) {
-    self._viewModel = StateObject(wrappedValue: TimerViewModel(time: time * 60))
+    
   }
   
   var body: some View {
     ZStack {
       VStack {
-        Text(model.isFaceUp ? "画面が上向きになっています" : "画面が下向きです")
         Spacer()
+      }
+      
+      Button {
+        // モニタリング再開
+        motionManager.startMonitoringDeviceMotion()
+      } label: {
+        Text(motionManager.isMoved ? "元の位置に戻してください" : "集中できています")
       }
       // サークルView
       timerCircle()
@@ -60,27 +66,8 @@ class TimerPageVM: ObservableObject {
   let notification = UIDevice.orientationDidChangeNotification
   private var motionManager = MotionManager()
   init() {
-    setupMotionManager()
+    
   }
-  
-  private func setupMotionManager() {
-    motionManager.$isFaceUp.assign(to: &$isFaceUp)
-  }
-  // デバイスの向きの検知を開始
-//  func startInspect() {
-//    // 検知開始
-//    UIDevice.current.beginGeneratingDeviceOrientationNotifications()
-//    orientationObserver = NotificationCenter.default.addObserver(forName: notification, object: nil, queue: .main, using: { [weak self] _ in
-//      switch UIDevice.current.orientation {
-//      case .faceUp:
-//        self?.isFaceUp = true
-//      case .faceDown:
-//        self?.isFaceUp = false
-//      default:
-//        print("other orientation")
-//      }
-//    })
-//  }
 }
 
 struct TimerPage_Previews: PreviewProvider {

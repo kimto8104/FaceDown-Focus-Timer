@@ -7,25 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FE4BF32A29BF50E50069FDD3 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4BF32929BF50E50069FDD3 /* History.swift */; };
 		FE4BF32C29BF54D00069FDD3 /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4BF32B29BF54D00069FDD3 /* MainContentView.swift */; };
 		FE5230BF2B1CABDB00C3E2B1 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5230BE2B1CABDB00C3E2B1 /* MotionManager.swift */; };
-		FE8EAA2F29FFFE3D0040FB07 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8EAA2E29FFFE3D0040FB07 /* TimerViewModel.swift */; };
+		FE54F1AB2C2082D30029DCDD /* Warning-Siren04-02(Low-Long).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FE54F1AA2C2082D30029DCDD /* Warning-Siren04-02(Low-Long).mp3 */; };
 		FE8EAA322A0000BC0040FB07 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8EAA312A0000BC0040FB07 /* Int+Extension.swift */; };
 		FE8EAA352A00C9910040FB07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8EAA342A00C9910040FB07 /* AppDelegate.swift */; };
 		FEB840562998B6F900B945BA /* NowFocusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB840552998B6F900B945BA /* NowFocusApp.swift */; };
 		FEB8405A2998B6FA00B945BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEB840592998B6FA00B945BA /* Assets.xcassets */; };
 		FEB8405D2998B6FA00B945BA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEB8405C2998B6FA00B945BA /* Preview Assets.xcassets */; };
-		FEB840682998C24500B945BA /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB840672998C24500B945BA /* TopView.swift */; };
-		FED0635C2A21072000779631 /* PageIntro.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED0635B2A21072000779631 /* PageIntro.swift */; };
+		FEB840682998C24500B945BA /* TimeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB840672998C24500B945BA /* TimeSelectionView.swift */; };
 		FEFB29D329B7691E007D8FDA /* TimerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFB29D229B7691E007D8FDA /* TimerPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FE4BF32929BF50E50069FDD3 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		FE4BF32B29BF54D00069FDD3 /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
 		FE5230BE2B1CABDB00C3E2B1 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
-		FE8EAA2E29FFFE3D0040FB07 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
+		FE54F1AA2C2082D30029DCDD /* Warning-Siren04-02(Low-Long).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Warning-Siren04-02(Low-Long).mp3"; sourceTree = "<group>"; };
 		FE8EAA312A0000BC0040FB07 /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		FE8EAA332A00C2DC0040FB07 /* NowFocus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NowFocus.entitlements; sourceTree = "<group>"; };
 		FE8EAA342A00C9910040FB07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -34,8 +31,7 @@
 		FEB840552998B6F900B945BA /* NowFocusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowFocusApp.swift; sourceTree = "<group>"; };
 		FEB840592998B6FA00B945BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FEB8405C2998B6FA00B945BA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		FEB840672998C24500B945BA /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
-		FED0635B2A21072000779631 /* PageIntro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageIntro.swift; sourceTree = "<group>"; };
+		FEB840672998C24500B945BA /* TimeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectionView.swift; sourceTree = "<group>"; };
 		FEFB29D229B7691E007D8FDA /* TimerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -50,12 +46,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FE4BF32829BF50CE0069FDD3 /* History */ = {
+		FE54F1A82C1B26290029DCDD /* TimeSelectionView */ = {
 			isa = PBXGroup;
 			children = (
-				FE4BF32929BF50E50069FDD3 /* History.swift */,
+				FEB840672998C24500B945BA /* TimeSelectionView.swift */,
 			);
-			path = History;
+			path = TimeSelectionView;
+			sourceTree = "<group>";
+		};
+		FE54F1A92C2082AF0029DCDD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FE54F1AA2C2082D30029DCDD /* Warning-Siren04-02(Low-Long).mp3 */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		FE8EAA302A0000AD0040FB07 /* Extension */ = {
@@ -85,14 +89,12 @@
 		FEB840542998B6F900B945BA /* NowFocus */ = {
 			isa = PBXGroup;
 			children = (
-				FED063592A2106F400779631 /* OnBoardingPage */,
-				FE4BF32829BF50CE0069FDD3 /* History */,
+				FE54F1A92C2082AF0029DCDD /* Resources */,
+				FE54F1A82C1B26290029DCDD /* TimeSelectionView */,
 				FEFB29D129B76911007D8FDA /* TimerPage */,
-				FEB840662998C22E00B945BA /* Top */,
 				FE8EAA362A00CC3C0040FB07 /* Info.plist */,
 				FE8EAA332A00C2DC0040FB07 /* NowFocus.entitlements */,
 				FE8EAA302A0000AD0040FB07 /* Extension */,
-				FEBE7A3829C892FA00FCFBA3 /* ViewModel */,
 				FEB840552998B6F900B945BA /* NowFocusApp.swift */,
 				FEB840592998B6FA00B945BA /* Assets.xcassets */,
 				FEB8405B2998B6FA00B945BA /* Preview Content */,
@@ -109,46 +111,6 @@
 				FEB8405C2998B6FA00B945BA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		FEB840662998C22E00B945BA /* Top */ = {
-			isa = PBXGroup;
-			children = (
-				FEB840672998C24500B945BA /* TopView.swift */,
-			);
-			path = Top;
-			sourceTree = "<group>";
-		};
-		FEBE7A3829C892FA00FCFBA3 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				FE8EAA2E29FFFE3D0040FB07 /* TimerViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		FED063592A2106F400779631 /* OnBoardingPage */ = {
-			isa = PBXGroup;
-			children = (
-				FED0635D2A210AEA00779631 /* View */,
-				FED0635A2A21070200779631 /* Model */,
-			);
-			path = OnBoardingPage;
-			sourceTree = "<group>";
-		};
-		FED0635A2A21070200779631 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				FED0635B2A21072000779631 /* PageIntro.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		FED0635D2A210AEA00779631 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		FEFB29D129B76911007D8FDA /* TimerPage */ = {
@@ -219,6 +181,7 @@
 			files = (
 				FEB8405D2998B6FA00B945BA /* Preview Assets.xcassets in Resources */,
 				FEB8405A2998B6FA00B945BA /* Assets.xcassets in Resources */,
+				FE54F1AB2C2082D30029DCDD /* Warning-Siren04-02(Low-Long).mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,12 +195,9 @@
 				FE8EAA352A00C9910040FB07 /* AppDelegate.swift in Sources */,
 				FE5230BF2B1CABDB00C3E2B1 /* MotionManager.swift in Sources */,
 				FEFB29D329B7691E007D8FDA /* TimerPage.swift in Sources */,
-				FEB840682998C24500B945BA /* TopView.swift in Sources */,
+				FEB840682998C24500B945BA /* TimeSelectionView.swift in Sources */,
 				FEB840562998B6F900B945BA /* NowFocusApp.swift in Sources */,
 				FE8EAA322A0000BC0040FB07 /* Int+Extension.swift in Sources */,
-				FED0635C2A21072000779631 /* PageIntro.swift in Sources */,
-				FE4BF32A29BF50E50069FDD3 /* History.swift in Sources */,
-				FE8EAA2F29FFFE3D0040FB07 /* TimerViewModel.swift in Sources */,
 				FE4BF32C29BF54D00069FDD3 /* MainContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,7 +333,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NowFocus/Preview Content\"";
-				DEVELOPMENT_TEAM = Y88N7C5HY9;
+				DEVELOPMENT_TEAM = GVPBQ5FFV6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NowFocus/Info.plist;
@@ -387,7 +347,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tomoapp.nowfocus.NowFocus;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tomoapp.nowfocus.lookback;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -406,7 +366,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NowFocus/Preview Content\"";
-				DEVELOPMENT_TEAM = Y88N7C5HY9;
+				DEVELOPMENT_TEAM = GVPBQ5FFV6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NowFocus/Info.plist;
@@ -420,7 +380,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tomoapp.nowfocus.NowFocus;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tomoapp.nowfocus.lookback;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
