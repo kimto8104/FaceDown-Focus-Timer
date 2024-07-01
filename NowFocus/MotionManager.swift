@@ -14,7 +14,6 @@ class MotionManager: ObservableObject {
   private let motionManager = CMMotionManager()
   @Published var isMoved = false
   @Published var isMonitoring = false
-  private var vibrationTimer: Timer?
   private var initialAttitude: CMAttitude?
   private var audioPlayer: AVAudioPlayer?
   // 端末の動き検知を開始
@@ -36,7 +35,7 @@ class MotionManager: ObservableObject {
             // アラームをトリガー
             self?.triggerAlerm()
           } else {
-            // アラームを停止
+            // 元の位置にあるのでアラームを停止
             self?.stopAlarm()
           }
         } else {
