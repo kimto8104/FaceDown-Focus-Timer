@@ -52,9 +52,14 @@ extension TimerPage {
   
   func timerCircle() -> some View {
     // Timer の丸
-    Circle()
-      .stroke(Color.blue, lineWidth: 4)
-      .frame(width: 200, height: 200)
+    ZStack {
+      Circle()
+        .stroke(Color.blue, lineWidth: 4)
+        .frame(width: 200, height: 200)
+      Text("50:00")
+        .font(.largeTitle)
+        .foregroundColor(.black)
+    }
   }
 }
 
