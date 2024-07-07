@@ -15,9 +15,9 @@ struct TimerPage: View {
   @Environment(\.presentationMode) var presentationMode
   @State private var alertIsPresented = false
  
-  @ObservedObject private(set) var model = TimerPageVM()
+  @ObservedObject private(set) var model: TimerPageVM
   init(time: Int) {
-    
+    model = TimerPageVM(time: time)
   }
   
   var body: some View {
@@ -29,9 +29,11 @@ struct TimerPage: View {
       Button {
         // モニタリング再開
         motionManager.startMonitoringDeviceMotion()
+        model.timerManager.startTimer()
       } label: {
         Text(motionManager.isMoved ? "元の位置に戻してください" : "集中できています")
       }
+      .background(.red)
       // サークルView
       timerCircle()
     }
@@ -39,6 +41,7 @@ struct TimerPage: View {
     .navigationBarItems(
       leading: Button(action: {
         self.alertIsPresented = true
+        
       }, label: {
         Image(systemName: "chevron.backward")
         Text("戻る")
@@ -56,7 +59,7 @@ extension TimerPage {
       Circle()
         .stroke(Color.blue, lineWidth: 4)
         .frame(width: 200, height: 200)
-      Text("50:00")
+      Text("\(model.timerManager.formattedTime)")
         .font(.largeTitle)
         .foregroundColor(.black)
     }
@@ -69,9 +72,9 @@ class TimerPageVM: ObservableObject {
   @Published fileprivate var isFaceUp: Bool = true
   fileprivate var orientationObserver: NSObjectProtocol? = nil
   let notification = UIDevice.orientationDidChangeNotification
-  private var motionManager = MotionManager()
-  init() {
-    
+  var timerManager: TimerManager
+  init(time: Int) {
+    timerManager = TimerManager(initialTime: time)
   }
 }
 
