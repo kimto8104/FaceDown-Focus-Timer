@@ -11,36 +11,24 @@ import CoreMotion
 
 // MARK: - View
 struct TimerPage: View {
-  @StateObject private var motionManager = MotionManager()
   @Environment(\.presentationMode) var presentationMode
-  @State private var alertIsPresented = false
- 
-  @ObservedObject private(set) var model: TimerPageVM
-  init(time: Int) {
-    model = TimerPageVM(time: time)
-  }
-  
+  @ObservedObject private(set) var model = TimerPageVM()
+  @StateObject var timerManager = TimerManager()
   var body: some View {
     ZStack {
       VStack {
         Spacer()
       }
-      
-      Button {
-        // モニタリング再開
-        motionManager.startMonitoringDeviceMotion()
-        model.timerManager.startTimer()
-      } label: {
-        Text(motionManager.isMoved ? "元の位置に戻してください" : "集中できています")
-      }
-      .background(.red)
       // サークルView
       timerCircle()
+        .background(.red)
+        .onTapGesture {
+          timerManager.tapTimerButton()
+        }
     }
     .navigationBarBackButtonHidden(true)
     .navigationBarItems(
       leading: Button(action: {
-        self.alertIsPresented = true
         
       }, label: {
         Image(systemName: "chevron.backward")
@@ -59,27 +47,23 @@ extension TimerPage {
       Circle()
         .stroke(Color.blue, lineWidth: 4)
         .frame(width: 200, height: 200)
-      Text("\(model.timerManager.formattedTime)")
+      Text(timerManager.isPaused == true ? "▶️" : "\(timerManager.formattedTime)")
         .font(.largeTitle)
         .foregroundColor(.black)
     }
   }
 }
 
-// MARK: - View Model
+// MARK: - Model
 class TimerPageVM: ObservableObject {
   // 上向か下向きかの判定関連
   @Published fileprivate var isFaceUp: Bool = true
   fileprivate var orientationObserver: NSObjectProtocol? = nil
   let notification = UIDevice.orientationDidChangeNotification
-  var timerManager: TimerManager
-  init(time: Int) {
-    timerManager = TimerManager(initialTime: time)
-  }
 }
 
 struct TimerPage_Previews: PreviewProvider {
   static var previews: some View {
-    TimerPage(time: 10)
+    TimerPage()
   }
 }
