@@ -18,7 +18,7 @@ struct TimeSelectionView: View {
       List(time, id: \.self) { time in
         NavigationLink(time.description) {
           // 遷移先
-          TimerPage()
+          TimerPage(time: time)
         }
       }
       .navigationTitle("時間選択")

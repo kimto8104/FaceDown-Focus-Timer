@@ -13,7 +13,13 @@ import CoreMotion
 struct TimerPage: View {
   @Environment(\.presentationMode) var presentationMode
   @ObservedObject private(set) var model = TimerPageVM()
-  @StateObject var timerManager = TimerManager()
+  @StateObject var timerManager: TimerManager
+  
+  init(time: Int) {
+    let timerManager = TimerManager(time: time)
+    _timerManager = StateObject(wrappedValue: timerManager)
+  }
+  
   var body: some View {
     ZStack {
       VStack {
@@ -21,7 +27,6 @@ struct TimerPage: View {
       }
       // サークルView
       timerCircle()
-        .background(.red)
         .onTapGesture {
           timerManager.tapTimerButton()
         }
@@ -64,6 +69,6 @@ class TimerPageVM: ObservableObject {
 
 struct TimerPage_Previews: PreviewProvider {
   static var previews: some View {
-    TimerPage()
+    TimerPage(time: 1)
   }
 }

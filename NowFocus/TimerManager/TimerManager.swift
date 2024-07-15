@@ -18,9 +18,9 @@ class TimerManager: ObservableObject {
   private var timer: Timer?
   @Published var isPaused: Bool = true
   
-  init(initialTime: Int = 1) {
+  init(time: Int) {
     // 分数を秒に変える
-    self.remainingTime = initialTime * 60
+    self.remainingTime = time * 60
     self.formattedTime = formatTime(seconds: self.remainingTime)
   }
   
