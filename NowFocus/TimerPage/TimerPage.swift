@@ -22,6 +22,8 @@ struct TimerPage: View {
   
   var body: some View {
     ZStack {
+      Color.white
+        .ignoresSafeArea(.all)
       VStack {
         Spacer()
       }

@@ -19,6 +19,7 @@ struct TimeSelectionView: View {
         NavigationLink(time.description) {
           // 遷移先
           TimerPage(time: time)
+            .background(.white)
         }
       }
       .navigationTitle("時間選択")
