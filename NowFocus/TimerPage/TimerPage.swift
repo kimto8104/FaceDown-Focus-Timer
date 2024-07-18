@@ -11,14 +11,10 @@ import CoreMotion
 
 // MARK: - View
 struct TimerPage: View {
-  @Environment(\.presentationMode) var presentationMode
+  @Environment(\.isPresented) var presentationMode
+  @Environment(\.dismiss) var dismiss
   @ObservedObject private(set) var model = TimerPageVM()
   @StateObject var timerManager: TimerManager
-  
-  init(time: Int) {
-    let timerManager = TimerManager(time: time)
-    _timerManager = StateObject(wrappedValue: timerManager)
-  }
   
   var body: some View {
     ZStack {
@@ -26,17 +22,21 @@ struct TimerPage: View {
         .ignoresSafeArea(.all)
       VStack {
         Spacer()
+        Text(model.motionManager.isMoved ? "端末を戻して" : "集中できています")
+          .foregroundStyle(.red)
       }
       // サークルView
       timerCircle()
         .onTapGesture {
           timerManager.tapTimerButton()
+          model.motionManager.startMonitoringDeviceMotion()
         }
     }
     .navigationBarBackButtonHidden(true)
     .navigationBarItems(
       leading: Button(action: {
-        
+        timerManager.reset()
+        dismiss()
       }, label: {
         Image(systemName: "chevron.backward")
         Text("戻る")
@@ -67,10 +67,11 @@ class TimerPageVM: ObservableObject {
   @Published fileprivate var isFaceUp: Bool = true
   fileprivate var orientationObserver: NSObjectProtocol? = nil
   let notification = UIDevice.orientationDidChangeNotification
+  @Published fileprivate var motionManager = MotionManager()
 }
 
 struct TimerPage_Previews: PreviewProvider {
   static var previews: some View {
-    TimerPage(time: 1)
+    TimerPage(timerManager: TimerManager(time: 1))
   }
 }

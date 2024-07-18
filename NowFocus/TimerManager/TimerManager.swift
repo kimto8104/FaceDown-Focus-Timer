@@ -8,32 +8,29 @@
 import Foundation
 
 class TimerManager: ObservableObject {
-  @Published var remainingTime: Int {
+  @Published var remainingTime: Int? {
     didSet {
-      print("残り時間: \(remainingTime)")
+      print("残り時間: \(String(describing: remainingTime))")
       updateFormattedTime()
     }
   }
   @Published var formattedTime: String = ""
   private var timer: Timer?
   @Published var isPaused: Bool = true
-  
+  @Published var isFinished: Bool = false
   init(time: Int) {
     // 分数を秒に変える
     self.remainingTime = time * 60
-    self.formattedTime = formatTime(seconds: self.remainingTime)
+    self.formattedTime = formatTime(seconds: self.remainingTime!)
   }
   
-  // 最初に押下でタイマー開始
-  // タイマー停止の状態で押下するとタイマー再開
-  // タイマー動いてる状態で押下するとタイマー停止
   func tapTimerButton() {
-    if timer == nil {
-      self.startTimer()
-    } else if isPaused {
-      self.resumeTimer()
+    // タイマー停止の状態で押下するとタイマー再開
+    if isPaused {
+      startTimer()
     } else {
-      self.stopTimer()
+      // タイマー動いてる状態で押下するとタイマー停止
+      stopTimer()
     }
   }
   
@@ -45,41 +42,37 @@ class TimerManager: ObservableObject {
   }
   
   private func updateFormattedTime() {
-    self.formattedTime = formatTime(seconds: self.remainingTime)
+    guard let remainingTime = self.remainingTime else { return }
+    self.formattedTime = formatTime(seconds: remainingTime)
   }
   
   private func startTimer() {
-    // タイマーが存在しない場合のみタイマーをスケジュールさせる
-    guard timer == nil else { return }
     isPaused = false
     timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [weak self] _ in
       guard let self else { return }
-      self.remainingTime -= 1
+      guard let remainingTime = self.remainingTime else {
+        self.stopTimer()
+        return
+      }
+      self.remainingTime! -= 1
       self.updateFormattedTime()
       print("タイマー稼働中 ")
-      if self.remainingTime <= 0 {
+      if remainingTime <= 0 {
         // タイムアップ
         self.stopTimer()
+        self.isFinished = true
       }
     })
   }
   
   private func stopTimer() {
+    isPaused = true
     timer?.invalidate()
     timer = nil
   }
   
-  private func pauseTimer() {
-    if timer != nil {
-      isPaused = true
-      stopTimer()
-    }
-  }
-  
-  private func resumeTimer() {
-    if isPaused {
-      isPaused = false
-      startTimer()
-    }
+  func reset() {
+    self.stopTimer()
+    self.remainingTime = nil
   }
 }
