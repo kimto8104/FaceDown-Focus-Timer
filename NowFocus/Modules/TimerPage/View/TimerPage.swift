@@ -10,11 +10,13 @@ import AVFoundation
 import CoreMotion
 
 // MARK: - View
-struct TimerPage: View {
-  @Environment(\.isPresented) var presentationMode
+struct TimerPage<T: TimerPresenterProtocol>: View {
+//  @Environment(\.isPresented) var presentationMode
   @Environment(\.dismiss) var dismiss
   @ObservedObject private(set) var model = TimerPageVM()
-  @StateObject var timerManager: TimerManager
+//  @StateObject var timerManager: TimerManager?
+  
+  @ObservedObject var presenter: T
   
   var body: some View {
     ZStack {
@@ -28,14 +30,14 @@ struct TimerPage: View {
       // サークルView
       timerCircle()
         .onTapGesture {
-          timerManager.tapTimerButton()
+          presenter.tapTimerButton()
           model.motionManager.startMonitoringDeviceMotion()
         }
     }
     .navigationBarBackButtonHidden(true)
     .navigationBarItems(
       leading: Button(action: {
-        timerManager.reset()
+        presenter.resetTimer()
         dismiss()
       }, label: {
         Image(systemName: "chevron.backward")
@@ -54,7 +56,7 @@ extension TimerPage {
       Circle()
         .stroke(Color.blue, lineWidth: 4)
         .frame(width: 200, height: 200)
-      Text(timerManager.isPaused == true ? "▶️" : "\(timerManager.formattedTime)")
+      Text(presenter.isPaused == true ? "▶️" : "\(presenter.time)")
         .font(.largeTitle)
         .foregroundColor(.black)
     }
@@ -72,6 +74,6 @@ class TimerPageVM: ObservableObject {
 
 struct TimerPage_Previews: PreviewProvider {
   static var previews: some View {
-    TimerPage(timerManager: TimerManager(time: 1))
+    let router = TimerRouter.initializeTimerModule(with: 1)
   }
 }

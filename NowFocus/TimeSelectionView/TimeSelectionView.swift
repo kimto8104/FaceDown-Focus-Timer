@@ -18,7 +18,7 @@ struct TimeSelectionView: View {
       List(time, id: \.self) { time in
         NavigationLink(time.description) {
           // 遷移先
-          TimerPage(timerManager: TimerManager(time: time))
+          TimerRouter.initializeTimerModule(with: time)
             .background(.white)
         }
       }
