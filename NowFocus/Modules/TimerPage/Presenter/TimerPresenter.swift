@@ -27,9 +27,8 @@ class TimerPresenter: TimerPresenterProtocol {
   var interactor: TimerInteractorProtocol?
   var router: TimerRouterProtocol?
   
-  init(interactor: TimerInteractorProtocol?, router: TimerRouterProtocol?) {
-    self.interactor = interactor
-    self.router = router
+  init(time: Int) {
+    updateTime(time: TimeInterval(time * 60))
   }
   
   func tapTimerButton() {

@@ -20,9 +20,11 @@ class TimerInteractor: TimerInteractorProtocol {
   
   private var timer: Timer?
   private var remainingTime: TimeInterval
+  private let initialTime: TimeInterval
   
   init(initialTime: Int) {
     self.remainingTime = TimeInterval(initialTime * 60)
+    self.initialTime = TimeInterval(initialTime * 60)
   }
   
   func startTimer() {
@@ -31,7 +33,7 @@ class TimerInteractor: TimerInteractorProtocol {
       self.remainingTime -= 1
       if self.remainingTime <= 0 {
         self.timer?.invalidate()
-        self.presenter?.resetTimer()
+        self.resetTimer()
       } else {
         self.presenter?.updateTime(time: remainingTime)
       }
@@ -44,7 +46,8 @@ class TimerInteractor: TimerInteractorProtocol {
   
   func resetTimer() {
     timer?.invalidate()
-    remainingTime = 0
+    remainingTime = initialTime
+    presenter?.updateTime(time: remainingTime)
   }
   
   func checkDeviceMotion() {

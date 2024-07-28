@@ -13,10 +13,10 @@ import CoreMotion
 struct TimerPage<T: TimerPresenterProtocol>: View {
 //  @Environment(\.isPresented) var presentationMode
   @Environment(\.dismiss) var dismiss
-  @ObservedObject private(set) var model = TimerPageVM()
+//  @ObservedObject private(set) var model = TimerPageVM()
 //  @StateObject var timerManager: TimerManager?
   
-  @ObservedObject var presenter: T
+  @StateObject var presenter: T
   
   var body: some View {
     ZStack {
@@ -24,14 +24,14 @@ struct TimerPage<T: TimerPresenterProtocol>: View {
         .ignoresSafeArea(.all)
       VStack {
         Spacer()
-        Text(model.motionManager.isMoved ? "端末を戻して" : "集中できています")
-          .foregroundStyle(.red)
+//        Text(model.motionManager.isMoved ? "端末を戻して" : "集中できています")
+//          .foregroundStyle(.red)
       }
       // サークルView
       timerCircle()
         .onTapGesture {
           presenter.tapTimerButton()
-          model.motionManager.startMonitoringDeviceMotion()
+//          model.motionManager.startMonitoringDeviceMotion()
         }
     }
     .navigationBarBackButtonHidden(true)

@@ -17,7 +17,7 @@ class TimerRouter: TimerRouterProtocol {
    
     let router = TimerRouter()
     let interactor = TimerInteractor(initialTime: time)
-    let presenter = TimerPresenter(interactor: interactor, router: router)
+    let presenter = TimerPresenter(time: time)
     
     
     interactor.presenter = presenter
