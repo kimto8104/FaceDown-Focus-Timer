@@ -9,22 +9,21 @@ import SwiftUI
 
 // MARK: Protocol
 protocol TimerRouterProtocol {
-  static func initializeTimerModule(with time: Int) -> AnyView
+  static func initializeTimerModule(with time: Int) -> TimerPage<TimerPresenter>
 }
 
 class TimerRouter: TimerRouterProtocol {
-  static func initializeTimerModule(with time: Int) -> AnyView {
+  static func initializeTimerModule(with time: Int) -> TimerPage<TimerPresenter> {
    
     let router = TimerRouter()
-    let interactor = TimerInteractor(initialTime: time)
+    let motionManagerService = MotionManagerService()
     let presenter = TimerPresenter(time: time)
+    let interactor = TimerInteractor(initialTime: time, presenter: presenter, motionManagerService: motionManagerService)
     
-    
-    interactor.presenter = presenter
     presenter.interactor = interactor
     presenter.router = router
     
     let view = TimerPage(presenter: presenter)
-    return AnyView(view)
+    return view
   }
 }

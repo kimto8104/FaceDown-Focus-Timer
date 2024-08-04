@@ -24,14 +24,13 @@ struct TimerPage<T: TimerPresenterProtocol>: View {
         .ignoresSafeArea(.all)
       VStack {
         Spacer()
-//        Text(model.motionManager.isMoved ? "端末を戻して" : "集中できています")
-//          .foregroundStyle(.red)
+        Text(presenter.isMoved ? "端末を戻して" : "集中できています")
+          .foregroundStyle(.red)
       }
       // サークルView
       timerCircle()
         .onTapGesture {
           presenter.tapTimerButton()
-//          model.motionManager.startMonitoringDeviceMotion()
         }
     }
     .navigationBarBackButtonHidden(true)

@@ -12,14 +12,20 @@ struct TimeSelectionView: View {
   @State var time = [
     1, 20, 30, 40
   ]
+  
   var body: some View {
     NavigationStack {
       // time の配列の要素自身をidとして使うときに\.selfというように記載する
       List(time, id: \.self) { time in
-        NavigationLink(time.description) {
-          // 遷移先
+//        NavigationLink(time.description) {
+//          // 遷移先k
+//          TimerRouter.initializeTimerModule(with: time)
+//            .background(.white)
+//        }
+        NavigationLink {
           TimerRouter.initializeTimerModule(with: time)
-            .background(.white)
+        } label: {
+          Text(time.description)
         }
       }
       .navigationTitle("時間選択")

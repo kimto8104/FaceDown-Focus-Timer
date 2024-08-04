@@ -18,9 +18,16 @@ protocol TimerPresenterProtocol: ObservableObject {
   func tapTimerButton()
   func resetTimer()
   func updateTime(time: TimeInterval)
+  
+  // MotionManager
+  var isMoved: Bool { get }
+  func updateIsMoved(isMoved: Bool)
+  func startMonitoringDeviceMotion()
+  func stopMonitoringDeviceMotion()
 }
 
 class TimerPresenter: TimerPresenterProtocol {
+  @Published var isMoved: Bool = false
   @Published var time: String = "01:00"
   @Published var isPaused: Bool = true
   
@@ -33,11 +40,18 @@ class TimerPresenter: TimerPresenterProtocol {
   
   func tapTimerButton() {
     if isPaused {
-       interactor?.startTimer()
+      interactor?.startTimer()
+      interactor?.startMonitoringDeviceMotion()
     } else {
-       interactor?.pauseTimer()
+      interactor?.pauseTimer()
+      interactor?.stopMonitoringDeviceMotion()
     }
     isPaused.toggle()
+  }
+  
+  func resumeTimer() {
+    isPaused = false
+    interactor?.startTimer()
   }
   
   func resetTimer() {
@@ -51,5 +65,17 @@ class TimerPresenter: TimerPresenterProtocol {
     let seconds = Int(time) % 60
     self.time =  String(format: "%02d:%02d", minutes, seconds)
     print("updateTime: \(self.time)")
+  }
+  
+  func updateIsMoved(isMoved: Bool) {
+    self.isMoved = isMoved
+  }
+  
+  func startMonitoringDeviceMotion() {
+    interactor?.startMonitoringDeviceMotion()
+  }
+  
+  func stopMonitoringDeviceMotion() {
+    interactor?.stopMonitoringDeviceMotion()
   }
 }
