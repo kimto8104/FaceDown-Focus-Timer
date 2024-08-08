@@ -67,8 +67,10 @@ class MotionManagerService: ObservableObject {
   }
   
   func stopAlarm() {
-    audioPlayer?.stop()
-    isMoved = false
+    if isMoved {
+      isMoved = false
+      audioPlayer?.stop()
+    }
   }
   
   private func triggerAlerm() {

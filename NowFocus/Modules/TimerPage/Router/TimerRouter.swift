@@ -14,7 +14,7 @@ protocol TimerRouterProtocol {
 
 class TimerRouter: TimerRouterProtocol {
   static func initializeTimerModule(with time: Int) -> TimerPage<TimerPresenter> {
-   
+    print("initializeTimerModule呼ばれています")
     let router = TimerRouter()
     let motionManagerService = MotionManagerService()
     let presenter = TimerPresenter(time: time)

@@ -37,7 +37,6 @@ class TimerInteractor: TimerInteractorProtocol {
     self.presenter = presenter
     self.motionManagerService = motionManagerService
     setupBindings()
-    print("init for TimerInteractor")
   }
   
   private func setupBindings() {
@@ -67,6 +66,7 @@ class TimerInteractor: TimerInteractorProtocol {
         self.timer?.invalidate()
         self.resetTimer()
       } else {
+        print("start timer \(remainingTime)")
         self.presenter.updateTime(time: remainingTime)
       }
     })

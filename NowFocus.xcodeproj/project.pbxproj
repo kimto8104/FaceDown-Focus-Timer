@@ -21,6 +21,7 @@
 		FEB8405A2998B6FA00B945BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEB840592998B6FA00B945BA /* Assets.xcassets */; };
 		FEB8405D2998B6FA00B945BA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEB8405C2998B6FA00B945BA /* Preview Assets.xcassets */; };
 		FEB840682998C24500B945BA /* TimeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB840672998C24500B945BA /* TimeSelectionView.swift */; };
+		FEDF19AB2C60FF4F0091E033 /* TimeSelectionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDF19AA2C60FF4F0091E033 /* TimeSelectionRouter.swift */; };
 		FEFB29D329B7691E007D8FDA /* TimerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFB29D229B7691E007D8FDA /* TimerPage.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		FEB840592998B6FA00B945BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FEB8405C2998B6FA00B945BA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FEB840672998C24500B945BA /* TimeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectionView.swift; sourceTree = "<group>"; };
+		FEDF19AA2C60FF4F0091E033 /* TimeSelectionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectionRouter.swift; sourceTree = "<group>"; };
 		FEFB29D229B7691E007D8FDA /* TimerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,6 +61,11 @@
 		FE54F1A82C1B26290029DCDD /* TimeSelectionView */ = {
 			isa = PBXGroup;
 			children = (
+				FEDF19A92C60FEAB0091E033 /* Interactor */,
+				FEDF19A82C60FEA30091E033 /* Entity */,
+				FEDF19A72C60FE9D0091E033 /* Router */,
+				FEDF19A62C60FE960091E033 /* Presenter */,
+				FEDF19A52C60FE8C0091E033 /* View */,
 				FEB840672998C24500B945BA /* TimeSelectionView.swift */,
 			);
 			path = TimeSelectionView;
@@ -83,6 +90,7 @@
 		FE5825D02C4D4843007AB552 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				FE54F1A82C1B26290029DCDD /* TimeSelectionView */,
 				FE5825D12C4D4853007AB552 /* TimerPage */,
 			);
 			path = Modules;
@@ -169,7 +177,6 @@
 				FE5825D02C4D4843007AB552 /* Modules */,
 				FE54F1AC2C32EBB30029DCDD /* TimerManager */,
 				FE54F1A92C2082AF0029DCDD /* Resources */,
-				FE54F1A82C1B26290029DCDD /* TimeSelectionView */,
 				FEFB29D129B76911007D8FDA /* TimerPage */,
 				FE8EAA362A00CC3C0040FB07 /* Info.plist */,
 				FE8EAA332A00C2DC0040FB07 /* NowFocus.entitlements */,
@@ -191,6 +198,42 @@
 				FEB8405C2998B6FA00B945BA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FEDF19A52C60FE8C0091E033 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FEDF19A62C60FE960091E033 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FEDF19A72C60FE9D0091E033 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				FEDF19AA2C60FF4F0091E033 /* TimeSelectionRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		FEDF19A82C60FEA30091E033 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		FEDF19A92C60FEAB0091E033 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		FEFB29D129B76911007D8FDA /* TimerPage */ = {
@@ -273,6 +316,7 @@
 			files = (
 				FE8EAA352A00C9910040FB07 /* AppDelegate.swift in Sources */,
 				FE54F1AE2C32EBCA0029DCDD /* TimerManager.swift in Sources */,
+				FEDF19AB2C60FF4F0091E033 /* TimeSelectionRouter.swift in Sources */,
 				FE5230BF2B1CABDB00C3E2B1 /* MotionManager.swift in Sources */,
 				FEFB29D329B7691E007D8FDA /* TimerPage.swift in Sources */,
 				FEB840682998C24500B945BA /* TimeSelectionView.swift in Sources */,
