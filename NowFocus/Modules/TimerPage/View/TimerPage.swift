@@ -24,7 +24,7 @@ struct TimerPage<T: TimerPresenterProtocol>: View {
         .ignoresSafeArea(.all)
       VStack {
         Spacer()
-        Text(presenter.isMoved ? "端末を戻して" : "集中できています")
+        Text(presenter.isNotMoved ? "集中できています" : "端末を元の位置に戻して" )
           .foregroundStyle(.red)
       }
       // サークルView

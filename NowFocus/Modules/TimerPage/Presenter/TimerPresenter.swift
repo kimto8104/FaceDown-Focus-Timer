@@ -20,16 +20,18 @@ protocol TimerPresenterProtocol: ObservableObject {
   func updateTime(time: TimeInterval)
   
   // MotionManager
-  var isMoved: Bool { get }
-  func updateIsMoved(isMoved: Bool)
+  var isNotMoved: Bool { get }
+  func updateIsNotMoved(isNotMoved: Bool)
+  func updateIsFaceDown(isFaceDown: Bool)
   func startMonitoringDeviceMotion()
   func stopMonitoringDeviceMotion()
 }
 
 class TimerPresenter: TimerPresenterProtocol {
-  @Published var isMoved: Bool = false
+  @Published var isNotMoved: Bool = true
   @Published var time: String = "01:00"
   @Published var isPaused: Bool = true
+  @Published var isFaceDown = false
   
   var interactor: TimerInteractorProtocol?
   var router: TimerRouterProtocol?
@@ -67,8 +69,12 @@ class TimerPresenter: TimerPresenterProtocol {
     print("updateTime: \(self.time)")
   }
   
-  func updateIsMoved(isMoved: Bool) {
-    self.isMoved = isMoved
+  func updateIsNotMoved(isNotMoved: Bool) {
+    self.isNotMoved = isNotMoved
+  }
+  
+  func updateIsFaceDown(isFaceDown: Bool) {
+    self.isFaceDown = isFaceDown
   }
   
   func startMonitoringDeviceMotion() {

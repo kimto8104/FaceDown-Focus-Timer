@@ -40,16 +40,36 @@ class TimerInteractor: TimerInteractorProtocol {
   }
   
   private func setupBindings() {
-    motionManagerService.$isMoved.sink { [weak self] isMoved in
+    // isNotMovedの値を監視、trueになるとタイマーを開始、falseになるとタイマーを停止させる
+    motionManagerService.$isNotMoved.sink { [weak self] isNotMoved in
       guard let self else { return }
-      self.presenter.updateIsMoved(isMoved: isMoved)
+      self.presenter.updateIsNotMoved(isNotMoved: isNotMoved)
       
       if self.isFirstTimeActive {
         self.isFirstTimeActive = false
         return
       }
       
-      if !isMoved {
+      if isNotMoved {
+        self.startTimer()
+      } else {
+        self.pauseTimer()
+      }
+    }
+    .store(in: &cancellables)
+    
+    
+    // isFaceDownの監視、trueになるとタイマーを停止、falseになるとタイマーをスタートさせる
+    motionManagerService.$isFaceDown.sink { [weak self] isFaceDown in
+      guard let self else { return }
+      self.presenter.updateIsFaceDown(isFaceDown: isFaceDown)
+      
+      if self.isFirstTimeActive {
+        self.isFirstTimeActive = false
+        return
+      }
+      
+      if isFaceDown {
         self.startTimer()
       } else {
         self.pauseTimer()
@@ -59,6 +79,8 @@ class TimerInteractor: TimerInteractorProtocol {
   }
   
   func startTimer() {
+    guard timer == nil else { return }
+    
     timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [weak self] _ in
       guard let self else { return }
       self.remainingTime -= 1
@@ -73,7 +95,9 @@ class TimerInteractor: TimerInteractorProtocol {
   }
   
   func pauseTimer() {
+    motionManagerService.stopAlarm()
     self.timer?.invalidate()
+    self.timer = nil
   }
   
   func resetTimer() {
