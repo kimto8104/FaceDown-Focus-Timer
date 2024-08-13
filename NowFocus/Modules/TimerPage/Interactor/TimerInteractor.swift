@@ -85,11 +85,13 @@ class TimerInteractor: TimerInteractorProtocol {
     
     timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [weak self] _ in
       guard let self else { return }
-      self.remainingTime -= 1
-      if self.remainingTime <= 0 {
-        self.timer?.invalidate()
-        self.timer = nil
-        
+      if self.remainingTime > 0 {
+        self.remainingTime -= 1
+      } else {
+        return
+      }
+      
+      if self.remainingTime < 0 {
         self.resetTimer()
       } else {
         print("start timer \(remainingTime)")
@@ -114,7 +116,8 @@ class TimerInteractor: TimerInteractorProtocol {
   
   func resetTimer() {
     timer?.invalidate()
-    remainingTime = initialTime
+    remainingTime = 0
+    timer = nil
     presenter.updateTime(time: remainingTime)
   }
   
