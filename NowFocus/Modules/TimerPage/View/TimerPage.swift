@@ -68,7 +68,6 @@ class TimerPageVM: ObservableObject {
   @Published fileprivate var isFaceUp: Bool = true
   fileprivate var orientationObserver: NSObjectProtocol? = nil
   let notification = UIDevice.orientationDidChangeNotification
-  @Published fileprivate var motionManager = MotionManager()
 }
 
 struct TimerPage_Previews: PreviewProvider {

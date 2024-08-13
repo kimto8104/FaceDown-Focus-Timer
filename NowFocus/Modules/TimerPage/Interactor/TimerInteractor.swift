@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import AudioToolbox
 
 protocol TimerInteractorProtocol {
   var presenter: (any TimerPresenterProtocol) { get set}
@@ -72,6 +73,7 @@ class TimerInteractor: TimerInteractorProtocol {
       if isFaceDown {
         self.startTimer()
       } else {
+        self.stopVibration()
         self.pauseTimer()
       }
     }
@@ -86,12 +88,22 @@ class TimerInteractor: TimerInteractorProtocol {
       self.remainingTime -= 1
       if self.remainingTime <= 0 {
         self.timer?.invalidate()
+        self.timer = nil
+        
         self.resetTimer()
       } else {
         print("start timer \(remainingTime)")
         self.presenter.updateTime(time: remainingTime)
       }
     })
+  }
+  
+  private func triggerVibration() {
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+  }
+  
+  private func stopVibration() {
+    AudioServicesRemoveSystemSoundCompletion(kSystemSoundID_Vibrate)
   }
   
   func pauseTimer() {

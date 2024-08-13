@@ -31,34 +31,14 @@ class MotionManagerService: ObservableObject {
         self.isMonitoring = true
         // 角度や状態についてデータを持っているdeviceMotion
         guard let deviceMotion else { return }
-        // 閾値
-        let threshold: Double = 0.01
-        // 端末が最初の位置にいなければアラームを鳴らす
-        if let initialAttitude = self.initialAttitude {
-          deviceMotion.attitude.multiply(byInverseOf: initialAttitude)
-          // 端末が最初の位置にあるかどうか判定 & 端末画面が下に向いているか判定
-          if deviceMotion.attitude.roll > threshold || deviceMotion.attitude.pitch > threshold || deviceMotion.attitude.yaw > threshold {
-            // 端末が動いた！
-            self.isNotMoved = false
-            // 端末画面が下に向いていないかどうか？
-            if deviceMotion.gravity.z < 0.75 {
-              self.isFaceDown = false
-            }
-          } else if deviceMotion.gravity.z > 0.75  {
-            // 元の位置に端末がある&端末画面が下に向いている
-            self.isFaceDown = true
-          } else {
-            // 端末の画面が上を向いている
-            self.isFaceDown = false
-          }
+        // 端末画面が下に向いていないかどうか？
+        if deviceMotion.gravity.z < 0.75 {
+          // 端末が下に向いていない
+          self.isFaceDown = false
         } else {
-          // 最初の位置を保存
-          self.initialAttitude = deviceMotion.attitude
+          // 端末画面が下に向いている
+          self.isFaceDown = true
         }
-        let testIsFaceDown = deviceMotion.gravity.z > 0.75
-        print("testIsFaceDown: \(testIsFaceDown)")
-        // 画面が下向きかどうかを判定する
-//        self?.isFaceDown = deviceMotion.gravity.z > 0.75
       }
     }
   }
