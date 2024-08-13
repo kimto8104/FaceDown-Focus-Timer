@@ -91,12 +91,7 @@ class TimerInteractor: TimerInteractorProtocol {
         return
       }
       
-      if self.remainingTime < 0 {
-        self.resetTimer()
-      } else {
-        print("start timer \(remainingTime)")
-        self.presenter.updateTime(time: remainingTime)
-      }
+      self.presenter.updateTime(time: remainingTime)
     })
   }
   
