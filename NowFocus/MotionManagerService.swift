@@ -13,7 +13,6 @@ import AVFoundation
 
 class MotionManagerService: ObservableObject {
   private let motionManager = CMMotionManager()
-  @Published var isNotMoved = true
   @Published var isMonitoring = false
   @Published var isFaceDown = false
   
@@ -23,7 +22,7 @@ class MotionManagerService: ObservableObject {
   // 端末の動き検知を開始
   func startMonitoringDeviceMotion() {
     if motionManager.isDeviceMotionAvailable {
-      // 検知間隔を0.5秒に設定
+      // 検知間隔を1秒に設定
       motionManager.deviceMotionUpdateInterval = 0.5
       // 端末の動き検知開始
       motionManager.startDeviceMotionUpdates(to: .main) { [weak self] deviceMotion, error in
@@ -31,14 +30,33 @@ class MotionManagerService: ObservableObject {
         self.isMonitoring = true
         // 角度や状態についてデータを持っているdeviceMotion
         guard let deviceMotion else { return }
-        // 端末画面が下に向いていないかどうか？
-        if deviceMotion.gravity.z < 0.75 {
-          // 端末が下に向いていない
-          self.isFaceDown = false
+        let gravityZ = deviceMotion.gravity.z
+        // 下向きと判断するための閾値範囲
+        let isFaceDownThreshold: ClosedRange<Double> = 0.7...1.0
+        // 上向きと判断するための閾値範囲
+        let isFaceUpThreshold: ClosedRange<Double> = -1.0...0.3
+        let newIsFaceDown: Bool
+        if isFaceDownThreshold.contains(gravityZ) {
+          newIsFaceDown = true
+        } else if isFaceUpThreshold.contains(gravityZ) {
+          newIsFaceDown = false
         } else {
-          // 端末画面が下に向いている
-          self.isFaceDown = true
+          // 範囲外の場合は状態を変えない
+          return
         }
+        
+        // 状態が変わったときのみ更新
+        if newIsFaceDown != self.isFaceDown {
+          self.isFaceDown = newIsFaceDown
+        }
+//        // 端末画面が下に向いていないかどうか？
+//        if deviceMotion.gravity.z < 0.75 {
+//          // 端末が下に向いていない
+//          self.isFaceDown = false
+//        } else {
+//          // 端末画面が下に向いている
+//          self.isFaceDown = true
+//        }
       }
     }
   }
@@ -76,7 +94,6 @@ class MotionManagerService: ObservableObject {
   func reset() {
     initialAttitude = nil
     audioPlayer?.stop()
-    isNotMoved = true
     isMonitoring = false
   }
 }

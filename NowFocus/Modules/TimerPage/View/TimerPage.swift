@@ -22,13 +22,11 @@ struct TimerPage<T: TimerPresenterProtocol>: View {
     ZStack {
       Color.white
         .ignoresSafeArea(.all)
-      VStack {
-        Spacer()
-        Text(presenter.isNotMoved ? "集中できています" : "端末を元の位置に戻して" )
-          .foregroundStyle(.red)
-      }
       // サークルView
       timerCircle()
+        .onAppear(perform: {
+          presenter.startMonitoringDeviceMotion()
+        })
         .onTapGesture {
           presenter.tapTimerButton()
         }

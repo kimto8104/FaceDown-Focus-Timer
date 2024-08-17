@@ -19,7 +19,6 @@ protocol TimerInteractorProtocol {
   func startMonitoringDeviceMotion()
   func stopMonitoringDeviceMotion()
   func resetMotionManager()
-  func checkDeviceMotion()
 }
 
 class TimerInteractor: TimerInteractorProtocol {
@@ -31,6 +30,8 @@ class TimerInteractor: TimerInteractorProtocol {
   private var timer: Timer?
   private var remainingTime: TimeInterval
   private let initialTime: TimeInterval
+  private var vibrationTimer: Timer?
+  private var isVibrating: Bool = false
   
   init(initialTime: Int, presenter: any TimerPresenterProtocol, motionManagerService: MotionManagerService) {
     self.remainingTime = TimeInterval(initialTime * 60)
@@ -41,25 +42,6 @@ class TimerInteractor: TimerInteractorProtocol {
   }
   
   private func setupBindings() {
-    // isNotMovedの値を監視、trueになるとタイマーを開始、falseになるとタイマーを停止させる
-    motionManagerService.$isNotMoved.sink { [weak self] isNotMoved in
-      guard let self else { return }
-      self.presenter.updateIsNotMoved(isNotMoved: isNotMoved)
-      
-      if self.isFirstTimeActive {
-        self.isFirstTimeActive = false
-        return
-      }
-      
-      if isNotMoved {
-        self.startTimer()
-      } else {
-        self.pauseTimer()
-      }
-    }
-    .store(in: &cancellables)
-    
-    
     // isFaceDownの監視、trueになるとタイマーを停止、falseになるとタイマーをスタートさせる
     motionManagerService.$isFaceDown.sink { [weak self] isFaceDown in
       guard let self else { return }
@@ -81,13 +63,13 @@ class TimerInteractor: TimerInteractorProtocol {
   }
   
   func startTimer() {
-    guard timer == nil else { return }
-    
     timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [weak self] _ in
       guard let self else { return }
       if self.remainingTime > 0 {
         self.remainingTime -= 1
       } else {
+        self.triggerVibration()
+        self.resetTimer()
         return
       }
       
@@ -96,17 +78,24 @@ class TimerInteractor: TimerInteractorProtocol {
   }
   
   private func triggerVibration() {
-    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+    // 既にバイブレーションが動いている場合は、再度トリガーしない
+    guard !isVibrating else { return }
+    isVibrating = true
+    // タイマーを使って1秒ごとにバイブレーションを繰り返す
+    vibrationTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+      AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+    }
   }
   
   private func stopVibration() {
-    AudioServicesRemoveSystemSoundCompletion(kSystemSoundID_Vibrate)
+    isVibrating = false
+    vibrationTimer?.invalidate()
+    vibrationTimer = nil
   }
   
   func pauseTimer() {
     motionManagerService.stopAlarm()
     self.timer?.invalidate()
-    self.timer = nil
   }
   
   func resetTimer() {
