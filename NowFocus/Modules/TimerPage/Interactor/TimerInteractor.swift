@@ -68,6 +68,7 @@ class TimerInteractor: TimerInteractorProtocol {
       if self.remainingTime > 0 {
         self.remainingTime -= 1
       } else {
+        // タイマー完了
         self.triggerVibration()
         self.resetTimer()
         return

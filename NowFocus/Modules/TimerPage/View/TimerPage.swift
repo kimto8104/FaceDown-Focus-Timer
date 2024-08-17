@@ -11,11 +11,7 @@ import CoreMotion
 
 // MARK: - View
 struct TimerPage<T: TimerPresenterProtocol>: View {
-//  @Environment(\.isPresented) var presentationMode
   @Environment(\.dismiss) var dismiss
-//  @ObservedObject private(set) var model = TimerPageVM()
-//  @StateObject var timerManager: TimerManager?
-  
   @StateObject var presenter: T
   
   var body: some View {
