@@ -49,7 +49,7 @@ extension TimerPage {
       Circle()
         .stroke(Color.blue, lineWidth: 4)
         .frame(width: 200, height: 200)
-      Text(presenter.isPaused == true ? "▶️" : "\(presenter.time)")
+      Text("\(presenter.time)")
         .font(.largeTitle)
         .foregroundColor(.black)
     }
