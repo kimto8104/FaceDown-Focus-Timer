@@ -89,12 +89,6 @@ class TimerInteractor: TimerInteractorProtocol {
   }
   
   private func triggerVibration() {
-    // バイブタイマーがnilの場合のみトリガーする
-    if self.vibrationTimer == nil {
-      print("nil")
-    } else {
-      print("not nil")
-    }
     // 既にバイブレーションが動いている場合は、再度トリガーしない
     guard !isVibrating else { return }
     isVibrating = true
