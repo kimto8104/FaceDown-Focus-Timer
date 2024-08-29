@@ -33,6 +33,11 @@ class TimerInteractor: TimerInteractorProtocol {
   private var vibrationTimer: Timer?
   private var isVibrating: Bool = false
   
+  
+  // ProgressRing
+  private var circleProgress: CGFloat = 0.00
+  
+  
   init(initialTime: Int, presenter: any TimerPresenterProtocol, motionManagerService: MotionManagerService) {
     self.remainingTime = TimeInterval(initialTime * 60)
     self.initialTime = TimeInterval(initialTime * 60)
@@ -53,6 +58,7 @@ class TimerInteractor: TimerInteractorProtocol {
       }
       
       if isFaceDown {
+        print("\(self.remainingTime.description)のタイマーを開始します")
         self.startTimer()
       } else {
         self.stopVibration()
@@ -63,22 +69,32 @@ class TimerInteractor: TimerInteractorProtocol {
   }
   
   func startTimer() {
+    guard timer == nil else { return }
     timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [weak self] _ in
       guard let self else { return }
       if self.remainingTime > 0 {
         self.remainingTime -= 1
       } else {
         // タイマー完了
+        print("why timer: \(self.remainingTime)")
         self.triggerVibration()
         self.resetTimer()
         return
       }
-      
+      let progress = CGFloat(self.remainingTime) / CGFloat(self.initialTime) // プログレスの計算
+      self.circleProgress = progress
       self.presenter.updateTime(time: remainingTime)
+      self.presenter.updateCircleProgress(circleProgress: progress)
     })
   }
   
   private func triggerVibration() {
+    // バイブタイマーがnilの場合のみトリガーする
+    if self.vibrationTimer == nil {
+      print("nil")
+    } else {
+      print("not nil")
+    }
     // 既にバイブレーションが動いている場合は、再度トリガーしない
     guard !isVibrating else { return }
     isVibrating = true
@@ -101,9 +117,10 @@ class TimerInteractor: TimerInteractorProtocol {
   
   func resetTimer() {
     timer?.invalidate()
-    remainingTime = 0
     timer = nil
+    remainingTime = initialTime
     presenter.updateTime(time: remainingTime)
+    presenter.updateCircleProgress(circleProgress: 0)
   }
   
   func startMonitoringDeviceMotion() {
@@ -116,9 +133,5 @@ class TimerInteractor: TimerInteractorProtocol {
   
   func resetMotionManager() {
     motionManagerService.reset()
-  }
-  
-  func checkDeviceMotion() {
-    print("test")
   }
 }

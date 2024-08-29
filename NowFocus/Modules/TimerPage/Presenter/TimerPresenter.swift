@@ -23,12 +23,20 @@ protocol TimerPresenterProtocol: ObservableObject {
   func updateIsFaceDown(isFaceDown: Bool)
   func startMonitoringDeviceMotion()
   func stopMonitoringDeviceMotion()
+  
+  // ProgressRing
+  var circleProgress: CGFloat { get set }
+  var percentageProgress: Int { get set }
+  func updateCircleProgress(circleProgress: CGFloat)
 }
 
 class TimerPresenter: TimerPresenterProtocol {
   @Published var time: String = "01:00"
   @Published var isPaused: Bool = true
   @Published var isFaceDown = false
+  @Published var circleProgress: CGFloat = 0.00
+  @Published var percentageProgress: Int = 0
+  
   
   var interactor: TimerInteractorProtocol?
   var router: TimerRouterProtocol?
@@ -62,6 +70,10 @@ class TimerPresenter: TimerPresenterProtocol {
     let seconds = Int(time) % 60
     self.time =  String(format: "%02d:%02d", minutes, seconds)
     print("updateTime: \(self.time)")
+  }
+  
+  func updateCircleProgress(circleProgress: CGFloat) {
+    self.circleProgress = circleProgress
   }
   
   func updateIsFaceDown(isFaceDown: Bool) {

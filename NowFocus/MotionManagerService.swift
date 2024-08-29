@@ -23,7 +23,7 @@ class MotionManagerService: ObservableObject {
   func startMonitoringDeviceMotion() {
     if motionManager.isDeviceMotionAvailable {
       // 検知間隔を1秒に設定
-      motionManager.deviceMotionUpdateInterval = 0.5
+      motionManager.deviceMotionUpdateInterval = 1
       // 端末の動き検知開始
       motionManager.startDeviceMotionUpdates(to: .main) { [weak self] deviceMotion, error in
         guard let self else { return }
@@ -49,14 +49,6 @@ class MotionManagerService: ObservableObject {
         if newIsFaceDown != self.isFaceDown {
           self.isFaceDown = newIsFaceDown
         }
-//        // 端末画面が下に向いていないかどうか？
-//        if deviceMotion.gravity.z < 0.75 {
-//          // 端末が下に向いていない
-//          self.isFaceDown = false
-//        } else {
-//          // 端末画面が下に向いている
-//          self.isFaceDown = true
-//        }
       }
     }
   }
