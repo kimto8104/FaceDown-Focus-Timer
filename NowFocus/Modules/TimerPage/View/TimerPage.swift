@@ -25,6 +25,7 @@ struct TimerPage<T: TimerPresenterProtocol>: View {
     .navigationBarItems(
       leading: Button(action: {
         presenter.resetTimer()
+        presenter.stopMonitoringDeviceMotion()
         dismiss()
       }, label: {
         Image(systemName: "chevron.backward")

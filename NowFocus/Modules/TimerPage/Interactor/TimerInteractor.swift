@@ -69,7 +69,7 @@ class TimerInteractor: TimerInteractorProtocol {
   }
   
   func startTimer() {
-    guard timer == nil else { return }
+//    guard timer == nil else { return }
     timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [weak self] _ in
       guard let self else { return }
       if self.remainingTime > 0 {

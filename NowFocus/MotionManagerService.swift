@@ -36,9 +36,11 @@ class MotionManagerService: ObservableObject {
         // 上向きと判断するための閾値範囲
         let isFaceUpThreshold: ClosedRange<Double> = -1.0...0.3
         let newIsFaceDown: Bool
+        // 画面が下向きになっている
         if isFaceDownThreshold.contains(gravityZ) {
           newIsFaceDown = true
         } else if isFaceUpThreshold.contains(gravityZ) {
+          // 画面が上向きになっている
           newIsFaceDown = false
         } else {
           // 範囲外の場合は状態を変えない
