@@ -69,7 +69,6 @@ class TimerInteractor: TimerInteractorProtocol {
   }
   
   func startTimer() {
-//    guard timer == nil else { return }
     timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [weak self] _ in
       guard let self else { return }
       if self.remainingTime > 0 {
@@ -79,8 +78,10 @@ class TimerInteractor: TimerInteractorProtocol {
         print("why timer: \(self.remainingTime)")
         self.triggerVibration()
         self.resetTimer()
+        self.presenter.updateTimerState(timerState: .completed)
         return
       }
+      
       let progress = CGFloat(self.remainingTime) / CGFloat(self.initialTime) // プログレスの計算
       self.circleProgress = progress
       self.presenter.updateTime(time: remainingTime)

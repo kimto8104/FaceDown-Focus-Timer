@@ -6,6 +6,10 @@
 //
 
 import Foundation
+enum TimerState: String {
+  case paused
+  case completed
+}
 
 // MARK: Protocol
 protocol TimerPresenterProtocol: ObservableObject {
@@ -13,11 +17,11 @@ protocol TimerPresenterProtocol: ObservableObject {
   var router: TimerRouterProtocol? { get set }
   
   var time: String { get }
-  var isPaused: Bool { get }
-  
-  func tapTimerButton()
+  var isFaceDown: Bool { get }
+  var timerState: TimerState { get }
   func resetTimer()
   func updateTime(time: TimeInterval)
+  func updateTimerState(timerState: TimerState)
   
   // MotionManager
   func updateIsFaceDown(isFaceDown: Bool)
@@ -32,11 +36,10 @@ protocol TimerPresenterProtocol: ObservableObject {
 
 class TimerPresenter: TimerPresenterProtocol {
   @Published var time: String = "01:00"
-  @Published var isPaused: Bool = true
   @Published var isFaceDown = false
   @Published var circleProgress: CGFloat = 0.00
   @Published var percentageProgress: Int = 0
-  
+  @Published var timerState: TimerState = .paused
   
   var interactor: TimerInteractorProtocol?
   var router: TimerRouterProtocol?
@@ -45,23 +48,12 @@ class TimerPresenter: TimerPresenterProtocol {
     updateTime(time: TimeInterval(time * 60))
   }
   
-  func tapTimerButton() {
-    if isPaused && isFaceDown {
-      interactor?.startTimer()
-    } else {
-      interactor?.pauseTimer()
-    }
-    isPaused.toggle()
-  }
-  
   func resumeTimer() {
-    isPaused = false
     interactor?.startTimer()
   }
   
   func resetTimer() {
     interactor?.resetTimer()
-    isPaused = true
   }
   
   // 00:50のフォーマットに変える
@@ -70,6 +62,10 @@ class TimerPresenter: TimerPresenterProtocol {
     let seconds = Int(time) % 60
     self.time =  String(format: "%02d:%02d", minutes, seconds)
     print("updateTime: \(self.time)")
+  }
+  
+  func updateTimerState(timerState: TimerState) {
+    self.timerState = timerState
   }
   
   func updateCircleProgress(circleProgress: CGFloat) {

@@ -15,12 +15,25 @@ struct TimerPage<T: TimerPresenterProtocol>: View {
   @StateObject var presenter: T
   
   var body: some View {
-    ZStack {
-      Color.white
-        .ignoresSafeArea(.all)
-      // サークルView
-      timerCircle()
+    GeometryReader { gp in
+      let hm = gp.size.width / 375
+      let vm = gp.size.height / 667
+      let multiplier = abs(hm - 1) < abs(vm - 1) ? hm : vm
+      Color(hex: "282828")
+      VStack {
+        Spacer()
+        instructionText(multiplier: multiplier)
+        Spacer()
+          .frame(height: 40 * multiplier)
+        flipCard(multiplier: multiplier)
+        Spacer()
+      }
+      .frame(width: gp.size.width, height: gp.size.height)
     }
+    .onAppear(perform: {
+      presenter.startMonitoringDeviceMotion()
+    })
+    .ignoresSafeArea()
     .navigationBarBackButtonHidden(true)
     .navigationBarItems(
       leading: Button(action: {
@@ -30,14 +43,48 @@ struct TimerPage<T: TimerPresenterProtocol>: View {
       }, label: {
         Image(systemName: "chevron.backward")
         Text("戻る")
+          .foregroundStyle(.white)
       })
     )
   } // body ここまで
 }
 
-// MARK: Content View
+// MARK: Instruction Text
 extension TimerPage {
-  
+  func instructionText(multiplier: CGFloat) -> some View {
+    Text(presenter.isFaceDown ? "画面を上向きにしてタイマーを停止" : "画面を下向きにしてタイマーを開始")
+      .font(.custom("HiraginoSans-W6", size: 20 * multiplier))
+      .foregroundStyle(.white)
+  }
+}
+
+// MARK: Flip Card
+extension TimerPage {
+  func flipCard(multiplier: CGFloat) -> some View {
+    VStack {
+      Text(presenter.time)
+        .font(.custom("HiraginoSans-W6", size: 40 * multiplier))
+        .foregroundStyle(.white)
+      Image("smartPhone")
+        .resizable()
+        .frame(width: 147 * multiplier, height: 185 * multiplier)
+    }
+    .frame(width: 266 * multiplier, height: 360 * multiplier)
+    .background(Color(hex: "D9D9D9").opacity(0.23))
+    .clipShape(RoundedRectangle(cornerRadius: 20))
+  }
+}
+
+// MARK: Status Text
+extension TimerPage {
+  func statusText() -> some View {
+    // status のTextを表示する　、Pause, Working, Completeの３つ
+    Text(presenter.timerState == .completed ? "Completed" : "Pause")
+  }
+}
+
+// MARK: Timer Circle
+extension TimerPage {
   func timerCircle() -> some View {
     // Timer の丸
     ZStack {
@@ -63,9 +110,6 @@ extension TimerPage {
     .onAppear(perform: {
       presenter.startMonitoringDeviceMotion()
     })
-    .onTapGesture {
-      presenter.tapTimerButton()
-    }
   }
 }
 
@@ -79,6 +123,6 @@ class TimerPageVM: ObservableObject {
 
 struct TimerPage_Previews: PreviewProvider {
   static var previews: some View {
-    let router = TimerRouter.initializeTimerModule(with: 1)
+    TimerRouter.initializeTimerModule(with: 1)
   }
 }
