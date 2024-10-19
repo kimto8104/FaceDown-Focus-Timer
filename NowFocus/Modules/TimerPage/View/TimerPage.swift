@@ -25,7 +25,10 @@ struct TimerPage<T: TimerPresenterProtocol>: View {
         instructionText(multiplier: multiplier)
         Spacer()
           .frame(height: 40 * multiplier)
-        flipCard(multiplier: multiplier)
+        if presenter.timerState != .completed {
+          flipCard(multiplier: multiplier)
+            .transition(.opacity) // フェードアウトのためのトランジション
+        }
         Spacer()
       }
       .frame(width: gp.size.width, height: gp.size.height)
@@ -33,6 +36,8 @@ struct TimerPage<T: TimerPresenterProtocol>: View {
     .onAppear(perform: {
       presenter.startMonitoringDeviceMotion()
     })
+    
+   
     .ignoresSafeArea()
     .navigationBarBackButtonHidden(true)
     .navigationBarItems(
@@ -52,9 +57,15 @@ struct TimerPage<T: TimerPresenterProtocol>: View {
 // MARK: Instruction Text
 extension TimerPage {
   func instructionText(multiplier: CGFloat) -> some View {
-    Text(presenter.isFaceDown ? "画面を上向きにしてタイマーを停止" : "画面を下向きにしてタイマーを開始")
-      .font(.custom("HiraginoSans-W6", size: 20 * multiplier))
-      .foregroundStyle(.white)
+    if presenter.timerState == .completed {
+      Text("\(presenter.time.description) 分集中完了しました！")
+        .font(.custom("HiraginoSans-W6", size: 20 * multiplier))
+        .foregroundStyle(.white)
+    } else {
+      Text(presenter.isFaceDown ? "画面を上向きにしてタイマーを停止" : "画面を下向きにしてタイマーを開始")
+        .font(.custom("HiraginoSans-W6", size: 20 * multiplier))
+        .foregroundStyle(.white)
+    }
   }
 }
 
@@ -72,6 +83,7 @@ extension TimerPage {
     .frame(width: 266 * multiplier, height: 360 * multiplier)
     .background(Color(hex: "D9D9D9").opacity(0.23))
     .clipShape(RoundedRectangle(cornerRadius: 20))
+    
   }
 }
 
@@ -80,36 +92,6 @@ extension TimerPage {
   func statusText() -> some View {
     // status のTextを表示する　、Pause, Working, Completeの３つ
     Text(presenter.timerState == .completed ? "Completed" : "Pause")
-  }
-}
-
-// MARK: Timer Circle
-extension TimerPage {
-  func timerCircle() -> some View {
-    // Timer の丸
-    ZStack {
-      // Grayのサークル
-      Circle()
-        .stroke(lineWidth: 20)
-        .frame(width: 200, height: 200)
-        .foregroundStyle(.gray.opacity(0.3))
-      // 青のサークル
-      // 円最初の位置０から1(最後の位置)まで描画する
-      Circle().trim(from: 0, to: presenter.circleProgress)
-        // 円を塗りつぶしていく線の指定
-        .stroke(style: StrokeStyle(lineWidth: 18, lineCap: .round, lineJoin: .round))
-        .frame(width: 200, height: 200)
-        // 塗りつぶしていく線の色指定
-        .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.cyan, .blue]), startPoint: .top, endPoint: .bottom))
-        .rotationEffect(.degrees(-90))
-      
-      HStack(alignment: .bottom, spacing: 0) {
-        Text("\(presenter.time)").font(.largeTitle).foregroundStyle(.black)
-      }.bold()
-    }
-    .onAppear(perform: {
-      presenter.startMonitoringDeviceMotion()
-    })
   }
 }
 

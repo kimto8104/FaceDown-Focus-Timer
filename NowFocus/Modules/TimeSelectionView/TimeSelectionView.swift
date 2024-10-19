@@ -10,7 +10,7 @@ import SwiftUI
 struct TimeSelectionView: View {
   // 時間
   let time = [
-    1, 20, 30, 40
+    1, 15, 30
   ]
   
   var body: some View {

@@ -34,10 +34,6 @@ class TimerInteractor: TimerInteractorProtocol {
   private var isVibrating: Bool = false
   
   
-  // ProgressRing
-  private var circleProgress: CGFloat = 0.00
-  
-  
   init(initialTime: Int, presenter: any TimerPresenterProtocol, motionManagerService: MotionManagerService) {
     self.remainingTime = TimeInterval(initialTime * 60)
     self.initialTime = TimeInterval(initialTime * 60)
@@ -57,7 +53,7 @@ class TimerInteractor: TimerInteractorProtocol {
         return
       }
       
-      if isFaceDown {
+      if isFaceDown && presenter.timerState != .completed {
         print("\(self.remainingTime.description)のタイマーを開始します")
         self.startTimer()
       } else {
@@ -75,7 +71,6 @@ class TimerInteractor: TimerInteractorProtocol {
         self.remainingTime -= 1
       } else {
         // タイマー完了
-        print("why timer: \(self.remainingTime)")
         self.triggerVibration()
         self.resetTimer()
         self.presenter.updateTimerState(timerState: .completed)
@@ -83,9 +78,7 @@ class TimerInteractor: TimerInteractorProtocol {
       }
       
       let progress = CGFloat(self.remainingTime) / CGFloat(self.initialTime) // プログレスの計算
-      self.circleProgress = progress
       self.presenter.updateTime(time: remainingTime)
-      self.presenter.updateCircleProgress(circleProgress: progress)
     })
   }
   
@@ -115,7 +108,7 @@ class TimerInteractor: TimerInteractorProtocol {
     timer = nil
     remainingTime = initialTime
     presenter.updateTime(time: remainingTime)
-    presenter.updateCircleProgress(circleProgress: 0)
+    presenter.updateTimerState(timerState: .start)
   }
   
   func startMonitoringDeviceMotion() {

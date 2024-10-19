@@ -7,6 +7,7 @@
 
 import Foundation
 enum TimerState: String {
+  case start
   case paused
   case completed
 }
@@ -27,11 +28,6 @@ protocol TimerPresenterProtocol: ObservableObject {
   func updateIsFaceDown(isFaceDown: Bool)
   func startMonitoringDeviceMotion()
   func stopMonitoringDeviceMotion()
-  
-  // ProgressRing
-  var circleProgress: CGFloat { get set }
-  var percentageProgress: Int { get set }
-  func updateCircleProgress(circleProgress: CGFloat)
 }
 
 class TimerPresenter: TimerPresenterProtocol {
@@ -39,7 +35,7 @@ class TimerPresenter: TimerPresenterProtocol {
   @Published var isFaceDown = false
   @Published var circleProgress: CGFloat = 0.00
   @Published var percentageProgress: Int = 0
-  @Published var timerState: TimerState = .paused
+  @Published var timerState: TimerState = .start
   
   var interactor: TimerInteractorProtocol?
   var router: TimerRouterProtocol?
@@ -66,10 +62,6 @@ class TimerPresenter: TimerPresenterProtocol {
   
   func updateTimerState(timerState: TimerState) {
     self.timerState = timerState
-  }
-  
-  func updateCircleProgress(circleProgress: CGFloat) {
-    self.circleProgress = circleProgress
   }
   
   func updateIsFaceDown(isFaceDown: Bool) {
