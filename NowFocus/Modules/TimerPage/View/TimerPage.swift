@@ -37,13 +37,11 @@ struct TimerPage<T: TimerPresenterProtocol>: View {
       presenter.startMonitoringDeviceMotion()
     })
     
-   
     .ignoresSafeArea()
     .navigationBarBackButtonHidden(true)
     .navigationBarItems(
       leading: Button(action: {
         presenter.resetTimer()
-        presenter.stopMonitoringDeviceMotion()
         dismiss()
       }, label: {
         Image(systemName: "chevron.backward")
@@ -51,6 +49,20 @@ struct TimerPage<T: TimerPresenterProtocol>: View {
           .foregroundStyle(.white)
       })
     )
+    .alert("集中をやめますか？", isPresented: $presenter.showAlertForPause) {
+      
+      Button("いいえ") {
+        // キャンセルなので何もしない
+        presenter.stopVibration()
+      }
+      
+      Button("はい") {
+        presenter.resetTimer()
+        dismiss()
+      }
+    } message: {
+      Text("リセットすると現在のタイマーが失われます")
+    }
   } // body ここまで
 }
 

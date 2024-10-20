@@ -14,6 +14,7 @@ protocol TimerInteractorProtocol {
   func startTimer()
   func pauseTimer()
   func resetTimer()
+  func stopVibration()
   
   // MotionManager
   func startMonitoringDeviceMotion()
@@ -54,11 +55,20 @@ class TimerInteractor: TimerInteractorProtocol {
       }
       
       if isFaceDown && presenter.timerState != .completed {
+        // 画面が下向きでタイマーが完了していない
         print("\(self.remainingTime.description)のタイマーを開始します")
-        self.startTimer()
-      } else {
         self.stopVibration()
+        self.startTimer()
+      } else if !isFaceDown && presenter.timerState != .completed {
+        // 画面が上向きで、タイマーが完了していない
+        // タイマーは止めるそしてアラートを出してバイブさせる
+        self.triggerVibration()
+        self.showResetAlertForPause()
         self.pauseTimer()
+      } else {
+        // 画面が上向きでタイマーを完了した
+        self.stopVibration()
+        self.stopMonitoringDeviceMotion()
       }
     }
     .store(in: &cancellables)
@@ -76,8 +86,6 @@ class TimerInteractor: TimerInteractorProtocol {
         self.presenter.updateTimerState(timerState: .completed)
         return
       }
-      
-      let progress = CGFloat(self.remainingTime) / CGFloat(self.initialTime) // プログレスの計算
       self.presenter.updateTime(time: remainingTime)
     })
   }
@@ -92,18 +100,24 @@ class TimerInteractor: TimerInteractorProtocol {
     }
   }
   
-  private func stopVibration() {
+  /// タイマー途中で画面を上向きにした場合に続けるかどうか？のアラートを出す
+  private func showResetAlertForPause() {
+    presenter.showAlertForPause = true
+  }
+  
+  func stopVibration() {
     isVibrating = false
     vibrationTimer?.invalidate()
     vibrationTimer = nil
   }
   
   func pauseTimer() {
-    motionManagerService.stopAlarm()
     self.timer?.invalidate()
   }
   
   func resetTimer() {
+    stopMonitoringDeviceMotion()
+    stopVibration()
     timer?.invalidate()
     timer = nil
     remainingTime = initialTime

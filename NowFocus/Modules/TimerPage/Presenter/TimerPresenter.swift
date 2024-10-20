@@ -20,7 +20,9 @@ protocol TimerPresenterProtocol: ObservableObject {
   var time: String { get }
   var isFaceDown: Bool { get }
   var timerState: TimerState { get }
+  var showAlertForPause: Bool { get set }
   func resetTimer()
+  func stopVibration()
   func updateTime(time: TimeInterval)
   func updateTimerState(timerState: TimerState)
   
@@ -36,6 +38,7 @@ class TimerPresenter: TimerPresenterProtocol {
   @Published var circleProgress: CGFloat = 0.00
   @Published var percentageProgress: Int = 0
   @Published var timerState: TimerState = .start
+  @Published var showAlertForPause = false
   
   var interactor: TimerInteractorProtocol?
   var router: TimerRouterProtocol?
@@ -50,6 +53,10 @@ class TimerPresenter: TimerPresenterProtocol {
   
   func resetTimer() {
     interactor?.resetTimer()
+  }
+  
+  func stopVibration() {
+    interactor?.stopVibration()
   }
   
   // 00:50のフォーマットに変える

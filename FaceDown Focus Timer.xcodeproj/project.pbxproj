@@ -41,7 +41,7 @@
 		FE8EAA342A00C9910040FB07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE8EAA362A00CC3C0040FB07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FEB14FFB2C6B9F020011F32A /* MotionServiceWithInitialAttitude.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionServiceWithInitialAttitude.swift; sourceTree = "<group>"; };
-		FEB840522998B6F900B945BA /* NowFocus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NowFocus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FEB840522998B6F900B945BA /* FaceDown Focus Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FaceDown Focus Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEB840552998B6F900B945BA /* NowFocusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowFocusApp.swift; sourceTree = "<group>"; };
 		FEB840592998B6FA00B945BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FEB8405C2998B6FA00B945BA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -172,7 +172,7 @@
 		FEB840532998B6F900B945BA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FEB840522998B6F900B945BA /* NowFocus.app */,
+				FEB840522998B6F900B945BA /* FaceDown Focus Timer.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -244,9 +244,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FEB840512998B6F900B945BA /* NowFocus */ = {
+		FEB840512998B6F900B945BA /* FaceDown Focus Timer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FEB840602998B6FA00B945BA /* Build configuration list for PBXNativeTarget "NowFocus" */;
+			buildConfigurationList = FEB840602998B6FA00B945BA /* Build configuration list for PBXNativeTarget "FaceDown Focus Timer" */;
 			buildPhases = (
 				FEB8404E2998B6F900B945BA /* Sources */,
 				FEB8404F2998B6F900B945BA /* Frameworks */,
@@ -256,9 +256,9 @@
 			);
 			dependencies = (
 			);
-			name = NowFocus;
+			name = "FaceDown Focus Timer";
 			productName = NowFocus;
-			productReference = FEB840522998B6F900B945BA /* NowFocus.app */;
+			productReference = FEB840522998B6F900B945BA /* FaceDown Focus Timer.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -276,7 +276,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FEB8404D2998B6F800B945BA /* Build configuration list for PBXProject "NowFocus" */;
+			buildConfigurationList = FEB8404D2998B6F800B945BA /* Build configuration list for PBXProject "FaceDown Focus Timer" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -289,7 +289,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FEB840512998B6F900B945BA /* NowFocus */,
+				FEB840512998B6F900B945BA /* FaceDown Focus Timer */,
 			);
 		};
 /* End PBXProject section */
@@ -465,19 +465,20 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NowFocus/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "FaceDown Focus";
+				INFOPLIST_KEY_CFBundleDisplayName = "FaceDown Focus Timer";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tomoapp.nowfocus.NowFocus;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tomoapp.face.down.timer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -500,19 +501,20 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NowFocus/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "FaceDown Focus";
+				INFOPLIST_KEY_CFBundleDisplayName = "FaceDown Focus Timer";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tomoapp.nowfocus.NowFocus;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tomoapp.face.down.timer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -524,7 +526,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FEB8404D2998B6F800B945BA /* Build configuration list for PBXProject "NowFocus" */ = {
+		FEB8404D2998B6F800B945BA /* Build configuration list for PBXProject "FaceDown Focus Timer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FEB8405E2998B6FA00B945BA /* Debug */,
@@ -533,7 +535,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FEB840602998B6FA00B945BA /* Build configuration list for PBXNativeTarget "NowFocus" */ = {
+		FEB840602998B6FA00B945BA /* Build configuration list for PBXNativeTarget "FaceDown Focus Timer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FEB840612998B6FA00B945BA /* Debug */,
