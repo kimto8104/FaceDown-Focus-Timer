@@ -7,31 +7,49 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE11003E2CCE764800C833C1 /* TimeSelectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE11003D2CCE763C00C833C1 /* TimeSelectionPresenter.swift */; };
+		FE4176C82C9DA72500D671ED /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4176C72C9DA72500D671ED /* Color+Extension.swift */; };
 		FE4BF32C29BF54D00069FDD3 /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4BF32B29BF54D00069FDD3 /* MainContentView.swift */; };
-		FE5230BF2B1CABDB00C3E2B1 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5230BE2B1CABDB00C3E2B1 /* MotionManager.swift */; };
 		FE54F1AB2C2082D30029DCDD /* Warning-Siren04-02(Low-Long).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FE54F1AA2C2082D30029DCDD /* Warning-Siren04-02(Low-Long).mp3 */; };
+		FE54F1AE2C32EBCA0029DCDD /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE54F1AD2C32EBCA0029DCDD /* TimerManager.swift */; };
+		FE5825D82C4D48CF007AB552 /* TimerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5825D72C4D48CF007AB552 /* TimerPresenter.swift */; };
+		FE5825DA2C4D4AFC007AB552 /* TimerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5825D92C4D4AFC007AB552 /* TimerInteractor.swift */; };
+		FE5825DC2C4D4EED007AB552 /* TimerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5825DB2C4D4EED007AB552 /* TimerRouter.swift */; };
+		FE6362D92C5B01EC009AB470 /* MotionManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6362D82C5B01EC009AB470 /* MotionManagerService.swift */; };
 		FE8EAA322A0000BC0040FB07 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8EAA312A0000BC0040FB07 /* Int+Extension.swift */; };
 		FE8EAA352A00C9910040FB07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8EAA342A00C9910040FB07 /* AppDelegate.swift */; };
+		FEB14FFC2C6B9F020011F32A /* MotionServiceWithInitialAttitude.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB14FFB2C6B9F020011F32A /* MotionServiceWithInitialAttitude.swift */; };
 		FEB840562998B6F900B945BA /* NowFocusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB840552998B6F900B945BA /* NowFocusApp.swift */; };
 		FEB8405A2998B6FA00B945BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEB840592998B6FA00B945BA /* Assets.xcassets */; };
 		FEB8405D2998B6FA00B945BA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEB8405C2998B6FA00B945BA /* Preview Assets.xcassets */; };
 		FEB840682998C24500B945BA /* TimeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB840672998C24500B945BA /* TimeSelectionView.swift */; };
+		FEDF19AB2C60FF4F0091E033 /* TimeSelectionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDF19AA2C60FF4F0091E033 /* TimeSelectionRouter.swift */; };
+		FEF885322C74BE63005A9198 /* TimerProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF885312C74BE63005A9198 /* TimerProgressRing.swift */; };
 		FEFB29D329B7691E007D8FDA /* TimerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFB29D229B7691E007D8FDA /* TimerPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FE11003D2CCE763C00C833C1 /* TimeSelectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectionPresenter.swift; sourceTree = "<group>"; };
+		FE4176C72C9DA72500D671ED /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		FE4BF32B29BF54D00069FDD3 /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
-		FE5230BE2B1CABDB00C3E2B1 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
 		FE54F1AA2C2082D30029DCDD /* Warning-Siren04-02(Low-Long).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Warning-Siren04-02(Low-Long).mp3"; sourceTree = "<group>"; };
+		FE54F1AD2C32EBCA0029DCDD /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		FE5825D72C4D48CF007AB552 /* TimerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPresenter.swift; sourceTree = "<group>"; };
+		FE5825D92C4D4AFC007AB552 /* TimerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerInteractor.swift; sourceTree = "<group>"; };
+		FE5825DB2C4D4EED007AB552 /* TimerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerRouter.swift; sourceTree = "<group>"; };
+		FE6362D82C5B01EC009AB470 /* MotionManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManagerService.swift; sourceTree = "<group>"; };
 		FE8EAA312A0000BC0040FB07 /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		FE8EAA332A00C2DC0040FB07 /* NowFocus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NowFocus.entitlements; sourceTree = "<group>"; };
 		FE8EAA342A00C9910040FB07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE8EAA362A00CC3C0040FB07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		FEB840522998B6F900B945BA /* NowFocus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NowFocus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FEB14FFB2C6B9F020011F32A /* MotionServiceWithInitialAttitude.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionServiceWithInitialAttitude.swift; sourceTree = "<group>"; };
+		FEB840522998B6F900B945BA /* FaceDown Focus Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FaceDown Focus Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEB840552998B6F900B945BA /* NowFocusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowFocusApp.swift; sourceTree = "<group>"; };
 		FEB840592998B6FA00B945BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FEB8405C2998B6FA00B945BA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FEB840672998C24500B945BA /* TimeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectionView.swift; sourceTree = "<group>"; };
+		FEDF19AA2C60FF4F0091E033 /* TimeSelectionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectionRouter.swift; sourceTree = "<group>"; };
+		FEF885312C74BE63005A9198 /* TimerProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerProgressRing.swift; sourceTree = "<group>"; };
 		FEFB29D229B7691E007D8FDA /* TimerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -49,6 +67,11 @@
 		FE54F1A82C1B26290029DCDD /* TimeSelectionView */ = {
 			isa = PBXGroup;
 			children = (
+				FEDF19A92C60FEAB0091E033 /* Interactor */,
+				FEDF19A82C60FEA30091E033 /* Entity */,
+				FEDF19A72C60FE9D0091E033 /* Router */,
+				FEDF19A62C60FE960091E033 /* Presenter */,
+				FEDF19A52C60FE8C0091E033 /* View */,
 				FEB840672998C24500B945BA /* TimeSelectionView.swift */,
 			);
 			path = TimeSelectionView;
@@ -62,10 +85,80 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		FE54F1AC2C32EBB30029DCDD /* TimerManager */ = {
+			isa = PBXGroup;
+			children = (
+				FE54F1AD2C32EBCA0029DCDD /* TimerManager.swift */,
+			);
+			path = TimerManager;
+			sourceTree = "<group>";
+		};
+		FE5825D02C4D4843007AB552 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				FE54F1A82C1B26290029DCDD /* TimeSelectionView */,
+				FE5825D12C4D4853007AB552 /* TimerPage */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		FE5825D12C4D4853007AB552 /* TimerPage */ = {
+			isa = PBXGroup;
+			children = (
+				FE5825D62C4D48A6007AB552 /* Entity */,
+				FE5825D52C4D489D007AB552 /* Router */,
+				FE5825D42C4D4895007AB552 /* Presenter */,
+				FE5825D32C4D488F007AB552 /* Interactor */,
+				FE5825D22C4D4886007AB552 /* View */,
+			);
+			path = TimerPage;
+			sourceTree = "<group>";
+		};
+		FE5825D22C4D4886007AB552 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FEFB29D229B7691E007D8FDA /* TimerPage.swift */,
+				FEF885312C74BE63005A9198 /* TimerProgressRing.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FE5825D32C4D488F007AB552 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				FE5825D92C4D4AFC007AB552 /* TimerInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		FE5825D42C4D4895007AB552 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				FE5825D72C4D48CF007AB552 /* TimerPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FE5825D52C4D489D007AB552 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				FE5825DB2C4D4EED007AB552 /* TimerRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		FE5825D62C4D48A6007AB552 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		FE8EAA302A0000AD0040FB07 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				FE8EAA312A0000BC0040FB07 /* Int+Extension.swift */,
+				FE4176C72C9DA72500D671ED /* Color+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -81,7 +174,7 @@
 		FEB840532998B6F900B945BA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FEB840522998B6F900B945BA /* NowFocus.app */,
+				FEB840522998B6F900B945BA /* FaceDown Focus Timer.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -89,9 +182,9 @@
 		FEB840542998B6F900B945BA /* NowFocus */ = {
 			isa = PBXGroup;
 			children = (
+				FE5825D02C4D4843007AB552 /* Modules */,
+				FE54F1AC2C32EBB30029DCDD /* TimerManager */,
 				FE54F1A92C2082AF0029DCDD /* Resources */,
-				FE54F1A82C1B26290029DCDD /* TimeSelectionView */,
-				FEFB29D129B76911007D8FDA /* TimerPage */,
 				FE8EAA362A00CC3C0040FB07 /* Info.plist */,
 				FE8EAA332A00C2DC0040FB07 /* NowFocus.entitlements */,
 				FE8EAA302A0000AD0040FB07 /* Extension */,
@@ -100,7 +193,8 @@
 				FEB8405B2998B6FA00B945BA /* Preview Content */,
 				FE4BF32B29BF54D00069FDD3 /* MainContentView.swift */,
 				FE8EAA342A00C9910040FB07 /* AppDelegate.swift */,
-				FE5230BE2B1CABDB00C3E2B1 /* MotionManager.swift */,
+				FE6362D82C5B01EC009AB470 /* MotionManagerService.swift */,
+				FEB14FFB2C6B9F020011F32A /* MotionServiceWithInitialAttitude.swift */,
 			);
 			path = NowFocus;
 			sourceTree = "<group>";
@@ -113,20 +207,49 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		FEFB29D129B76911007D8FDA /* TimerPage */ = {
+		FEDF19A52C60FE8C0091E033 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FEFB29D229B7691E007D8FDA /* TimerPage.swift */,
 			);
-			path = TimerPage;
+			path = View;
+			sourceTree = "<group>";
+		};
+		FEDF19A62C60FE960091E033 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				FE11003D2CCE763C00C833C1 /* TimeSelectionPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FEDF19A72C60FE9D0091E033 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				FEDF19AA2C60FF4F0091E033 /* TimeSelectionRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		FEDF19A82C60FEA30091E033 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		FEDF19A92C60FEAB0091E033 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FEB840512998B6F900B945BA /* NowFocus */ = {
+		FEB840512998B6F900B945BA /* FaceDown Focus Timer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FEB840602998B6FA00B945BA /* Build configuration list for PBXNativeTarget "NowFocus" */;
+			buildConfigurationList = FEB840602998B6FA00B945BA /* Build configuration list for PBXNativeTarget "FaceDown Focus Timer" */;
 			buildPhases = (
 				FEB8404E2998B6F900B945BA /* Sources */,
 				FEB8404F2998B6F900B945BA /* Frameworks */,
@@ -136,9 +259,9 @@
 			);
 			dependencies = (
 			);
-			name = NowFocus;
+			name = "FaceDown Focus Timer";
 			productName = NowFocus;
-			productReference = FEB840522998B6F900B945BA /* NowFocus.app */;
+			productReference = FEB840522998B6F900B945BA /* FaceDown Focus Timer.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -156,7 +279,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FEB8404D2998B6F800B945BA /* Build configuration list for PBXProject "NowFocus" */;
+			buildConfigurationList = FEB8404D2998B6F800B945BA /* Build configuration list for PBXProject "FaceDown Focus Timer" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -169,7 +292,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FEB840512998B6F900B945BA /* NowFocus */,
+				FEB840512998B6F900B945BA /* FaceDown Focus Timer */,
 			);
 		};
 /* End PBXProject section */
@@ -192,12 +315,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEB14FFC2C6B9F020011F32A /* MotionServiceWithInitialAttitude.swift in Sources */,
+				FE4176C82C9DA72500D671ED /* Color+Extension.swift in Sources */,
 				FE8EAA352A00C9910040FB07 /* AppDelegate.swift in Sources */,
-				FE5230BF2B1CABDB00C3E2B1 /* MotionManager.swift in Sources */,
+				FE54F1AE2C32EBCA0029DCDD /* TimerManager.swift in Sources */,
+				FE11003E2CCE764800C833C1 /* TimeSelectionPresenter.swift in Sources */,
+				FEDF19AB2C60FF4F0091E033 /* TimeSelectionRouter.swift in Sources */,
 				FEFB29D329B7691E007D8FDA /* TimerPage.swift in Sources */,
 				FEB840682998C24500B945BA /* TimeSelectionView.swift in Sources */,
+				FE5825D82C4D48CF007AB552 /* TimerPresenter.swift in Sources */,
+				FE5825DA2C4D4AFC007AB552 /* TimerInteractor.swift in Sources */,
+				FE6362D92C5B01EC009AB470 /* MotionManagerService.swift in Sources */,
 				FEB840562998B6F900B945BA /* NowFocusApp.swift in Sources */,
+				FE5825DC2C4D4EED007AB552 /* TimerRouter.swift in Sources */,
 				FE8EAA322A0000BC0040FB07 /* Int+Extension.swift in Sources */,
+				FEF885322C74BE63005A9198 /* TimerProgressRing.swift in Sources */,
 				FE4BF32C29BF54D00069FDD3 /* MainContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -333,21 +465,24 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NowFocus/Preview Content\"";
-				DEVELOPMENT_TEAM = GVPBQ5FFV6;
+				DEVELOPMENT_TEAM = Y88N7C5HY9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NowFocus/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "FaceDown Focus Timer";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tomoapp.nowfocus.lookback;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tomoapp.face.down.timer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -366,21 +501,24 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NowFocus/Preview Content\"";
-				DEVELOPMENT_TEAM = GVPBQ5FFV6;
+				DEVELOPMENT_TEAM = Y88N7C5HY9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NowFocus/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "FaceDown Focus Timer";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tomoapp.nowfocus.lookback;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tomoapp.face.down.timer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -392,7 +530,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FEB8404D2998B6F800B945BA /* Build configuration list for PBXProject "NowFocus" */ = {
+		FEB8404D2998B6F800B945BA /* Build configuration list for PBXProject "FaceDown Focus Timer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FEB8405E2998B6FA00B945BA /* Debug */,
@@ -401,7 +539,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FEB840602998B6FA00B945BA /* Build configuration list for PBXNativeTarget "NowFocus" */ = {
+		FEB840602998B6FA00B945BA /* Build configuration list for PBXNativeTarget "FaceDown Focus Timer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FEB840612998B6FA00B945BA /* Debug */,

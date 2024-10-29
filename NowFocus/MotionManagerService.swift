@@ -1,46 +1,55 @@
 //
-//  MotionManager.swift
+//  MotionManagerService.swift
 //  NowFocus
 //
-//  Created by Tomofumi Kimura on 2023/12/03.
+//  Created by Tomofumi Kimura on 2024/08/01.
 //
 
+import Foundation
 import CoreMotion
 import AudioToolbox
 import AVFAudio
 import AVFoundation
 
-class MotionManager: ObservableObject {
+class MotionManagerService: ObservableObject {
   private let motionManager = CMMotionManager()
-  @Published var isMoved = false
   @Published var isMonitoring = false
+  @Published var isFaceDown = false
+  
   private var initialAttitude: CMAttitude?
   private var audioPlayer: AVAudioPlayer?
+  
   // 端末の動き検知を開始
   func startMonitoringDeviceMotion() {
     if motionManager.isDeviceMotionAvailable {
-      // 検知間隔を0.5秒に設定
-      motionManager.deviceMotionUpdateInterval = 0.5
+      // 検知間隔を1秒に設定
+      motionManager.deviceMotionUpdateInterval = 1
       // 端末の動き検知開始
       motionManager.startDeviceMotionUpdates(to: .main) { [weak self] deviceMotion, error in
-        self?.isMonitoring = true
+        guard let self else { return }
+        self.isMonitoring = true
         // 角度や状態についてデータを持っているdeviceMotion
         guard let deviceMotion else { return }
-        // 閾値
-        let threshold: Double = 0.01
-        // 端末が最初の位置にいなければアラームを鳴らす
-        if let initialAttitude = self?.initialAttitude {
-          deviceMotion.attitude.multiply(byInverseOf: initialAttitude)
-          if deviceMotion.attitude.roll > threshold || deviceMotion.attitude.pitch > threshold || deviceMotion.attitude.yaw > threshold {
-            // アラームをトリガー
-            self?.triggerAlerm()
-          } else {
-            // 元の位置にあるのでアラームを停止
-            self?.stopAlarm()
-          }
+        let gravityZ = deviceMotion.gravity.z
+        // 下向きと判断するための閾値範囲
+        let isFaceDownThreshold: ClosedRange<Double> = 0.7...1.0
+        // 上向きと判断するための閾値範囲
+        let isFaceUpThreshold: ClosedRange<Double> = -1.0...0.3
+        let newIsFaceDown: Bool
+        // 画面が下向きになっている
+        if isFaceDownThreshold.contains(gravityZ) {
+          newIsFaceDown = true
+        } else if isFaceUpThreshold.contains(gravityZ) {
+          // 画面が上向きになっている
+          newIsFaceDown = false
         } else {
-          // 最初の位置を保存
-          self?.initialAttitude = deviceMotion.attitude
+          // 範囲外の場合は状態を変えない
+          return
+        }
+        
+        // 状態が変わったときのみ更新
+        if newIsFaceDown != self.isFaceDown {
+          self.isFaceDown = newIsFaceDown
         }
       }
     }
@@ -65,14 +74,10 @@ class MotionManager: ObservableObject {
   
   func stopAlarm() {
     audioPlayer?.stop()
-    isMoved = false
   }
   
   private func triggerAlerm() {
-    if !isMoved {
-      isMoved = true
-      playAlarmSound()
-    }
+    playAlarmSound()
   }
   
   func stopMonitoring() {
@@ -83,8 +88,6 @@ class MotionManager: ObservableObject {
   func reset() {
     initialAttitude = nil
     audioPlayer?.stop()
-    isMoved = false
     isMonitoring = false
   }
 }
-

@@ -12,7 +12,7 @@ struct MainContentView: View {
     // Tab
     TabView {
       // TopView
-      TimeSelectionView()
+      TimeSelectionView(presenter: TimeSelectionPresenter())
         .tabItem {
           Label("Top", systemImage: "list.dash")
         }
