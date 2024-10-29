@@ -117,8 +117,6 @@ class TimerInteractor: TimerInteractorProtocol {
   }
   
   func resetTimer() {
-//    stopMonitoringDeviceMotion()
-//    stopVibration()
     timer?.invalidate()
     timer = nil
     remainingTime = initialTime
