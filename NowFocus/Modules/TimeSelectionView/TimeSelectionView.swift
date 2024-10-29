@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TimeSelectionView: View {
+  @StateObject var presenter = TimeSelectionPresenter()
   // 時間
   let time = [
     1, 15, 30
@@ -16,21 +17,11 @@ struct TimeSelectionView: View {
   var body: some View {
     NavigationStack {
       // time の配列の要素自身をidとして使うときに\.selfというように記載する
-      List(time, id: \.self) { time in
-        NavigationLink(time.description) {
-          // 遷移先
-          TimerRouter.initializeTimerModule(with: time)
-            .background(.white)
-        }
+      List(presenter.timeOptions, id: \.self) { time in
+        presenter.router.goToTimerPage(time: time)
       }
       .navigationTitle("時間選択")
     }
-  }
-}
-
-private extension TimeSelectionView {
-  func timerView() -> some View {
-    Text("test")
   }
 }
 
@@ -41,6 +32,6 @@ struct TimeItem: Identifiable {
 
 struct TimeSelectionView_Previews: PreviewProvider {
   static var previews: some View {
-    TimeSelectionView()
+    TimeSelectionView(presenter: TimeSelectionPresenter())
   }
 }

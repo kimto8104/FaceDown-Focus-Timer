@@ -69,6 +69,7 @@ class TimerInteractor: TimerInteractorProtocol {
         // 画面が上向きでタイマーを完了した
         self.stopVibration()
         self.stopMonitoringDeviceMotion()
+        self.pauseTimer()
       }
     }
     .store(in: &cancellables)
@@ -116,8 +117,8 @@ class TimerInteractor: TimerInteractorProtocol {
   }
   
   func resetTimer() {
-    stopMonitoringDeviceMotion()
-    stopVibration()
+//    stopMonitoringDeviceMotion()
+//    stopVibration()
     timer?.invalidate()
     timer = nil
     remainingTime = initialTime

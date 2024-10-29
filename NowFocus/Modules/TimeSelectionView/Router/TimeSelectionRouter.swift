@@ -6,14 +6,13 @@
 //
 
 import Foundation
+import SwiftUI
 
-protocol TimeSelectionRouterProtocol {
-  func goToTimerPage(time: Int)
-}
-
-class TimeSelectionRouter: TimeSelectionRouterProtocol {
-  
-  func goToTimerPage(time: Int) {
-    
+class TimeSelectionRouter {
+  func goToTimerPage(time: Int) -> some View {
+    return NavigationLink(destination:  TimerRouter.initializeTimerModule(with: time)
+      .background(.white)) {
+        Text("\(time.description)分")
+      }
   }
 }

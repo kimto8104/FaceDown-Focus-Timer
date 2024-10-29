@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE11003E2CCE764800C833C1 /* TimeSelectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE11003D2CCE763C00C833C1 /* TimeSelectionPresenter.swift */; };
 		FE4176C82C9DA72500D671ED /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4176C72C9DA72500D671ED /* Color+Extension.swift */; };
 		FE4BF32C29BF54D00069FDD3 /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4BF32B29BF54D00069FDD3 /* MainContentView.swift */; };
 		FE54F1AB2C2082D30029DCDD /* Warning-Siren04-02(Low-Long).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FE54F1AA2C2082D30029DCDD /* Warning-Siren04-02(Low-Long).mp3 */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FE11003D2CCE763C00C833C1 /* TimeSelectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectionPresenter.swift; sourceTree = "<group>"; };
 		FE4176C72C9DA72500D671ED /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		FE4BF32B29BF54D00069FDD3 /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
 		FE54F1AA2C2082D30029DCDD /* Warning-Siren04-02(Low-Long).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Warning-Siren04-02(Low-Long).mp3"; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 		FEDF19A62C60FE960091E033 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				FE11003D2CCE763C00C833C1 /* TimeSelectionPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				FE4176C82C9DA72500D671ED /* Color+Extension.swift in Sources */,
 				FE8EAA352A00C9910040FB07 /* AppDelegate.swift in Sources */,
 				FE54F1AE2C32EBCA0029DCDD /* TimerManager.swift in Sources */,
+				FE11003E2CCE764800C833C1 /* TimeSelectionPresenter.swift in Sources */,
 				FEDF19AB2C60FF4F0091E033 /* TimeSelectionRouter.swift in Sources */,
 				FEFB29D329B7691E007D8FDA /* TimerPage.swift in Sources */,
 				FEB840682998C24500B945BA /* TimeSelectionView.swift in Sources */,

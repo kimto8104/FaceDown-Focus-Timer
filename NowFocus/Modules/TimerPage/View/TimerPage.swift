@@ -58,6 +58,7 @@ struct TimerPage<T: TimerPresenterProtocol>: View {
       
       Button("はい") {
         presenter.resetTimer()
+        presenter.stopVibration()
         dismiss()
       }
     } message: {
