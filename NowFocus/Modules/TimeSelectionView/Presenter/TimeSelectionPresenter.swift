@@ -14,7 +14,7 @@ protocol TimeSelectionPresenterProtocol {
 class TimeSelectionPresenter: ObservableObject {
   
   // 選択可能な時間を保持
-  @Published var timeOptions = [1, 15, 30]
+  @Published var timeOptions = [1]
   // Routerインスタンス
   let router: TimeSelectionRouter
   // イニシャライザでRouterを注入

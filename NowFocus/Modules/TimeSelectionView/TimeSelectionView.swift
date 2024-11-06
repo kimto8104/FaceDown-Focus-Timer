@@ -9,10 +9,6 @@ import SwiftUI
 
 struct TimeSelectionView: View {
   @StateObject var presenter = TimeSelectionPresenter()
-  // 時間
-  let time = [
-    1, 15, 30
-  ]
   
   var body: some View {
     NavigationStack {
@@ -23,11 +19,6 @@ struct TimeSelectionView: View {
       .navigationTitle("時間選択")
     }
   }
-}
-
-struct TimeItem: Identifiable {
-  var id: ObjectIdentifier
-  var name: String
 }
 
 struct TimeSelectionView_Previews: PreviewProvider {

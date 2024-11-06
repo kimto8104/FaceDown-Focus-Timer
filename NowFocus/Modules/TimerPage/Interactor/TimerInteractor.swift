@@ -82,6 +82,10 @@ class TimerInteractor: TimerInteractorProtocol {
         self.remainingTime -= 1
       } else {
         // タイマー完了
+        if self.initialTime == 60 {
+          // １分タイマー今日完了したことを保存
+          UserDefaultManager.oneMinuteDoneToday = true
+        }
         self.triggerVibration()
         self.resetTimer()
         self.presenter.updateTimerState(timerState: .completed)
