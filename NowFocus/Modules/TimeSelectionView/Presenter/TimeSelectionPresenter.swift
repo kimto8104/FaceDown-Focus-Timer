@@ -16,6 +16,8 @@ class TimeSelectionPresenter: ObservableObject {
   
   // 選択可能な時間を保持
   @Published var timeOptions = [1]
+  // Viewが参照するフラグ
+  @Published var shouldShowFloatingBottomSheet = false
   // Routerインスタンス
   let router: TimeSelectionRouter
   // イニシャライザでRouterを注入
@@ -42,6 +44,17 @@ class TimeSelectionPresenter: ObservableObject {
     if UserDefaultManager.thirtyMinuteDoneToday {
       timeOptions.append(50)
     }
+  }
+  
+  func checkFloatingSheetStatus() {
+    if !UserDefaultManager.isFloatingBottomSheetShown {
+      shouldShowFloatingBottomSheet = true
+      UserDefaultManager.isFloatingBottomSheetShown = true
+    }
+  }
+  
+  func updateShouldShowFloatingBottomSheets(_ show: Bool) {
+    shouldShowFloatingBottomSheet = show
   }
   
   func removeAllData() {

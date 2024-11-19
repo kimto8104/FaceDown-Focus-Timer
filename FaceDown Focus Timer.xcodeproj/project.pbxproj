@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		FE11003E2CCE764800C833C1 /* TimeSelectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE11003D2CCE763C00C833C1 /* TimeSelectionPresenter.swift */; };
 		FE1100412CDBAFA200C833C1 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1100402CDBAF9200C833C1 /* UserDefaultManager.swift */; };
+		FE11013F2CE9729600C833C1 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE11013E2CE9729600C833C1 /* CustomAlert.swift */; };
+		FE1101442CEAABF100C833C1 /* FloatingBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1101432CEAABF100C833C1 /* FloatingBottomSheet.swift */; };
+		FE1101462CEAB4D600C833C1 /* FloatingBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1101452CEAB4D600C833C1 /* FloatingBottomSheetView.swift */; };
 		FE4176C82C9DA72500D671ED /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4176C72C9DA72500D671ED /* Color+Extension.swift */; };
 		FE4BF32C29BF54D00069FDD3 /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4BF32B29BF54D00069FDD3 /* MainContentView.swift */; };
 		FE54F1AB2C2082D30029DCDD /* Warning-Siren04-02(Low-Long).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FE54F1AA2C2082D30029DCDD /* Warning-Siren04-02(Low-Long).mp3 */; };
@@ -32,6 +35,9 @@
 /* Begin PBXFileReference section */
 		FE11003D2CCE763C00C833C1 /* TimeSelectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectionPresenter.swift; sourceTree = "<group>"; };
 		FE1100402CDBAF9200C833C1 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
+		FE11013E2CE9729600C833C1 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
+		FE1101432CEAABF100C833C1 /* FloatingBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingBottomSheet.swift; sourceTree = "<group>"; };
+		FE1101452CEAB4D600C833C1 /* FloatingBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingBottomSheetView.swift; sourceTree = "<group>"; };
 		FE4176C72C9DA72500D671ED /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		FE4BF32B29BF54D00069FDD3 /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
 		FE54F1AA2C2082D30029DCDD /* Warning-Siren04-02(Low-Long).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Warning-Siren04-02(Low-Long).mp3"; sourceTree = "<group>"; };
@@ -74,6 +80,23 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		FE11013D2CE9728B00C833C1 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				FE11013E2CE9729600C833C1 /* CustomAlert.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		FE1101422CEAABE000C833C1 /* FloatingBottomSheet */ = {
+			isa = PBXGroup;
+			children = (
+				FE1101432CEAABF100C833C1 /* FloatingBottomSheet.swift */,
+				FE1101452CEAB4D600C833C1 /* FloatingBottomSheetView.swift */,
+			);
+			path = FloatingBottomSheet;
+			sourceTree = "<group>";
+		};
 		FE54F1A82C1B26290029DCDD /* TimeSelectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +129,8 @@
 		FE5825D02C4D4843007AB552 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				FE1101422CEAABE000C833C1 /* FloatingBottomSheet */,
+				FE11013D2CE9728B00C833C1 /* Alert */,
 				FE54F1A82C1B26290029DCDD /* TimeSelectionView */,
 				FE5825D12C4D4853007AB552 /* TimerPage */,
 			);
@@ -329,11 +354,13 @@
 				FEB14FFC2C6B9F020011F32A /* MotionServiceWithInitialAttitude.swift in Sources */,
 				FE4176C82C9DA72500D671ED /* Color+Extension.swift in Sources */,
 				FE8EAA352A00C9910040FB07 /* AppDelegate.swift in Sources */,
+				FE11013F2CE9729600C833C1 /* CustomAlert.swift in Sources */,
 				FE54F1AE2C32EBCA0029DCDD /* TimerManager.swift in Sources */,
 				FE11003E2CCE764800C833C1 /* TimeSelectionPresenter.swift in Sources */,
 				FEDF19AB2C60FF4F0091E033 /* TimeSelectionRouter.swift in Sources */,
 				FEFB29D329B7691E007D8FDA /* TimerPage.swift in Sources */,
 				FEB840682998C24500B945BA /* TimeSelectionView.swift in Sources */,
+				FE1101462CEAB4D600C833C1 /* FloatingBottomSheetView.swift in Sources */,
 				FE5825D82C4D48CF007AB552 /* TimerPresenter.swift in Sources */,
 				FE5825DA2C4D4AFC007AB552 /* TimerInteractor.swift in Sources */,
 				FE6362D92C5B01EC009AB470 /* MotionManagerService.swift in Sources */,
@@ -342,6 +369,7 @@
 				FE8EAA322A0000BC0040FB07 /* Int+Extension.swift in Sources */,
 				FEF885322C74BE63005A9198 /* TimerProgressRing.swift in Sources */,
 				FE1100412CDBAFA200C833C1 /* UserDefaultManager.swift in Sources */,
+				FE1101442CEAABF100C833C1 /* FloatingBottomSheet.swift in Sources */,
 				FE4BF32C29BF54D00069FDD3 /* MainContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

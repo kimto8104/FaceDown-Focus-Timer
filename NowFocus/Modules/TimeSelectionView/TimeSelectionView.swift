@@ -18,8 +18,9 @@ struct TimeSelectionView: View {
       }
       .onAppear(perform: {
         presenter.setupTimeOptions()
+        presenter.checkFloatingSheetStatus()
       })
-      .navigationTitle("時間選択")
+      .navigationTitle("集中時間選択")
       .navigationBarItems(trailing: Button("Debug") {
         // Show Action Sheet
         showActionSheet = true
@@ -46,6 +47,13 @@ struct TimeSelectionView: View {
           presenter.removeAllData()
         }
       }
+    }
+    .floatingBottomSheet(isPresented: $presenter.shouldShowFloatingBottomSheet) {
+      FloatingBottomSheetView(title: "時間について", content: "時間はクリアするごとに増えます。そして毎日リセットされます", image: .init(content: "lightbulb.max.fill", tint: .red, foreground: .white), button1: .init(content: "Close", tint: .red, foreground: .white), button1Action: {
+        // Close Sheet
+        presenter.updateShouldShowFloatingBottomSheets(false)
+      })
+        .presentationDetents([.height(280)])
     }
   }
 }

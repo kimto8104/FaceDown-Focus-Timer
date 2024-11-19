@@ -24,7 +24,6 @@ class UserDefaultManager: NSObject {
 }
 
 extension UserDefaultManager {
-  
   // 前回のチェック日を取得・更新
   static var lastCheckedDate: Date {
     get { return UserDefaults.standard.object(forKey: #function) as? Date ?? Date() }
@@ -75,6 +74,12 @@ extension UserDefaultManager {
   
   // 30分を今日完了したか？
   static var fiftyMinuteDoneToday: Bool {
+    get { return boolForKey(#function) }
+    set { setBool(newValue, forKey: #function) }
+  }
+  
+  // FloatingBottomSheetが一度表示されているかどうか？
+  static var isFloatingBottomSheetShown: Bool {
     get { return boolForKey(#function) }
     set { setBool(newValue, forKey: #function) }
   }
