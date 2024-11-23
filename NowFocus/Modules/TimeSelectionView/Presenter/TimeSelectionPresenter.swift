@@ -28,21 +28,26 @@ class TimeSelectionPresenter: ObservableObject {
   
   // timeOptionsをセットアップする関数
   func setupTimeOptions() {
-    timeOptions = [1]  // 1分を初期値として設定
+    var newTimeOptions: [Int] = [1]  // 初期値として1分
     // 各完了済みのフラグをチェックして、対応する時間を追加
     if UserDefaultManager.oneMinuteDoneToday {
-      timeOptions.append(10)
+      newTimeOptions.append(10)
     }
     
     if UserDefaultManager.tenMinuteDoneToday {
-      timeOptions.append(15)
+      newTimeOptions.append(15)
     }
     
     if UserDefaultManager.fifteenMinuteDoneToday {
-      timeOptions.append(30)
+      newTimeOptions.append(30)
     }
     if UserDefaultManager.thirtyMinuteDoneToday {
-      timeOptions.append(50)
+      newTimeOptions.append(50)
+    }
+    print("newTimeOptions: \(newTimeOptions.description)")
+    print("timeOptions data: \(timeOptions.description)")
+    if newTimeOptions != timeOptions {
+      timeOptions = newTimeOptions
     }
   }
   

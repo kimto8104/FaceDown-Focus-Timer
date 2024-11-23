@@ -44,6 +44,7 @@ class TimerPresenter: TimerPresenterProtocol {
   var router: TimerRouterProtocol?
   
   init(time: Int) {
+    print("TimerPresenter initialized")
     updateTime(time: TimeInterval(time * 60))
   }
   
