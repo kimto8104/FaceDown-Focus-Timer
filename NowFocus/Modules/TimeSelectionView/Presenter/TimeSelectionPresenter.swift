@@ -44,8 +44,6 @@ class TimeSelectionPresenter: ObservableObject {
     if UserDefaultManager.thirtyMinuteDoneToday {
       newTimeOptions.append(50)
     }
-    print("newTimeOptions: \(newTimeOptions.description)")
-    print("timeOptions data: \(timeOptions.description)")
     if newTimeOptions != timeOptions {
       timeOptions = newTimeOptions
     }

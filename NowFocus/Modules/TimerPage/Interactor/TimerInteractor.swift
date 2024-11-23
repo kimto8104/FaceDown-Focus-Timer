@@ -125,8 +125,6 @@ class TimerInteractor: TimerInteractorProtocol {
     timer = nil
     remainingTime = initialTime
     presenter.updateTime(time: remainingTime)
-    presenter.updateTimerState(timerState: .start)
-    stopMonitoringDeviceMotion()
   }
   
   func startMonitoringDeviceMotion() {

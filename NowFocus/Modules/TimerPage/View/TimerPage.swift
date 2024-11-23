@@ -42,6 +42,8 @@ struct TimerPage<T: TimerPresenterProtocol>: View {
     .navigationBarItems(
       leading: Button(action: {
         presenter.resetTimer()
+        presenter.stopMonitoringDeviceMotion()
+        presenter.updateTimerState(timerState: .start)
         dismiss()
       }, label: {
         Image(systemName: "chevron.backward")
@@ -59,6 +61,8 @@ struct TimerPage<T: TimerPresenterProtocol>: View {
       Button("はい") {
         presenter.resetTimer()
         presenter.stopVibration()
+        presenter.stopMonitoringDeviceMotion()
+        presenter.updateTimerState(timerState: .start)
         dismiss()
       }
     } message: {
