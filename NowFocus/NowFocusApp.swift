@@ -13,6 +13,10 @@ struct NowFocusApp: App {
     var body: some Scene {
         WindowGroup {
           MainContentView()
+            .onAppear {
+              // アプリ起動時にリセットを確認
+              UserDefaultManager.resetDailyDataIfDateChanged()
+            }
         }
     }
 }

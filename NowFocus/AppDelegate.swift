@@ -19,4 +19,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
     return true
   }
+  
+  func applicationDidBecomeActive(_ application: UIApplication) {
+    // バックグラウンド復帰時にもリセットを確認
+    UserDefaultManager.resetDailyDataIfDateChanged()
+  }
 }

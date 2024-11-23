@@ -36,11 +36,13 @@ extension UserDefaultManager {
     let lastChecked = Calendar.current.startOfDay(for: lastCheckedDate)
     // 最後の確認日と今日の日付を比較し、変わっていればリセット
     if today > lastChecked {
-      resetAllDate()
+      resetDoneData()
     }
+    
+    lastCheckedDate = today
   }
   
-  private static func resetAllDate() {
+  private static func resetDoneData() {
     oneMinuteDoneToday = false
     tenMinuteDoneToday = false
     fifteenMinuteDoneToday = false

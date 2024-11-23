@@ -82,10 +82,7 @@ class TimerInteractor: TimerInteractorProtocol {
         self.remainingTime -= 1
       } else {
         // タイマー完了
-        if self.initialTime == 60 {
-          // １分タイマー今日完了したことを保存
-          UserDefaultManager.oneMinuteDoneToday = true
-        }
+        self.updateCompletedTimeStatus()
         self.triggerVibration()
         self.resetTimer()
         self.presenter.updateTimerState(timerState: .completed)
@@ -93,6 +90,24 @@ class TimerInteractor: TimerInteractorProtocol {
       }
       self.presenter.updateTime(time: remainingTime)
     })
+  }
+  
+  private func updateCompletedTimeStatus() {
+    if initialTime == 60 {
+      UserDefaultManager.oneMinuteDoneToday = true
+    } else if initialTime == 600 {
+      // 10分
+      UserDefaultManager.tenMinuteDoneToday = true
+    } else if initialTime == 900 {
+      // 15分
+      UserDefaultManager.fifteenMinuteDoneToday = true
+    } else if initialTime == 1800 {
+      // 30分
+      UserDefaultManager.thirtyMinuteDoneToday = true
+    } else if initialTime == 3000 {
+      // 50分
+      UserDefaultManager.fiftyMinuteDoneToday = true
+    }
   }
   
   private func triggerVibration() {
