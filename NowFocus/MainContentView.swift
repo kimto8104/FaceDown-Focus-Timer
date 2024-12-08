@@ -9,14 +9,8 @@ import SwiftUI
 
 struct MainContentView: View {
   var body: some View {
-    // Tab
-    TabView {
-      // TopView
-      TimeSelectionView(presenter: TimeSelectionPresenter())
-        .tabItem {
-          Label("Top", systemImage: "list.dash")
-        }
-    }
+    // TopView
+    TimeSelectionView(presenter: TimeSelectionPresenter())
   }
 }
 

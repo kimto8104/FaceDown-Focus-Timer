@@ -27,7 +27,6 @@
 		FEB8405A2998B6FA00B945BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEB840592998B6FA00B945BA /* Assets.xcassets */; };
 		FEB8405D2998B6FA00B945BA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEB8405C2998B6FA00B945BA /* Preview Assets.xcassets */; };
 		FEB840682998C24500B945BA /* TimeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB840672998C24500B945BA /* TimeSelectionView.swift */; };
-		FEDF19AB2C60FF4F0091E033 /* TimeSelectionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDF19AA2C60FF4F0091E033 /* TimeSelectionRouter.swift */; };
 		FEF885322C74BE63005A9198 /* TimerProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF885312C74BE63005A9198 /* TimerProgressRing.swift */; };
 		FEFB29D329B7691E007D8FDA /* TimerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFB29D229B7691E007D8FDA /* TimerPage.swift */; };
 /* End PBXBuildFile section */
@@ -56,7 +55,6 @@
 		FEB840592998B6FA00B945BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FEB8405C2998B6FA00B945BA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FEB840672998C24500B945BA /* TimeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectionView.swift; sourceTree = "<group>"; };
-		FEDF19AA2C60FF4F0091E033 /* TimeSelectionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectionRouter.swift; sourceTree = "<group>"; };
 		FEF885312C74BE63005A9198 /* TimerProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerProgressRing.swift; sourceTree = "<group>"; };
 		FEFB29D229B7691E007D8FDA /* TimerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,7 +100,6 @@
 			children = (
 				FEDF19A92C60FEAB0091E033 /* Interactor */,
 				FEDF19A82C60FEA30091E033 /* Entity */,
-				FEDF19A72C60FE9D0091E033 /* Router */,
 				FEDF19A62C60FE960091E033 /* Presenter */,
 				FEDF19A52C60FE8C0091E033 /* View */,
 				FEB840672998C24500B945BA /* TimeSelectionView.swift */,
@@ -258,14 +255,6 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		FEDF19A72C60FE9D0091E033 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				FEDF19AA2C60FF4F0091E033 /* TimeSelectionRouter.swift */,
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
 		FEDF19A82C60FEA30091E033 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -357,7 +346,6 @@
 				FE11013F2CE9729600C833C1 /* CustomAlert.swift in Sources */,
 				FE54F1AE2C32EBCA0029DCDD /* TimerManager.swift in Sources */,
 				FE11003E2CCE764800C833C1 /* TimeSelectionPresenter.swift in Sources */,
-				FEDF19AB2C60FF4F0091E033 /* TimeSelectionRouter.swift in Sources */,
 				FEFB29D329B7691E007D8FDA /* TimerPage.swift in Sources */,
 				FEB840682998C24500B945BA /* TimeSelectionView.swift in Sources */,
 				FE1101462CEAB4D600C833C1 /* FloatingBottomSheetView.swift in Sources */,
