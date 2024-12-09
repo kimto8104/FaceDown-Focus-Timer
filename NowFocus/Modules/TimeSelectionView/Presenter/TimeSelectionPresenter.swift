@@ -18,11 +18,7 @@ class TimeSelectionPresenter: ObservableObject {
   @Published var timeOptions = [1]
   // Viewが参照するフラグ
   @Published var shouldShowFloatingBottomSheet = false
-  // Routerインスタンス
-  let router: TimeSelectionRouter
-  // イニシャライザでRouterを注入
-  init(router: TimeSelectionRouter = TimeSelectionRouter()) {
-    self.router = router
+  init() {
     self.setupTimeOptions()
   }
   

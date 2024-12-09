@@ -12,20 +12,26 @@ struct TimeSelectionView: View {
   var body: some View {
     NavigationStack {
       GeometryReader { geometry in
-        gradientBackground(gp: geometry)
-        // time の配列の要素自身をidとして使うときに\.selfというように記載する
+        let hm = geometry.size.width / 375
+        let vm = geometry.size.height / 667
+        let multiplier = abs(hm - 1) < abs(vm - 1) ? hm : vm
+        gradientBackground(gp: geometry, multiplier: multiplier)
         List {
           ForEach (presenter.timeOptions, id: \.self) { time in
-            TimeOptionCell(time: time)
+            HStack {
+              Spacer()
+              TimeOptionCell(time: time)
+                .padding(.vertical, 23 * multiplier) // セル間のスペース（46 / 2）
+              Spacer()
+            }
             // Listの背景色を透明に
-              .listRowBackground(Color.clear)
-              .listRowSeparator(.hidden) // セル間の線を非表示
-              .padding(.vertical, 23) // セル間のスペース（46 / 2）
+            .listRowBackground(Color.clear)
+            .listRowSeparator(.hidden) // セル間の線を非表示
           }
         }
+        .scrollDisabled(true)
         .listStyle(PlainListStyle()) // スタイルを明示的に設定
-        .padding(.top, 86)
-        .padding(.horizontal, 80)
+        .padding(.top, 86 * multiplier)
         .onAppear(perform: {
           presenter.setupTimeOptions()
           presenter.checkFloatingSheetStatus()
@@ -44,13 +50,13 @@ struct TimeSelectionView: View {
 
 // MARK: Private
 private extension TimeSelectionView {
-  func gradientBackground(gp: GeometryProxy) -> some View {
+  func gradientBackground(gp: GeometryProxy, multiplier: CGFloat) -> some View {
     LinearGradient(
       gradient: Gradient(stops: [
-        .init(color: Color(hex: "#E7E4E4") ?? .clear, location: 0.0),
-        .init(color: Color(hex: "#D5D0D0") ?? .clear, location: 0.53),
-        .init(color: (Color(hex: "#DAD2D2") ?? .clear).opacity(0.81), location: 0.62),
-        .init(color: (Color(hex: "#B6B0B0") ?? .clear).opacity(0.72), location: 1.0)
+        .init(color: Color(hex: "#E7E4E4") ?? .clear, location: 0.0 * multiplier),
+        .init(color: Color(hex: "#D5D0D0") ?? .clear, location: 0.53 * multiplier),
+        .init(color: (Color(hex: "#DAD2D2") ?? .clear).opacity(0.81), location: 0.62 * multiplier),
+        .init(color: (Color(hex: "#B6B0B0") ?? .clear).opacity(0.72), location: 1.0 * multiplier)
       ]),
       startPoint: .top,
       endPoint: .bottom
@@ -72,7 +78,7 @@ struct TimeOptionCell: View {
       .font(.custom("IBM Plex Mono", size: 20))
       .foregroundColor(.black)
       .multilineTextAlignment(.center)
-      .shadow(color: Color.black.opacity(0.25), radius: 4, x: 0, y: 4)
+      .shadow(color: Color(hex: "#FDF3F3") ?? .clear.opacity(0.25), radius: 4, x: -4, y: -4)
       .background {
         NavigationLink(destination: TimerRouter.initializeTimerModule(with: time).background(.white)) {
           EmptyView()
