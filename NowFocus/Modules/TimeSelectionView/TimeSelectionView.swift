@@ -80,6 +80,7 @@ struct TimeOptionCell: View {
       .opacity(0)
       
       Text("\(time) 分")
+        .shadow(color: .black.opacity(0.5), radius: 2, x: 0, y: 4)
         .frame(width: 176, height: 60)
         .background(isPressed ? Color.gray : Color(hex: "#E3DDDD"))
         .cornerRadius(10)
