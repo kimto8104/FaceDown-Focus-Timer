@@ -69,22 +69,46 @@ private extension TimeSelectionView {
 
 struct TimeOptionCell: View {
   let time: Int
+  @State private var isPressed = false
+  @State private var navigate: Bool = false
   var body: some View {
-    Text("\(time) 分")
-      .frame(width: 176, height: 60)
-      .background(Color(hex: "#E3DDDD"))
+    ZStack {
+      // NavigationLinkのvalueにOptional Intを使用
+      NavigationLink(destination:  TimerRouter.initializeTimerModule(with: time), isActive: $navigate, label: {
+        EmptyView()
+      })
+      .opacity(0)
+      
+      Text("\(time) 分")
+        .frame(width: 176, height: 60)
+        .background(isPressed ? Color.gray : Color(hex: "#E3DDDD"))
+        .cornerRadius(10)
+        .shadow(color: Color.black.opacity(0.2), radius: 4, x: 10, y: 10)
+        .font(.custom("IBM Plex Mono", size: 20))
+        .foregroundColor(.black)
+        .multilineTextAlignment(.center)
+        .shadow(color: Color(hex: "#FDF3F3")?.opacity(0.25) ?? .clear, radius: 4, x: -4, y: -4)
+        .scaleEffect(isPressed ? 0.95 : 1.0)
+        .animation(.spring(response: 0.3, dampingFraction: 0.5), value: isPressed)
+        .onTapGesture {
+          isPressed = true
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            isPressed = false
+            navigate = true // 遷移先の値を設定
+          }
+        }
+    }
+    .buttonStyle(PlainButtonStyle()) // 見た目をそのまま
+  }
+}
+
+struct TimeOptionCellButtonStyle: ButtonStyle {
+  func makeBody(configuration: Configuration) -> some View {
+    configuration.label
+      .background(configuration.isPressed ? Color.yellow : Color(hex: "#E3DDDD"))
       .cornerRadius(10)
       .shadow(color: Color.black.opacity(0.2), radius: 4, x: 10, y: 10)
-      .font(.custom("IBM Plex Mono", size: 20))
-      .foregroundColor(.black)
-      .multilineTextAlignment(.center)
-      .shadow(color: Color(hex: "#FDF3F3") ?? .clear.opacity(0.25), radius: 4, x: -4, y: -4)
-      .background {
-        NavigationLink(destination: TimerRouter.initializeTimerModule(with: time).background(.white)) {
-          EmptyView()
-        }
-        .opacity(0)
-      }
+      .shadow(color: Color(hex: "#FDF3F3")?.opacity(0.25) ?? .clear, radius: 4, x: -4, y: -4)
   }
 }
 
