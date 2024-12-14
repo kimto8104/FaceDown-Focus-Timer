@@ -20,7 +20,7 @@ struct TimeSelectionView: View {
           ForEach (presenter.timeOptions, id: \.self) { time in
             HStack {
               Spacer()
-              TimeOptionCell(time: time)
+              TimeOptionCell(timeOption: time)
                 .padding(.vertical, 23 * multiplier) // セル間のスペース（46 / 2）
               Spacer()
             }
@@ -28,6 +28,8 @@ struct TimeSelectionView: View {
             .listRowBackground(Color.clear)
             .listRowSeparator(.hidden) // セル間の線を非表示
           }
+          
+          
         }
         .scrollDisabled(true)
         .listStyle(PlainListStyle()) // スタイルを明示的に設定
@@ -68,48 +70,41 @@ private extension TimeSelectionView {
 }
 
 struct TimeOptionCell: View {
-  let time: Int
+  let baseColor = Color(hex: "#E3DDDD") ?? Color.clear
+  let timeOption: TimeOption
   @State private var isPressed = false
   @State private var navigate: Bool = false
   var body: some View {
     ZStack {
       // NavigationLinkのvalueにOptional Intを使用
-      NavigationLink(destination:  TimerRouter.initializeTimerModule(with: time), isActive: $navigate, label: {
+      NavigationLink(destination:  TimerRouter.initializeTimerModule(with: timeOption.time), isActive: $navigate, label: {
         EmptyView()
       })
       .opacity(0)
       
-      Text("\(time) 分")
+      Text("\(timeOption.time) 分")
         .shadow(color: .black.opacity(0.5), radius: 2, x: 0, y: 4)
         .frame(width: 176, height: 60)
-        .background(isPressed ? Color.gray : Color(hex: "#E3DDDD"))
+        .background(isPressed ? Color.gray : baseColor)
         .cornerRadius(10)
         .shadow(color: Color.black.opacity(0.2), radius: 4, x: 10, y: 10)
         .font(.custom("IBM Plex Mono", size: 20))
-        .foregroundColor(.black)
+        .foregroundColor(timeOption.isEnabled ? .black : .black.opacity(0.2))
         .multilineTextAlignment(.center)
         .shadow(color: Color(hex: "#FDF3F3")?.opacity(0.25) ?? .clear, radius: 4, x: -4, y: -4)
         .scaleEffect(isPressed ? 0.95 : 1.0)
         .animation(.spring(response: 0.3, dampingFraction: 0.5), value: isPressed)
         .onTapGesture {
-          isPressed = true
-          DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            isPressed = false
-            navigate = true // 遷移先の値を設定
+          if timeOption.isEnabled {
+            isPressed = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+              isPressed = false
+              navigate = true // 遷移先の値を設定
+            }
           }
         }
     }
     .buttonStyle(PlainButtonStyle()) // 見た目をそのまま
-  }
-}
-
-struct TimeOptionCellButtonStyle: ButtonStyle {
-  func makeBody(configuration: Configuration) -> some View {
-    configuration.label
-      .background(configuration.isPressed ? Color.yellow : Color(hex: "#E3DDDD"))
-      .cornerRadius(10)
-      .shadow(color: Color.black.opacity(0.2), radius: 4, x: 10, y: 10)
-      .shadow(color: Color(hex: "#FDF3F3")?.opacity(0.25) ?? .clear, radius: 4, x: -4, y: -4)
   }
 }
 

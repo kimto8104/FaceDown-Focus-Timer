@@ -14,8 +14,8 @@
             filePath = "NowFocus/Modules/TimeSelectionView/Presenter/TimeSelectionPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "checkFloatingSheetStatus()"
             landmarkType = "7">
          </BreakpointContent>
