@@ -33,7 +33,7 @@ struct TimeSelectionView: View {
         }
         .scrollDisabled(true)
         .listStyle(PlainListStyle()) // スタイルを明示的に設定
-        .padding(.top, 86 * multiplier)
+        .padding(.top, 60 * multiplier)
         .onAppear(perform: {
           presenter.setupTimeOptions()
           presenter.checkFloatingSheetStatus()
