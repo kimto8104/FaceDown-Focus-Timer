@@ -16,37 +16,36 @@ struct TimeSelectionView: View {
         let vm = geometry.size.height / 667
         let multiplier = abs(hm - 1) < abs(vm - 1) ? hm : vm
         gradientBackground(gp: geometry, multiplier: multiplier)
-        List {
-          ForEach (presenter.timeOptions, id: \.self) { time in
-            HStack {
-              Spacer()
-              TimeOptionCell(timeOption: time)
-                .padding(.vertical, 23 * multiplier) // セル間のスペース（46 / 2）
-              Spacer()
+          List {
+            ForEach (presenter.timeOptions, id: \.self) { time in
+              HStack {
+                Spacer()
+                TimeOptionCell(timeOption: time, multiplier: multiplier)
+                  .padding(.vertical, 23 * multiplier) // セル間のスペース（46 / 2）
+                Spacer()
+              }
+              // Listの背景色を透明に
+              .listRowBackground(Color.clear)
+              .listRowSeparator(.hidden) // セル間の線を非表示
             }
-            // Listの背景色を透明に
-            .listRowBackground(Color.clear)
-            .listRowSeparator(.hidden) // セル間の線を非表示
           }
-          
-          
-        }
-        .scrollDisabled(true)
-        .listStyle(PlainListStyle()) // スタイルを明示的に設定
-        .padding(.top, 60 * multiplier)
-        .onAppear(perform: {
-          presenter.setupTimeOptions()
-          presenter.checkFloatingSheetStatus()
-        })
+//          .background(.yellow)
+          .scrollDisabled(true)
+          .listStyle(PlainListStyle()) // スタイルを明示的に設定
+          .padding(.top, 40 * multiplier)
+          .onAppear(perform: {
+            presenter.setupTimeOptions()
+  //          presenter.checkFloatingSheetStatus()
+          })
       }
     }
-    .floatingBottomSheet(isPresented: $presenter.shouldShowFloatingBottomSheet) {
-      FloatingBottomSheetView(title: "時間について", content: "時間はクリアするごとに増えます。そして毎日リセットされます", image: .init(content: "lightbulb.max.fill", tint: .red, foreground: .white), button1: .init(content: "Close", tint: .red, foreground: .white), button1Action: {
-        // Close Sheet
-        presenter.updateShouldShowFloatingBottomSheets(false)
-      })
-      .presentationDetents([.height(280)])
-    }
+//    .floatingBottomSheet(isPresented: $presenter.shouldShowFloatingBottomSheet) {
+//      FloatingBottomSheetView(title: "時間について", content: "時間はクリアするごとに増えます。そして毎日リセットされます", image: .init(content: "lightbulb.max.fill", tint: .red, foreground: .white), button1: .init(content: "Close", tint: .red, foreground: .white), button1Action: {
+//        // Close Sheet
+//        presenter.updateShouldShowFloatingBottomSheets(false)
+//      })
+//      .presentationDetents([.height(280)])
+//    }
   }
 }
 
@@ -72,6 +71,7 @@ private extension TimeSelectionView {
 struct TimeOptionCell: View {
   let baseColor = Color(hex: "#E3DDDD") ?? Color.clear
   let timeOption: TimeOption
+  let multiplier: CGFloat
   @State private var isPressed = false
   @State private var navigate: Bool = false
   var body: some View {
@@ -83,15 +83,15 @@ struct TimeOptionCell: View {
       .opacity(0)
       
       Text("\(timeOption.time) 分")
-        .shadow(color: .black.opacity(0.5), radius: 2, x: 0, y: 4)
-        .frame(width: 176, height: 60)
+        .shadow(color: .black.opacity(0.5), radius: 2 * multiplier, x: 0, y: 4 * multiplier)
+        .frame(width: 176 * multiplier, height: 60 * multiplier)
         .background(isPressed ? Color.gray : baseColor)
-        .cornerRadius(10)
-        .shadow(color: Color.black.opacity(0.2), radius: 4, x: 10, y: 10)
-        .font(.custom("IBM Plex Mono", size: 20))
+        .cornerRadius(10 * multiplier)
+        .shadow(color: Color.black.opacity(0.2), radius: 4 * multiplier, x: 10 * multiplier, y: 10 * multiplier)
+        .font(.custom("IBM Plex Mono", size: 20 * multiplier))
         .foregroundColor(timeOption.isEnabled ? .black : .black.opacity(0.2))
         .multilineTextAlignment(.center)
-        .shadow(color: Color(hex: "#FDF3F3")?.opacity(0.25) ?? .clear, radius: 4, x: -4, y: -4)
+        .shadow(color: Color(hex: "#FDF3F3")?.opacity(0.25) ?? .clear, radius: 4 * multiplier, x: -4 * multiplier, y: -4 * multiplier)
         .scaleEffect(isPressed ? 0.95 : 1.0)
         .animation(.spring(response: 0.3, dampingFraction: 0.5), value: isPressed)
         .onTapGesture {

@@ -81,10 +81,10 @@ extension UserDefaultManager {
   }
   
   // FloatingBottomSheetが一度表示されているかどうか？
-  static var isFloatingBottomSheetShown: Bool {
-    get { return boolForKey(#function) }
-    set { setBool(newValue, forKey: #function) }
-  }
+//  static var isFloatingBottomSheetShown: Bool {
+//    get { return boolForKey(#function) }
+//    set { setBool(newValue, forKey: #function) }
+//  }
 }
 
 
