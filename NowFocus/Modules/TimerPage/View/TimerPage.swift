@@ -20,7 +20,7 @@ struct TimerPage<T: TimerPresenterProtocol>: View {
       let multiplier = abs(hm - 1) < abs(vm - 1) ? hm : vm
       GradientBackgroundUtil.gradientBackground(size: gp.size, multiplier: multiplier)
       VStack(spacing: 20 * multiplier) {
-        instructionText(multiplier: multiplier)
+        instructionText(gp: gp, multiplier: multiplier)
         circleTimer(multiplier: multiplier, time: presenter.time)
       }
       .position(x: gp.size.width / 2, y: gp.size.height / 2)
@@ -81,10 +81,10 @@ extension TimerPage {
     }
   }
   
-  func instructionText(multiplier: CGFloat) -> some View {
+  func instructionText(gp: GeometryProxy, multiplier: CGFloat) -> some View {
     Text("画面を下向きにしてタイマーを開始")
       .shadow(color: .black.opacity(0.5), radius: 2 * multiplier, x: 0, y: 4 * multiplier)
-      .frame(width: .infinity, height: 60 * multiplier)
+      .frame(width: gp.size.width, height: 60 * multiplier)
       .shadow(color: Color.black.opacity(0.2), radius: 4 * multiplier, x: 10 * multiplier, y: 10 * multiplier)
       .font(.custom("IBM Plex Mono", size: 20 * multiplier))
       .shadow(color: Color(hex: "#FDF3F3")?.opacity(0.25) ?? .clear, radius: 4 * multiplier, x: -4 * multiplier, y: -4 * multiplier)
