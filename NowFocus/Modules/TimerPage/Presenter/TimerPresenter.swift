@@ -35,8 +35,6 @@ protocol TimerPresenterProtocol: ObservableObject {
 class TimerPresenter: TimerPresenterProtocol {
   @Published var time: String = "01:00"
   @Published var isFaceDown = false
-  @Published var circleProgress: CGFloat = 0.00
-  @Published var percentageProgress: Int = 0
   @Published var timerState: TimerState = .start
   @Published var showAlertForPause = false
   

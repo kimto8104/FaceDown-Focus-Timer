@@ -15,7 +15,7 @@ struct TimeSelectionView: View {
         let hm = geometry.size.width / 375
         let vm = geometry.size.height / 667
         let multiplier = abs(hm - 1) < abs(vm - 1) ? hm : vm
-        gradientBackground(gp: geometry, multiplier: multiplier)
+        GradientBackgroundUtil.gradientBackground(size: geometry.size, multiplier: multiplier)
           List {
             ForEach (presenter.timeOptions, id: \.self) { time in
               HStack {
@@ -29,7 +29,6 @@ struct TimeSelectionView: View {
               .listRowSeparator(.hidden) // セル間の線を非表示
             }
           }
-//          .background(.yellow)
           .scrollDisabled(true)
           .listStyle(PlainListStyle()) // スタイルを明示的に設定
           .padding(.top, 40 * multiplier)
@@ -46,25 +45,6 @@ struct TimeSelectionView: View {
 //      })
 //      .presentationDetents([.height(280)])
 //    }
-  }
-}
-
-// MARK: Private
-private extension TimeSelectionView {
-  func gradientBackground(gp: GeometryProxy, multiplier: CGFloat) -> some View {
-    LinearGradient(
-      gradient: Gradient(stops: [
-        .init(color: Color(hex: "#E7E4E4") ?? .clear, location: 0.0 * multiplier),
-        .init(color: Color(hex: "#D5D0D0") ?? .clear, location: 0.53 * multiplier),
-        .init(color: (Color(hex: "#DAD2D2") ?? .clear).opacity(0.81), location: 0.62 * multiplier),
-        .init(color: (Color(hex: "#B6B0B0") ?? .clear).opacity(0.72), location: 1.0 * multiplier)
-      ]),
-      startPoint: .top,
-      endPoint: .bottom
-    )
-    .opacity(0.77)
-    .ignoresSafeArea() // 全画面に背景を適用
-    .frame(width: gp.size.width, height: gp.size.height)
   }
 }
 

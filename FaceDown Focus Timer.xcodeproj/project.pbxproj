@@ -20,6 +20,7 @@
 		FE5825DA2C4D4AFC007AB552 /* TimerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5825D92C4D4AFC007AB552 /* TimerInteractor.swift */; };
 		FE5825DC2C4D4EED007AB552 /* TimerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5825DB2C4D4EED007AB552 /* TimerRouter.swift */; };
 		FE6362D92C5B01EC009AB470 /* MotionManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6362D82C5B01EC009AB470 /* MotionManagerService.swift */; };
+		FE8A06BD2D0FA10100F9F206 /* GradientBackgroundUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8A06BC2D0FA10100F9F206 /* GradientBackgroundUtil.swift */; };
 		FE8EAA322A0000BC0040FB07 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8EAA312A0000BC0040FB07 /* Int+Extension.swift */; };
 		FE8EAA352A00C9910040FB07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8EAA342A00C9910040FB07 /* AppDelegate.swift */; };
 		FEB14FFC2C6B9F020011F32A /* MotionServiceWithInitialAttitude.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB14FFB2C6B9F020011F32A /* MotionServiceWithInitialAttitude.swift */; };
@@ -45,6 +46,7 @@
 		FE5825D92C4D4AFC007AB552 /* TimerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerInteractor.swift; sourceTree = "<group>"; };
 		FE5825DB2C4D4EED007AB552 /* TimerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerRouter.swift; sourceTree = "<group>"; };
 		FE6362D82C5B01EC009AB470 /* MotionManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManagerService.swift; sourceTree = "<group>"; };
+		FE8A06BC2D0FA10100F9F206 /* GradientBackgroundUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackgroundUtil.swift; sourceTree = "<group>"; };
 		FE8EAA312A0000BC0040FB07 /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		FE8EAA332A00C2DC0040FB07 /* NowFocus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NowFocus.entitlements; sourceTree = "<group>"; };
 		FE8EAA342A00C9910040FB07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				FE1100402CDBAF9200C833C1 /* UserDefaultManager.swift */,
+				FE8A06BC2D0FA10100F9F206 /* GradientBackgroundUtil.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				FE1100412CDBAFA200C833C1 /* UserDefaultManager.swift in Sources */,
 				FE1101442CEAABF100C833C1 /* FloatingBottomSheet.swift in Sources */,
 				FE4BF32C29BF54D00069FDD3 /* MainContentView.swift in Sources */,
+				FE8A06BD2D0FA10100F9F206 /* GradientBackgroundUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

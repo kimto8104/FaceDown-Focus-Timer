@@ -13,25 +13,17 @@ import CoreMotion
 struct TimerPage<T: TimerPresenterProtocol>: View {
   @Environment(\.dismiss) var dismiss
   @StateObject var presenter: T
-  
   var body: some View {
     GeometryReader { gp in
       let hm = gp.size.width / 375
       let vm = gp.size.height / 667
       let multiplier = abs(hm - 1) < abs(vm - 1) ? hm : vm
-      Color(hex: "282828")
-      VStack {
-        Spacer()
+      GradientBackgroundUtil.gradientBackground(size: gp.size, multiplier: multiplier)
+      VStack(spacing: 20 * multiplier) {
         instructionText(multiplier: multiplier)
-        Spacer()
-          .frame(height: 40 * multiplier)
-        if presenter.timerState != .completed {
-          flipCard(multiplier: multiplier)
-            .transition(.opacity) // フェードアウトのためのトランジション
-        }
-        Spacer()
+        circleTimer(multiplier: multiplier, time: presenter.time)
       }
-      .frame(width: gp.size.width, height: gp.size.height)
+      .position(x: gp.size.width / 2, y: gp.size.height / 2)
     }
     .onAppear(perform: {
       presenter.startMonitoringDeviceMotion()
@@ -48,7 +40,7 @@ struct TimerPage<T: TimerPresenterProtocol>: View {
       }, label: {
         Image(systemName: "chevron.backward")
         Text("戻る")
-          .foregroundStyle(.white)
+          .foregroundStyle(.black)
       })
     )
     .alert("集中をやめますか？", isPresented: $presenter.showAlertForPause) {
@@ -71,36 +63,31 @@ struct TimerPage<T: TimerPresenterProtocol>: View {
   } // body ここまで
 }
 
-// MARK: Instruction Text
+// MARK: Private
 extension TimerPage {
-  func instructionText(multiplier: CGFloat) -> some View {
-    if presenter.timerState == .completed {
-      Text("\(presenter.time.description) 分集中完了しました！")
-        .font(.custom("HiraginoSans-W6", size: 20 * multiplier))
-        .foregroundStyle(.white)
-    } else {
-      Text(presenter.isFaceDown ? "画面を上向きにしてタイマーを停止" : "画面を下向きにしてタイマーを開始")
-        .font(.custom("HiraginoSans-W6", size: 20 * multiplier))
-        .foregroundStyle(.white)
+  func circleTimer(multiplier: CGFloat, time: String) -> some View {
+    ZStack {
+      // 背景用のCircleに影をつける
+      Circle()
+        .fill(Color(hex: "#D1CDCD")!).opacity(0.42)
+        .shadow(color: .black.opacity(0.4), radius: 4 * multiplier, x: 10 * multiplier, y: 10 * multiplier)
+        .shadow(color: Color(hex: "#FFFCFC")!.opacity(0.3), radius: 10, x: -10, y: -5)
+        .frame(width: 240 * multiplier, height: 240 * multiplier)
+      Text(time)
+        .foregroundColor(.black)
+        .shadow(color: .black.opacity(0.5), radius: 2 * multiplier, x: 0, y: 4 * multiplier)
+        .font(.custom("IBM Plex Mono", size: 44 * multiplier))
+        .shadow(color: Color(hex: "#FDF3F3")?.opacity(0.25) ?? .clear, radius: 4 * multiplier, x: -4 * multiplier, y: -4 * multiplier)
     }
   }
-}
-
-// MARK: Flip Card
-extension TimerPage {
-  func flipCard(multiplier: CGFloat) -> some View {
-    VStack {
-      Text(presenter.time)
-        .font(.custom("HiraginoSans-W6", size: 40 * multiplier))
-        .foregroundStyle(.white)
-      Image("smartPhone")
-        .resizable()
-        .frame(width: 147 * multiplier, height: 185 * multiplier)
-    }
-    .frame(width: 266 * multiplier, height: 360 * multiplier)
-    .background(Color(hex: "D9D9D9").opacity(0.23))
-    .clipShape(RoundedRectangle(cornerRadius: 20))
-    
+  
+  func instructionText(multiplier: CGFloat) -> some View {
+    Text("画面を下向きにしてタイマーを開始")
+      .shadow(color: .black.opacity(0.5), radius: 2 * multiplier, x: 0, y: 4 * multiplier)
+      .frame(width: .infinity, height: 60 * multiplier)
+      .shadow(color: Color.black.opacity(0.2), radius: 4 * multiplier, x: 10 * multiplier, y: 10 * multiplier)
+      .font(.custom("IBM Plex Mono", size: 20 * multiplier))
+      .shadow(color: Color(hex: "#FDF3F3")?.opacity(0.25) ?? .clear, radius: 4 * multiplier, x: -4 * multiplier, y: -4 * multiplier)
   }
 }
 
