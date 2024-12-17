@@ -83,7 +83,7 @@ class TimerInteractor: TimerInteractorProtocol {
       } else {
         // タイマー完了
         self.updateCompletedTimeStatus()
-        self.triggerVibration()
+//        self.triggerVibration()
         self.resetTimer()
         self.presenter.updateTimerState(timerState: .completed)
         return
