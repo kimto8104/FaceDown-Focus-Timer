@@ -13,6 +13,7 @@ import CoreMotion
 struct TimerPage<T: TimerPresenterProtocol>: View {
   @Environment(\.dismiss) var dismiss
   @StateObject var presenter: T
+  @State private var progress: CGFloat = 0
   var body: some View {
     GeometryReader { gp in
       let hm = gp.size.width / 375
@@ -22,11 +23,24 @@ struct TimerPage<T: TimerPresenterProtocol>: View {
       VStack(spacing: 20 * multiplier) {
         instructionText(gp: gp, multiplier: multiplier)
         circleTimer(multiplier: multiplier, time: presenter.time)
+          .overlay(
+            Circle()
+              .stroke(.clear, lineWidth: 2)
+              .overlay(Circle()
+                .trim(from: max(0, progress - 0.1), to: progress)
+                .stroke(
+                  LinearGradient(colors: [.white, .black ], startPoint: .leading, endPoint: .trailing),
+                  style: StrokeStyle(lineWidth: 4, lineCap: .round)
+                ).blur(radius: 2))
+          )
       }
       .position(x: gp.size.width / 2, y: gp.size.height / 2)
     }
     .onAppear(perform: {
       presenter.startMonitoringDeviceMotion()
+      withAnimation(.linear(duration: 6).repeatForever(autoreverses: false)) {
+        progress = 1
+      }
     })
     
     .ignoresSafeArea()
@@ -83,11 +97,11 @@ extension TimerPage {
   
   func instructionText(gp: GeometryProxy, multiplier: CGFloat) -> some View {
     Text("画面を下向きにしてタイマーを開始")
-      .shadow(color: .black.opacity(0.5), radius: 2 * multiplier, x: 0, y: 4 * multiplier)
-      .frame(width: gp.size.width, height: 60 * multiplier)
-      .shadow(color: Color.black.opacity(0.2), radius: 4 * multiplier, x: 10 * multiplier, y: 10 * multiplier)
+      .frame(width: gp.size.width * 0.9, height: 60 * multiplier)
+      .padding(.horizontal, 10)
       .font(.custom("IBM Plex Mono", size: 20 * multiplier))
-      .shadow(color: Color(hex: "#FDF3F3")?.opacity(0.25) ?? .clear, radius: 4 * multiplier, x: -4 * multiplier, y: -4 * multiplier)
+      .clipShape(RoundedRectangle(cornerRadius: 20))
+      
   }
 }
 
