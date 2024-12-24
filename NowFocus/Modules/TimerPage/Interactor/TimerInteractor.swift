@@ -31,6 +31,10 @@ class TimerInteractor: TimerInteractorProtocol {
   private var timer: Timer?
   private var remainingTime: TimeInterval
   private let initialTime: TimeInterval
+  
+  private var extraFocusStartTime: Date? // タイマー完了後の計測開始時刻
+  private var extraFocusTime: TimeInterval = 0 // 追加集中時間
+
   private var vibrationTimer: Timer?
   private var isVibrating: Bool = false
   
@@ -67,8 +71,10 @@ class TimerInteractor: TimerInteractorProtocol {
         self.pauseTimer()
       } else {
         // 画面が上向きでタイマーを完了した
+        self.stopExtraFocusCalculation()
         self.stopVibration()
         self.stopMonitoringDeviceMotion()
+        self.presenter.showTotalFocusTime(extraFocusTime: self.extraFocusTime)
         self.pauseTimer()
       }
     }
@@ -83,13 +89,23 @@ class TimerInteractor: TimerInteractorProtocol {
       } else {
         // タイマー完了
         self.updateCompletedTimeStatus()
-//        self.triggerVibration()
+        self.startExtraFocusCalculation() // 追加集中時間計測を開始
         self.resetTimer()
         self.presenter.updateTimerState(timerState: .completed)
         return
       }
       self.presenter.updateTime(time: remainingTime)
     })
+  }
+  
+  private func startExtraFocusCalculation() {
+    extraFocusStartTime = Date()
+  }
+  
+  private func stopExtraFocusCalculation() {
+    guard let startTime = extraFocusStartTime else { return }
+    extraFocusTime += Date().timeIntervalSince(startTime)
+    extraFocusStartTime = nil
   }
   
   private func updateCompletedTimeStatus() {

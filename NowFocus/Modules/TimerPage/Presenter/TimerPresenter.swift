@@ -10,6 +10,7 @@ enum TimerState: String {
   case start
   case paused
   case completed
+  case continueFocusing
 }
 
 // MARK: Protocol
@@ -18,6 +19,7 @@ protocol TimerPresenterProtocol: ObservableObject {
   var router: TimerRouterProtocol? { get set }
   
   var time: String { get }
+  var totalFocusTime: String? { get }
   var isFaceDown: Bool { get }
   var timerState: TimerState { get }
   var showAlertForPause: Bool { get set }
@@ -25,7 +27,7 @@ protocol TimerPresenterProtocol: ObservableObject {
   func stopVibration()
   func updateTime(time: TimeInterval)
   func updateTimerState(timerState: TimerState)
-  
+  func showTotalFocusTime(extraFocusTime: TimeInterval)
   // MotionManager
   func updateIsFaceDown(isFaceDown: Bool)
   func startMonitoringDeviceMotion()
@@ -34,6 +36,7 @@ protocol TimerPresenterProtocol: ObservableObject {
 
 class TimerPresenter: TimerPresenterProtocol {
   @Published var time: String = "01:00"
+  @Published var totalFocusTime: String?
   @Published var isFaceDown = false
   @Published var timerState: TimerState = .start
   @Published var showAlertForPause = false
@@ -73,6 +76,31 @@ class TimerPresenter: TimerPresenterProtocol {
   func updateIsFaceDown(isFaceDown: Bool) {
     self.isFaceDown = isFaceDown
   }
+  
+  func showTotalFocusTime(extraFocusTime: TimeInterval) {
+    // 現在の time を TimeInterval に変換
+    let timeComponents = self.time.split(separator: ":").map { Int($0) ?? 0 }
+    let currentTimeInSeconds = (timeComponents[0] * 60) + timeComponents[1]
+    
+    // 合計時間を計算
+    let totalTimeInSeconds = currentTimeInSeconds + Int(extraFocusTime)
+    
+    // 合計時間をフォーマット
+    let hours = totalTimeInSeconds / 3600
+    let minutes = (totalTimeInSeconds % 3600) / 60
+    let seconds = totalTimeInSeconds % 60
+    
+    if hours > 0 {
+      self.totalFocusTime = "\(hours)時間\(minutes)分\(seconds)秒"
+    } else if minutes > 0 {
+      self.totalFocusTime = "\(minutes)分\(seconds)秒"
+    } else {
+      self.totalFocusTime = "\(seconds)秒"
+    }
+    
+    print("合計集中時間: \(self.totalFocusTime!)")
+  }
+  
   
   func startMonitoringDeviceMotion() {
     interactor?.startMonitoringDeviceMotion()
