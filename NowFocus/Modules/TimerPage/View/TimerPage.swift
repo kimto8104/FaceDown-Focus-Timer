@@ -45,7 +45,6 @@ struct TimerPage<T: TimerPresenterProtocol>: View {
             .transition(.blurReplace())
           completeButton(gp: gp, multiplier: multiplier)
         }
-        
       }
       .position(x: gp.size.width / 2, y: gp.size.height / 2)
     }
@@ -178,30 +177,14 @@ extension TimerPage {
         .foregroundStyle(.black)
         .font(.custom("IBM Plex Mono", size: 20 * multiplier))
         .multilineTextAlignment(.center)
+        .frame(width: 176 * multiplier, height: 60 * multiplier)
     }
     
     .frame(width: 176 * multiplier, height: 60 * multiplier)
     .background(Color(hex: "E8E4E4")!.opacity(0.42))
     .cornerRadius(10 * multiplier)
     .shadow(color: .black.opacity(0.7), radius: 2, x: 6 * multiplier, y: 6 * multiplier)
-    
   }
-}
-
-// MARK: Status Text
-extension TimerPage {
-  func statusText() -> some View {
-    // status のTextを表示する　、Pause, Working, Completeの３つ
-    Text(presenter.timerState == .completed ? "Completed" : "Pause")
-  }
-}
-
-// MARK: - Model
-class TimerPageVM: ObservableObject {
-  // 上向か下向きかの判定関連
-  @Published fileprivate var isFaceUp: Bool = true
-  fileprivate var orientationObserver: NSObjectProtocol? = nil
-  let notification = UIDevice.orientationDidChangeNotification
 }
 
 struct TimerPage_Previews: PreviewProvider {
