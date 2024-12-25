@@ -21,7 +21,7 @@ struct TimeSelectionView: View {
               HStack {
                 Spacer()
                 TimeOptionCell(timeOption: time, multiplier: multiplier)
-                  .padding(.vertical, 23 * multiplier) // セル間のスペース（46 / 2）
+                  .padding(.vertical, 18 * multiplier) // セル間のスペース（46 / 2）
                 Spacer()
               }
               // Listの背景色を透明に
