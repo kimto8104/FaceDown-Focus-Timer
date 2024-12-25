@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TabBarView: View {
   @State var selectedTab: TabIcon = .Home
-  @State var Xoffset = 2 * 70.0
+  @State var Xoffset = 0.0
   var multiplier: CGFloat
   var body: some View {
     HStack {
