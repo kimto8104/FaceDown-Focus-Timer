@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TabBarView: View {
-  @State var selectedTab: TabIcon = .Home
+  @Binding var selectedTab: TabIcon
   @State var Xoffset = 0.0
   var multiplier: CGFloat
   var body: some View {
@@ -60,5 +60,6 @@ enum TabIcon: String {
 }
 
 #Preview {
-  TabBarView(multiplier: 1)
+  let selectedTab = Binding<TabIcon>.constant(.Home)
+  TabBarView(selectedTab: selectedTab, multiplier: 1)
 }

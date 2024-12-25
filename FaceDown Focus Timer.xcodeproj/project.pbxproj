@@ -16,6 +16,7 @@
 		FE4BF32C29BF54D00069FDD3 /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4BF32B29BF54D00069FDD3 /* MainContentView.swift */; };
 		FE4D27AE2D16AFAB00962E92 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4D27AD2D16AFAB00962E92 /* TestView.swift */; };
 		FE4D27B12D1B832D00962E92 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4D27B02D1B832D00962E92 /* TabBar.swift */; };
+		FE4D27B42D1C3D6000962E92 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4D27B32D1C3D6000962E92 /* History.swift */; };
 		FE54F1AB2C2082D30029DCDD /* Warning-Siren04-02(Low-Long).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FE54F1AA2C2082D30029DCDD /* Warning-Siren04-02(Low-Long).mp3 */; };
 		FE54F1AE2C32EBCA0029DCDD /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE54F1AD2C32EBCA0029DCDD /* TimerManager.swift */; };
 		FE5825D82C4D48CF007AB552 /* TimerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5825D72C4D48CF007AB552 /* TimerPresenter.swift */; };
@@ -44,6 +45,7 @@
 		FE4BF32B29BF54D00069FDD3 /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
 		FE4D27AD2D16AFAB00962E92 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		FE4D27B02D1B832D00962E92 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		FE4D27B32D1C3D6000962E92 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		FE54F1AA2C2082D30029DCDD /* Warning-Siren04-02(Low-Long).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Warning-Siren04-02(Low-Long).mp3"; sourceTree = "<group>"; };
 		FE54F1AD2C32EBCA0029DCDD /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		FE5825D72C4D48CF007AB552 /* TimerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPresenter.swift; sourceTree = "<group>"; };
@@ -118,6 +120,14 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		FE4D27B22D1C3D4C00962E92 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				FE4D27B32D1C3D6000962E92 /* History.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
 		FE54F1A82C1B26290029DCDD /* TimeSelectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +159,7 @@
 		FE5825D02C4D4843007AB552 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				FE4D27B22D1C3D4C00962E92 /* History */,
 				FE4D27AF2D1B832100962E92 /* TabBar */,
 				FE1101422CEAABE000C833C1 /* FloatingBottomSheet */,
 				FE11013D2CE9728B00C833C1 /* Alert */,
@@ -378,6 +389,7 @@
 				FE5825D82C4D48CF007AB552 /* TimerPresenter.swift in Sources */,
 				FE5825DA2C4D4AFC007AB552 /* TimerInteractor.swift in Sources */,
 				FE6362D92C5B01EC009AB470 /* MotionManagerService.swift in Sources */,
+				FE4D27B42D1C3D6000962E92 /* History.swift in Sources */,
 				FEB840562998B6F900B945BA /* NowFocusApp.swift in Sources */,
 				FE5825DC2C4D4EED007AB552 /* TimerRouter.swift in Sources */,
 				FE8EAA322A0000BC0040FB07 /* Int+Extension.swift in Sources */,

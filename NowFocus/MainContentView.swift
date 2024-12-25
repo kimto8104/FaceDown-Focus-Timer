@@ -21,7 +21,7 @@ struct MainContentView: View {
       
       VStack {
         Spacer()
-        TabBarView(selectedTab: selectedTab, multiplier: multiplier)
+        TabBarView(selectedTab: $selectedTab, multiplier: multiplier)
         Spacer()
           .frame(height: 10 * multiplier)
       }
@@ -45,7 +45,7 @@ struct TabContentView: View {
     case .Home:
       TimeSelectionView(presenter: TimeSelectionPresenter()) // 現在のビュー
     case .Clock:
-      TimeSelectionView(presenter: TimeSelectionPresenter()) // 現在のビュー
+      History()
     }
   }
 }
