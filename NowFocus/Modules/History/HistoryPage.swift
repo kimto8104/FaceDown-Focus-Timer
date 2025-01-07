@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct History: View {
+struct HistoryPage: View {
   var body: some View {
     GeometryReader { gp in
       let hm = gp.size.width / 375
@@ -19,5 +19,5 @@ struct History: View {
 }
 
 #Preview {
-  History()
+  HistoryPage()
 }

@@ -16,7 +16,7 @@
 		FE4BF32C29BF54D00069FDD3 /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4BF32B29BF54D00069FDD3 /* MainContentView.swift */; };
 		FE4D27AE2D16AFAB00962E92 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4D27AD2D16AFAB00962E92 /* TestView.swift */; };
 		FE4D27B12D1B832D00962E92 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4D27B02D1B832D00962E92 /* TabBar.swift */; };
-		FE4D27B42D1C3D6000962E92 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4D27B32D1C3D6000962E92 /* History.swift */; };
+		FE4D27B42D1C3D6000962E92 /* HistoryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4D27B32D1C3D6000962E92 /* HistoryPage.swift */; };
 		FE54F1AB2C2082D30029DCDD /* Warning-Siren04-02(Low-Long).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FE54F1AA2C2082D30029DCDD /* Warning-Siren04-02(Low-Long).mp3 */; };
 		FE54F1AE2C32EBCA0029DCDD /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE54F1AD2C32EBCA0029DCDD /* TimerManager.swift */; };
 		FE5825D82C4D48CF007AB552 /* TimerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5825D72C4D48CF007AB552 /* TimerPresenter.swift */; };
@@ -45,7 +45,7 @@
 		FE4BF32B29BF54D00069FDD3 /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
 		FE4D27AD2D16AFAB00962E92 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		FE4D27B02D1B832D00962E92 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
-		FE4D27B32D1C3D6000962E92 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
+		FE4D27B32D1C3D6000962E92 /* HistoryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPage.swift; sourceTree = "<group>"; };
 		FE54F1AA2C2082D30029DCDD /* Warning-Siren04-02(Low-Long).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Warning-Siren04-02(Low-Long).mp3"; sourceTree = "<group>"; };
 		FE54F1AD2C32EBCA0029DCDD /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		FE5825D72C4D48CF007AB552 /* TimerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPresenter.swift; sourceTree = "<group>"; };
@@ -123,7 +123,9 @@
 		FE4D27B22D1C3D4C00962E92 /* History */ = {
 			isa = PBXGroup;
 			children = (
-				FE4D27B32D1C3D6000962E92 /* History.swift */,
+				FE9ADB652D2D4CFE0036EA85 /* View */,
+				FE9ADB642D2D4CF40036EA85 /* Entity */,
+				FE4D27B32D1C3D6000962E92 /* HistoryPage.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -228,6 +230,20 @@
 				FE4176C72C9DA72500D671ED /* Color+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		FE9ADB642D2D4CF40036EA85 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		FE9ADB652D2D4CFE0036EA85 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		FEB840492998B6F800B945BA = {
@@ -389,7 +405,7 @@
 				FE5825D82C4D48CF007AB552 /* TimerPresenter.swift in Sources */,
 				FE5825DA2C4D4AFC007AB552 /* TimerInteractor.swift in Sources */,
 				FE6362D92C5B01EC009AB470 /* MotionManagerService.swift in Sources */,
-				FE4D27B42D1C3D6000962E92 /* History.swift in Sources */,
+				FE4D27B42D1C3D6000962E92 /* HistoryPage.swift in Sources */,
 				FEB840562998B6F900B945BA /* NowFocusApp.swift in Sources */,
 				FE5825DC2C4D4EED007AB552 /* TimerRouter.swift in Sources */,
 				FE8EAA322A0000BC0040FB07 /* Int+Extension.swift in Sources */,
