@@ -7,12 +7,15 @@
 
 import SwiftUI
 import UserNotifications
+import SwiftData
+
 @main
 struct NowFocusApp: App {
   @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
   var body: some Scene {
     WindowGroup {
       MainContentView()
+        .modelContainer(for: [FocusHistory.self]) // SwiftDataのモデルコンテナをビュー階層に統合
         .environment(\.colorScheme, .light) // ライトモードを強制
         .onAppear {
           // アプリ起動時にリセットを確認

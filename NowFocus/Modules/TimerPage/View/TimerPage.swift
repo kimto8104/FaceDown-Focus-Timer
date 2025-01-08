@@ -8,10 +8,12 @@
 import SwiftUI
 import AVFoundation
 import CoreMotion
+import SwiftData
 
 // MARK: - View
 struct TimerPage<T: TimerPresenterProtocol>: View {
   @Environment(\.dismiss) var dismiss
+  @Environment(\.modelContext) private var modelContext
   @StateObject var presenter: T
   @State private var progress: CGFloat = 0
   @State private var showResultView: Bool = false
@@ -54,8 +56,22 @@ struct TimerPage<T: TimerPresenterProtocol>: View {
         progress = 1
       }
     })
-    .onChange(of: presenter.isFaceDown, { _, newValue in
+    .onChange(of: presenter.isFaceDown,{ _, newValue in
       if newValue == false && presenter.timerState == .completed {
+        // SwiftData にFocusHistoryを保存
+        if let startDate = presenter.startDate , let totalFocusTimeInTimeInterval = presenter.totalFocusTimeInTimeInterval {
+          let focusHistory = FocusHistory(startDate: startDate, duration: totalFocusTimeInTimeInterval)
+          modelContext.insert(focusHistory)
+          do {
+            // SwiftDataに変更があれば保存
+            if modelContext.hasChanges {
+              try modelContext.save()
+            }
+          } catch {
+            print("Failed to save SwiftData at \(#line) Fix It")
+          }
+        }
+        
         //画面が上向きで集中が完了してるなら結果画面を表示する
         withAnimation(.easeInOut(duration: 1.0)) {
           showResultView = true

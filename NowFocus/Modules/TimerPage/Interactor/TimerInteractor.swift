@@ -72,6 +72,7 @@ class TimerInteractor: TimerInteractorProtocol {
       } else {
         // 画面が上向きでタイマーを完了した
         self.stopExtraFocusCalculation()
+        self.presenter.saveTotalFocusTimeInTimeInterval(extraFocusTime: self.extraFocusTime)
         self.stopVibration()
         self.stopMonitoringDeviceMotion()
         self.presenter.showTotalFocusTime(extraFocusTime: self.extraFocusTime)
@@ -84,6 +85,7 @@ class TimerInteractor: TimerInteractorProtocol {
   func startTimer() {
     timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [weak self] _ in
       guard let self else { return }
+      self.presenter.saveStartDate(Date())
       if self.remainingTime > 0 {
         self.remainingTime -= 1
       } else {

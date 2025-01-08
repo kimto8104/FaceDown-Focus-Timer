@@ -23,15 +23,22 @@ protocol TimerPresenterProtocol: ObservableObject {
   var isFaceDown: Bool { get }
   var timerState: TimerState { get }
   var showAlertForPause: Bool { get set }
+  var startDate: Date? { get }
+  var totalFocusTimeInTimeInterval: TimeInterval? { get }
+  
   func resetTimer()
   func stopVibration()
   func updateTime(time: TimeInterval)
   func updateTimerState(timerState: TimerState)
   func showTotalFocusTime(extraFocusTime: TimeInterval)
+  // SwiftDataに保存するためのメソッド
+  func saveTotalFocusTimeInTimeInterval(extraFocusTime: TimeInterval)
+  func saveStartDate(_ date: Date)
   // MotionManager
   func updateIsFaceDown(isFaceDown: Bool)
   func startMonitoringDeviceMotion()
   func stopMonitoringDeviceMotion()
+  
 }
 
 class TimerPresenter: TimerPresenterProtocol {
@@ -40,6 +47,10 @@ class TimerPresenter: TimerPresenterProtocol {
   @Published var isFaceDown = false
   @Published var timerState: TimerState = .start
   @Published var showAlertForPause = false
+  
+  var originalTime: TimeInterval?
+  var startDate: Date?
+  var totalFocusTimeInTimeInterval: TimeInterval?
   
   var interactor: TimerInteractorProtocol?
   var router: TimerRouterProtocol?
@@ -63,6 +74,7 @@ class TimerPresenter: TimerPresenterProtocol {
   
   // 00:50のフォーマットに変える
   func updateTime(time: TimeInterval) {
+    self.originalTime = time
     let minutes = Int(time) / 60
     let seconds = Int(time) % 60
     self.time =  String(format: "%02d:%02d", minutes, seconds)
@@ -99,6 +111,18 @@ class TimerPresenter: TimerPresenterProtocol {
     }
     
     print("合計集中時間: \(self.totalFocusTime!)")
+  }
+  
+  func saveTotalFocusTimeInTimeInterval(extraFocusTime: TimeInterval) {
+    if let originalTime = originalTime {
+      self.totalFocusTimeInTimeInterval = extraFocusTime + originalTime
+    } else {
+      print("failed to calculate total focus time in TimeInterval so failed to save SwiftData")
+    }
+  }
+  
+  func saveStartDate(_ date: Date) {
+    self.startDate = date
   }
   
   

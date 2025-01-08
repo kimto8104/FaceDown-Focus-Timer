@@ -127,7 +127,6 @@
 			children = (
 				FE9ADB652D2D4CFE0036EA85 /* View */,
 				FE9ADB642D2D4CF40036EA85 /* Entity */,
-				FE4D27B32D1C3D6000962E92 /* HistoryPage.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -245,6 +244,7 @@
 		FE9ADB652D2D4CFE0036EA85 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FE4D27B32D1C3D6000962E92 /* HistoryPage.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
