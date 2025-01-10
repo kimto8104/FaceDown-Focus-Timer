@@ -58,7 +58,7 @@ struct TimeOptionCell: View {
       .opacity(0)
       
       Text("\(timeOption.time) 分")
-        .shadow(color: .black.opacity(0.5), radius: 2 * multiplier, x: 0, y: 4 * multiplier)
+        .shadow(color: .black.opacity(0.2), radius: 2 * multiplier, x: 0, y: 4 * multiplier)
         .frame(width: 176 * multiplier, height: 60 * multiplier)
         .background(isPressed ? Color.gray : baseColor)
         .cornerRadius(10 * multiplier)
