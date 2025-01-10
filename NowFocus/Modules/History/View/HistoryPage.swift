@@ -21,15 +21,16 @@ struct HistoryPage: View {
       ZStack {
         GradientBackgroundUtil.gradientBackground(size: gp.size, multiplier: multiplier)
         VStack {
-          Text("端末を見ていなかった合計時間")
-            .font(.title)
-            .foregroundColor(.white)
+          Text("合計集中時間")
+            .foregroundColor(.black)
+            .shadow(color: .black.opacity(0.2), radius: 2 * multiplier, x: 0, y: 4 * multiplier)
+            .font(.custom("IBM Plex Mono", size: 24 * multiplier))
             .padding(.bottom, 10)
           
           Text(viewModel.totalDurationFormatted())
-            .font(.largeTitle)
-            .bold()
-            .foregroundColor(.white)
+            .foregroundColor(.black)
+            .shadow(color: .black.opacity(0.2), radius: 2 * multiplier, x: 0, y: 4 * multiplier)
+            .font(.custom("IBM Plex Mono", size: 44 * multiplier))
         }
       }
     }
