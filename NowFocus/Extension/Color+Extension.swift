@@ -27,7 +27,6 @@ extension Color {
     let r = Double((hexNumber & 0xFF0000) >> 16) / 255
     let g = Double((hexNumber & 0x00FF00) >> 8) / 255
     let b = Double(hexNumber & 0x0000FF) / 255
-    print("RGB: \(r), \(g), \(b)")
     // 初期化
     self.init(red: r, green: g, blue: b)
   }

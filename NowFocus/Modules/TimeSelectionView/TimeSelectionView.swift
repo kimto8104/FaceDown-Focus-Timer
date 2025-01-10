@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TimeSelectionView: View {
   @ObservedObject var presenter:TimeSelectionPresenter
+  @Binding var isTimerPageActive: Bool // タブ表示制御用のバインディング
   var body: some View {
     NavigationStack {
       GeometryReader { geometry in
@@ -20,7 +21,7 @@ struct TimeSelectionView: View {
             ForEach (presenter.timeOptions, id: \.self) { time in
               HStack {
                 Spacer()
-                TimeOptionCell(timeOption: time, multiplier: multiplier)
+                TimeOptionCell(timeOption: time, multiplier: multiplier, isTimerPageActive: $isTimerPageActive)
                   .padding(.vertical, 18 * multiplier) // セル間のスペース（46 / 2）
                 Spacer()
               }
@@ -33,18 +34,11 @@ struct TimeSelectionView: View {
           .listStyle(PlainListStyle()) // スタイルを明示的に設定
           .padding(.top, 40 * multiplier)
           .onAppear(perform: {
+            isTimerPageActive = false
             presenter.setupTimeOptions()
-  //          presenter.checkFloatingSheetStatus()
           })
       }
     }
-//    .floatingBottomSheet(isPresented: $presenter.shouldShowFloatingBottomSheet) {
-//      FloatingBottomSheetView(title: "時間について", content: "時間はクリアするごとに増えます。そして毎日リセットされます", image: .init(content: "lightbulb.max.fill", tint: .red, foreground: .white), button1: .init(content: "Close", tint: .red, foreground: .white), button1Action: {
-//        // Close Sheet
-//        presenter.updateShouldShowFloatingBottomSheets(false)
-//      })
-//      .presentationDetents([.height(280)])
-//    }
   }
 }
 
@@ -54,6 +48,7 @@ struct TimeOptionCell: View {
   let multiplier: CGFloat
   @State private var isPressed = false
   @State private var navigate: Bool = false
+  @Binding var isTimerPageActive: Bool
   var body: some View {
     ZStack {
       // NavigationLinkのvalueにOptional Intを使用
@@ -77,6 +72,7 @@ struct TimeOptionCell: View {
         .onTapGesture {
           if timeOption.isEnabled {
             isPressed = true
+            isTimerPageActive = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
               isPressed = false
               navigate = true // 遷移先の値を設定
@@ -90,6 +86,7 @@ struct TimeOptionCell: View {
 
 struct TimeSelectionView_Previews: PreviewProvider {
   static var previews: some View {
-    TimeSelectionView(presenter: TimeSelectionPresenter())
+    @Previewable @State var isTimerPageActive = true
+    TimeSelectionView(presenter: TimeSelectionPresenter(), isTimerPageActive: $isTimerPageActive)
   }
 }
