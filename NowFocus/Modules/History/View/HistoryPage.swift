@@ -9,24 +9,60 @@ import SwiftUI
 import SwiftData
 
 struct HistoryPage: View {
-  @Environment(\.modelContext) private var modelContext
   @Query(animation: .bouncy) private var allHistory: [FocusHistory]
+  @StateObject private var viewModel = HistoryViewModel()
   
   var body: some View {
-    List {
-      ForEach(allHistory) {
-        Text("ID: \($0.id.description)")
-        Text("Start Date: \($0.startDate.description)")
-        Text("Focus Duration:\($0.duration.description)")
+    GeometryReader { gp in
+      let hm = gp.size.width / 375
+      let vm = gp.size.height / 667
+      let multiplier = abs(hm - 1) < abs(vm - 1) ? hm : vm
+      
+      ZStack {
+        GradientBackgroundUtil.gradientBackground(size: gp.size, multiplier: multiplier)
+        VStack {
+          Text("端末を見ていなかった合計時間")
+            .font(.title)
+            .foregroundColor(.white)
+            .padding(.bottom, 10)
+          
+          Text(viewModel.totalDurationFormatted())
+            .font(.largeTitle)
+            .bold()
+            .foregroundColor(.white)
+        }
       }
     }
-//    GeometryReader { gp in
-//      let hm = gp.size.width / 375
-//      let vm = gp.size.height / 667
-//      let multiplier = abs(hm - 1) < abs(vm - 1) ? hm : vm
-//      Color.yellow.frame(width: gp.size.width, height: gp.size.height)
-//
-//    }.ignoresSafeArea(.all)
+    .onAppear {
+      viewModel.updateHistory(with: allHistory)
+    }
+    .ignoresSafeArea()
+  }
+}
+
+// MARK: ViewModel
+class HistoryViewModel: ObservableObject {
+  @Published var allHistory: [FocusHistory] = []
+  var totalDuration: TimeInterval {
+    allHistory.reduce(0) { $0 + $1.duration }
+  }
+  
+  func updateHistory(with history: [FocusHistory]) {
+    allHistory = history
+  }
+  
+  func totalDurationFormatted() -> String {
+    let hours = Int(totalDuration) / 3600
+    let minutes = (Int(totalDuration) % 3600) / 60
+    let seconds = Int(totalDuration) % 60
+    
+    if hours > 0 {
+      return "\(hours)時間\(minutes)分\(seconds)秒"
+    } else if minutes > 0 {
+      return "\(minutes)分\(seconds)秒"
+    } else {
+      return "\(seconds)秒"
+    }
   }
 }
 

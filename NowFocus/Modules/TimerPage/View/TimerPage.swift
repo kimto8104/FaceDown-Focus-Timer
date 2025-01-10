@@ -94,14 +94,10 @@ struct TimerPage<T: TimerPresenterProtocol>: View {
     )
     .alert("集中をやめますか？", isPresented: $presenter.showAlertForPause) {
       
-      Button("いいえ") {
-        // キャンセルなので何もしない
-        presenter.stopVibration()
-      }
+      Button("いいえ") {}
       
       Button("はい") {
         presenter.resetTimer()
-        presenter.stopVibration()
         presenter.stopMonitoringDeviceMotion()
         presenter.updateTimerState(timerState: .start)
         dismiss()
@@ -184,7 +180,6 @@ extension TimerPage {
   func completeButton(gp: GeometryProxy, multiplier: CGFloat) -> some View {
     Button {
       presenter.resetTimer()
-      presenter.stopVibration()
       presenter.stopMonitoringDeviceMotion()
       presenter.updateTimerState(timerState: .start)
       dismiss()

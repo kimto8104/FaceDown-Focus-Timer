@@ -27,7 +27,6 @@ protocol TimerPresenterProtocol: ObservableObject {
   var totalFocusTimeInTimeInterval: TimeInterval? { get }
   
   func resetTimer()
-  func stopVibration()
   func updateTime(time: TimeInterval)
   func updateTimerState(timerState: TimerState)
   func showTotalFocusTime(extraFocusTime: TimeInterval)
@@ -66,10 +65,6 @@ class TimerPresenter: TimerPresenterProtocol {
   
   func resetTimer() {
     interactor?.resetTimer()
-  }
-  
-  func stopVibration() {
-    interactor?.stopVibration()
   }
   
   // 00:50のフォーマットに変える
