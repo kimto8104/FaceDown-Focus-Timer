@@ -16,7 +16,6 @@ struct NowFocusApp: App {
     WindowGroup {
       MainContentView()
         .modelContainer(for: [FocusHistory.self]) // SwiftDataのモデルコンテナをビュー階層に統合
-        .environment(\.colorScheme, .light) // ライトモードを強制
         .onAppear {
           // アプリ起動時にリセットを確認
           UserDefaultManager.resetDailyDataIfDateChanged()
