@@ -27,12 +27,12 @@ class TimeSelectionPresenter: ObservableObject {
   
   // timeOptionsをセットアップする関数
   func setupTimeOptions() {
-    var newTimeOptions: [TimeOption] = [
+    let newTimeOptions: [TimeOption] = [
       TimeOption(time: 1, isEnabled: true),
-      TimeOption(time: 10, isEnabled: UserDefaultManager.oneMinuteDoneToday),
-      TimeOption(time: 15, isEnabled: UserDefaultManager.tenMinuteDoneToday),
-      TimeOption(time: 30, isEnabled: UserDefaultManager.fifteenMinuteDoneToday),
-      TimeOption(time: 50, isEnabled: UserDefaultManager.thirtyMinuteDoneToday),
+//      TimeOption(time: 5, isEnabled: UserDefaultManager.oneMinuteDoneToday),
+//      TimeOption(time: 10, isEnabled: UserDefaultManager.fiveMinuteDoneToday),
+//      TimeOption(time: 30, isEnabled: UserDefaultManager.fifteenMinuteDoneToday),
+//      TimeOption(time: 50, isEnabled: UserDefaultManager.thirtyMinuteDoneToday),
     ]
     // 更新
     timeOptions = newTimeOptions

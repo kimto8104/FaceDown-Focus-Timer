@@ -56,6 +56,12 @@ extension UserDefaultManager {
     set { setBool(newValue, forKey: #function) }
   }
   
+  // 5分を今日完了したか？
+  static var fiveMinuteDoneToday: Bool {
+    get { return boolForKey(#function) }
+    set { setBool(newValue, forKey: #function) }
+  }
+  
   // 10分を今日完了したか？
   static var tenMinuteDoneToday: Bool {
     get { return boolForKey(#function) }
