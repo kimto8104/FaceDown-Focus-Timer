@@ -32,7 +32,10 @@ struct TimeSelectionView: View {
           }
           .scrollDisabled(true)
           .listStyle(PlainListStyle()) // スタイルを明示的に設定
+          // セルの縦幅
           .padding(.top, 40 * multiplier)
+          // セルの横幅
+          .padding(.horizontal, 40 * multiplier)
           .onAppear(perform: {
             isTimerPageActive = false
             presenter.setupTimeOptions()

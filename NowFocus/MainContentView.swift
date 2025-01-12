@@ -19,7 +19,6 @@ struct MainContentView: View {
       TabContentView(selectedTab: selectedTab, isTimerPageActive: $isTimerPageActive)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .edgesIgnoringSafeArea(.all) // コンテンツを画面全体に広げる
-      
       VStack {
         Spacer()
         TabBarView(selectedTab: $selectedTab, multiplier: multiplier)

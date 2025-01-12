@@ -22,33 +22,14 @@ struct TimerPage<T: TimerPresenterProtocol>: View {
       let hm = gp.size.width / 375
       let vm = gp.size.height / 667
       let multiplier = abs(hm - 1) < abs(vm - 1) ? hm : vm
-      GradientBackgroundUtil.gradientBackground(size: gp.size, multiplier: multiplier)
-      VStack(spacing: 20 * multiplier) {
+      ZStack {
+        GradientBackgroundUtil.gradientBackground(size: gp.size, multiplier: multiplier)
         if !showResultView {
-          instructionText(gp: gp, multiplier: multiplier)
-            .opacity(showResultView ? 0 : 1)
-          circleTimer(multiplier: multiplier, time: presenter.time)
-            .opacity(showResultView ? 0 : 1)
-            .overlay(
-              Circle()
-                .stroke(.clear, lineWidth: 2)
-                .overlay(Circle()
-                  .trim(from: max(0, progress - 0.1), to: progress)
-                  .stroke(
-                    LinearGradient(colors: [.white, .black ], startPoint: .leading, endPoint: .trailing),
-                    style: StrokeStyle(lineWidth: 4, lineCap: .round)
-                  ).blur(radius: 2))
-            )
-        }
-        
-        if showResultView && ((presenter.totalFocusTime?.isEmpty) != nil) {
-          congratsText(gp: gp, multiplier: multiplier)
+          timerView(gp: gp, multiplier: multiplier)
+        } else if presenter.totalFocusTime?.isEmpty != nil {
           resultCard(gp: gp, multiplier: multiplier)
-            .transition(.blurReplace())
-          completeButton(gp: gp, multiplier: multiplier)
         }
       }
-      .position(x: gp.size.width / 2, y: gp.size.height / 2)
     }
     .onAppear(perform: {
       presenter.startMonitoringDeviceMotion()
@@ -110,6 +91,25 @@ struct TimerPage<T: TimerPresenterProtocol>: View {
 
 // MARK: Private TimerPage
 extension TimerPage {
+  func timerView(gp: GeometryProxy, multiplier: CGFloat) -> some View {
+    VStack(spacing: 20 * multiplier) {
+      instructionText(gp: gp, multiplier: multiplier)
+        .opacity(showResultView ? 0 : 1)
+      circleTimer(multiplier: multiplier, time: presenter.time)
+        .opacity(showResultView ? 0 : 1)
+        .overlay(
+          Circle()
+            .stroke(.clear, lineWidth: 2)
+            .overlay(Circle()
+              .trim(from: max(0, progress - 0.1), to: progress)
+              .stroke(
+                LinearGradient(colors: [.white, .black ], startPoint: .leading, endPoint: .trailing),
+                style: StrokeStyle(lineWidth: 4, lineCap: .round)
+              ).blur(radius: 2)))
+      
+    }.position(x: gp.size.width / 2, y: gp.size.height / 2)
+  }
+  
   func circleTimer(multiplier: CGFloat, time: String) -> some View {
     ZStack {
       // 背景用のCircleに影をつける
@@ -139,41 +139,33 @@ extension TimerPage {
 
 // MARK: Private Result View
 extension TimerPage {
-  
-  // Result View
-  func congratsText(gp: GeometryProxy, multiplier: CGFloat) -> some View {
-    Text("画面を見ないで集中よくできました")
-      .frame(width: gp.size.width * 0.9, height: 60 * multiplier)
-      .font(.custom("IBM Plex Mono", size: 20 * multiplier))
-      .padding(.horizontal, 10)
-      .clipShape(RoundedRectangle(cornerRadius: 20))
-      .transition(.blurReplace())
-  }
-  
   func resultCard(gp: GeometryProxy, multiplier: CGFloat) -> some View {
-    ZStack {
-      RoundedRectangle(cornerRadius: 20 * multiplier)
-        .fill(Color(hex: "#E8E4E4")!.opacity(0.42))
-        .shadow(color: .black.opacity(0.7), radius: 2, x: 6 * multiplier, y: 6 * multiplier)
-        .frame(width: 243 * multiplier, height: 302 * multiplier)
-      
-      VStack {
-        Spacer()
-          .frame(height: 16 * multiplier)
-        Image(systemName: "checkmark.circle")
-          .resizable()
-          .frame(width: 48 * multiplier, height:  48 * multiplier)
-        Spacer()
-          .frame(height: 60 * multiplier)
-        Text(presenter.totalFocusTime ?? "")
-          .frame(width: 243 * multiplier, height: 60 * multiplier)
-          .font(.custom("IBM Plex Mono", size: 48 * multiplier))
-          .lineLimit(nil) // 行数制限をなくす
-          .multilineTextAlignment(.center) // テキストを中央揃え
-          .minimumScaleFactor(0.5) // フォントサイズの縮小を許可
-        Spacer()
+    VStack {
+      Spacer()
+        .frame(height: 200 * multiplier)
+      ZStack {
+        RoundedRectangle(cornerRadius: 20 * multiplier)
+          .fill(Color(hex: "#E8E4E4")!.opacity(1))
+          .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 10)
+          .frame(width: 314 * multiplier, height: 407 * multiplier)
+        VStack(spacing: 60 * multiplier) {
+          Text("1分のつもりが")
+            .font(.custom("IBM Plex Mono", size: 24 * multiplier))
+            .minimumScaleFactor(0.5)
+          
+          Text("\(presenter.totalFocusTime ?? "20分14秒")も")
+            .font(.custom("IBM Plex Mono", size: 40 * multiplier))
+            .minimumScaleFactor(0.5)
+          
+          Text("集中できた！")
+            .font(.custom("IBM Plex Mono", size: 32 * multiplier))
+            .minimumScaleFactor(0.5)
+        }
       }
-      .frame(width: 243 * multiplier, height: 302 * multiplier) // VStack の範囲を RoundedRectangle に合わせる
+      
+      Spacer().frame(height: 60 * multiplier)
+      completeButton(gp: gp, multiplier: multiplier)
+      Spacer()
     }
   }
   
@@ -192,9 +184,9 @@ extension TimerPage {
     }
     
     .frame(width: 176 * multiplier, height: 60 * multiplier)
-    .background(Color(hex: "E8E4E4")!.opacity(0.42))
+    .background(Color(hex: "E8E4E4")!.opacity(1))
     .cornerRadius(10 * multiplier)
-    .shadow(color: .black.opacity(0.7), radius: 2, x: 6 * multiplier, y: 6 * multiplier)
+    .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 10)
   }
 }
 
