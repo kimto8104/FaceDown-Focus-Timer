@@ -17,6 +17,10 @@ struct TimeSelectionView: View {
         let vm = geometry.size.height / 667
         let multiplier = abs(hm - 1) < abs(vm - 1) ? hm : vm
         GradientBackgroundUtil.gradientBackground(size: geometry.size, multiplier: multiplier)
+        
+        VStack() {
+          Spacer()
+            .frame(height: 160 * multiplier)
           List {
             ForEach (presenter.timeOptions, id: \.self) { time in
               HStack {
@@ -32,12 +36,14 @@ struct TimeSelectionView: View {
           }
           .scrollDisabled(true)
           .listStyle(PlainListStyle()) // スタイルを明示的に設定
-          .padding(.top, 200 * multiplier)
+          .padding(.top, 140 * multiplier)
           .padding(.horizontal, 40 * multiplier)
           .onAppear(perform: {
             isTimerPageActive = false
             presenter.setupTimeOptions()
           })
+        }
+          
       }
     }
   }
