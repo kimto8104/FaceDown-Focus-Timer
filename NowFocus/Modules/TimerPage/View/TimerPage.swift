@@ -59,15 +59,13 @@ struct TimerPage<T: TimerPresenterProtocol>: View {
       }
     })
     .ignoresSafeArea()
-    .alert("集中をやめますか？", isPresented: $presenter.showAlertForPause) {
-      Button("いいえ") {}
-      Button("はい") {
+    .alert("タイマーをリセットしました", isPresented: $presenter.showAlertForPause) {
+      Button("OK") {
         presenter.resetTimer()
-//        presenter.stopMonitoringDeviceMotion()
         presenter.updateTimerState(timerState: .start)
       }
     } message: {
-      Text("リセットすると現在のタイマーが失われます")
+      Text("１分始めることが大事")
     }
   } // body ここまで
 }
