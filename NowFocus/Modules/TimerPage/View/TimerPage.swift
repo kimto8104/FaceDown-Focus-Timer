@@ -12,7 +12,6 @@ import SwiftData
 
 // MARK: - View
 struct TimerPage<T: TimerPresenterProtocol>: View {
-  @Environment(\.dismiss) var dismiss
   @Environment(\.modelContext) private var modelContext
   @StateObject var presenter: T
   @State private var progress: CGFloat = 0
@@ -60,28 +59,12 @@ struct TimerPage<T: TimerPresenterProtocol>: View {
       }
     })
     .ignoresSafeArea()
-    .navigationBarBackButtonHidden(true)
-    .navigationBarItems(
-      leading: Button(action: {
-        presenter.resetTimer()
-        presenter.stopMonitoringDeviceMotion()
-        presenter.updateTimerState(timerState: .start)
-        dismiss()
-      }, label: {
-        Image(systemName: "chevron.backward")
-        Text("戻る")
-          .foregroundStyle(.black)
-      })
-    )
     .alert("集中をやめますか？", isPresented: $presenter.showAlertForPause) {
-      
       Button("いいえ") {}
-      
       Button("はい") {
         presenter.resetTimer()
-        presenter.stopMonitoringDeviceMotion()
+//        presenter.stopMonitoringDeviceMotion()
         presenter.updateTimerState(timerState: .start)
-        dismiss()
       }
     } message: {
       Text("リセットすると現在のタイマーが失われます")
@@ -174,7 +157,7 @@ extension TimerPage {
       presenter.resetTimer()
       presenter.stopMonitoringDeviceMotion()
       presenter.updateTimerState(timerState: .start)
-      dismiss()
+//      dismiss()
     } label: {
       Text("完了")
         .foregroundStyle(.black)

@@ -18,8 +18,8 @@ class TimerRouter: TimerRouterProtocol {
     let router = TimerRouter()
     let motionManagerService = MotionManagerService()
     let presenter = TimerPresenter(time: time)
-    let interactor = TimerInteractor(initialTime: time, presenter: presenter, motionManagerService: motionManagerService)
-    
+    let interactor = TimerInteractor.shared
+    interactor.presenter = presenter
     presenter.interactor = interactor
     presenter.router = router
     
